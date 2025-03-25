@@ -3,15 +3,15 @@
         <div class="px-md-5 px-4">
             <h3 class="modal-title mt-4 mb-0 text-center mb-5">Iniciar sesión</h3>
             <p class="font-size-sm text-muted text-center">Inicie sesión en su cuenta utilizando el correo electrónico y la contraseña proporcionados durante el registro.</p>
-            <form class="needs-validation" novalidate="">
+            <form [formGroup]="loginForm" (submit)="login()" class="needs-validation">
               <div class="form-group">
                 <label for="signin-email">Correo electrónico</label>
-                <input type="email" class="form-control" id="signin-email" placeholder="Ingrese su correo eletrónico" required="">
+                <input type="email" class="form-control" formControlName="email" id="email" placeholder="Ingrese su correo eletrónico" required="">
               </div>
               <div class="form-group">
-                <label for="signin-password" class="form-label">Contraseña</label>
+                <label for="password" class="form-label">Contraseña</label>
                 <div class="cs-password-toggle input-group-overlay">
-                  <input type="password" class="form-control appended-form-control" id="signin-password" placeholder="Ingrese su contraseña" required="">
+                  <input type="password" class="form-control appended-form-control" formControlName="password" id="password" placeholder="Ingrese su contraseña" required="">
                   <div class="input-group-append-overlay">
                     <label class="btn cs-password-toggle-btn input-group-text">
                       <input type="checkbox" class="custom-control-input">
