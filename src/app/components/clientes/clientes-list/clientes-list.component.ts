@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -13,8 +14,10 @@ export class ClientesListComponent implements OnInit {
   filtroUsuarioForm: FormGroup
   page=1
   pageSize=1
+  token:any
 
-  constructor(private fb: FormBuilder, private usuarioService: UsuarioService) {
+  constructor(private fb: FormBuilder, private usuarioService: UsuarioService, private authService: AuthService) {
+    this.token = this.authService.getToken()
     this.filtroUsuarioForm= fb.group({
       nombre:[''],
       apellido:['']
@@ -22,7 +25,7 @@ export class ClientesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.usuarioService.listar(null, null).subscribe({
+    this.usuarioService.listar(null, null, this.token).subscribe({
       next:(response: any)=> {
         this.usuarios = response.data
         console.log(this.usuarios)
@@ -41,7 +44,7 @@ export class ClientesListComponent implements OnInit {
       filtro=this.filtroUsuarioForm.controls['apellido'].value
     }
 
-    this.usuarioService.listar(tipo, filtro).subscribe({
+    this.usuarioService.listar(tipo, filtro, this.token).subscribe({
       next:(response: any)=> {
         this.usuarios = response.data
         console.log(this.usuarios)

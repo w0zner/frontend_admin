@@ -13,8 +13,13 @@ export class UsuarioService {
     this.url = GLOBAL.url
   }
 
-  listar(tipo: any, filtro: any) {
-    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+  listar(tipo: any, filtro: any, token: any) {
+    let headers = new HttpHeaders({'Content-Type': 'application/json', 'Authorization': token})
     return this.http.get(this.url + 'usuarios/'+tipo+"/"+filtro, {headers: headers})
+  }
+
+  registrar(data: any, token: any) {
+    let headers = new HttpHeaders({'Content-Type': 'application/json', 'Authorization': token})
+    return this.http.post(this.url + 'usuarios', data, {headers: headers})
   }
 }

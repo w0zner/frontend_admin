@@ -9,11 +9,34 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <ul class="navbar-nav ml-auto d-none d-lg-flex align-items-center">
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a class="nav-link py-0" href="../components/typography.html">
         <i class="cxi-profile align-middle mt-n1 mr-2"></i>
         Cuenta
       </a>
+    </li> -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+        <i class="cxi-profile align-middle mt-n1 mr-2"></i>
+        Cuenta
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item" href="#">Action link</a>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Dropdown</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action link</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">Yet another link</a></li>
+          </ul>
+        </li>
+        <li><a class="dropdown-item" href="#"> Another action</a></li>
+        <li class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
     </li>
   </ul>
 </header>
@@ -24,6 +47,7 @@
     <a class="navbar-brand py-2" href="dev-setup.html">
       <img src="assets/img/components/logo/logo-white.svg" alt="Createx" width="130" />
     </a>
+
     <span class="badge badge-warning">Docs</span>
   </div>
   <div class="cs-offcanvas-cap d-flex d-lg-none">
@@ -41,11 +65,11 @@
         class="cxi-layouts mt-n1 mr-2"></i>Components</a>
   </div>
   <div class="cs-offcanvas-body px-0 pt-4 pb-grid-gutter" data-simplebar data-simplebar-inverse>
-    <h6 class="font-size-lg text-light px-4 mt-2 mb-3">Contents</h6>
+    <h6 class="font-size-lg text-light px-4 mt-2 mb-3">Contenido</h6>
     <hr class="hr-gradient hr-light mb-2 opacity-25" />
     <nav class="nav nav-light">
-      <a class="nav-link px-4 active" href="dev-setup.html">Dev environment setup</a>
-      <a class="nav-link px-4" href="working-with-gulp.html">Working with Gulp</a>
+      <a class="nav-link px-4" [routerLink]="['/inicio']" routerLinkActive="active">Inicio</a>
+      <a class="nav-link px-4" [routerLink]="['/panel/clientes']" routerLinkActive="active">Clientes</a>
     </nav>
   </div>
 </aside>

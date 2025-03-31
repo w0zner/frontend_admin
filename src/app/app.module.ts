@@ -11,6 +11,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoginComponent } from './components/login/login.component';
 import { ClientesListComponent } from './components/clientes/clientes-list/clientes-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ClientesFormComponent } from './components/clientes/clientes-form/clientes-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     InicioComponent,
     SidebarComponent,
     LoginComponent,
-    ClientesListComponent
+    ClientesListComponent,
+    ClientesFormComponent
   ],
   imports: [
     BrowserModule,

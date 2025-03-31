@@ -1,0 +1,64 @@
+<app-sidebar> </app-sidebar>
+
+<div class="main-content">
+  <div class="pt-1 mt-4">
+      <h2 class="mt-2 mt-md-4 mb-3 pt-5">Clientes</h2>
+      <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+        <p class="text-muted"></p>
+
+      </div>
+    </div>
+
+    <div class="card box-shadow-sm">
+          <div class="card-header">
+              <h5 style="margin-bottom: 0px;">Registro de cliente</h5>
+          </div>
+          <form [formGroup]="clientesForm" (submit)="registrar()">
+            <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-4 form-group">
+                      <label for="validationCustom01" class="form-label">Nombres</label>
+                      <input class="form-control" type="text" formControlName="nombres" placeholder="Nombres" required>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label for="validationCustom01" class="form-label">Apellidos</label>
+                      <input class="form-control" type="text" formControlName="apellidos" placeholder="Apellidos" required>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label for="validationCustom01" class="form-label">Correo electrónico</label>
+                      <input class="form-control" type="text" formControlName="email" placeholder="Corre Electrónico" required>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                      <label for="validationCustom01" class="form-label">Teléfono</label>
+                      <input class="form-control" type="text" formControlName="telefono" placeholder="Teléfono" required>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label for="validationCustom01" class="form-label">Fecha nacimiento</label>
+                      <input class="form-control" type="date" formControlName="fecha_nacimiento" required>
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label for="validationCustom01" class="form-label">Cédula de identidad</label>
+                      <input class="form-control" type="text" formControlName="cedula" placeholder="C.I." required>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="validationCustom01" class="form-label">Genero</label>
+                      <select class="form-control custom-select" formControlName="genero" id="">
+                        <option value="" selected disabled>Seleccionar</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                      </select>
+                    </div>
+                  </div>
+            </div>
+            <div class="card-footer text-end">
+                <button class="btn btn-primary mr-3">Guardar</button>
+                <a [routerLink]="['/panel/clientes']"  class="btn btn-danger">Cancelar</a>
+            </div>
+        </form>
+    </div>
+  </div>
+
+
+
