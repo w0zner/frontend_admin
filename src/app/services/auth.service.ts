@@ -13,11 +13,15 @@ export class AuthService {
   private jwtHelper = new JwtHelperService();
 
   constructor(private http: HttpClient) {
-    this.url = GLOBAL.url
+    this.url = GLOBAL.url + 'login/admin'
   }
 
   getToken():any {
     return localStorage.getItem('token')
+  }
+
+  getEmailLogged():any {
+    return localStorage.getItem('usuario')
   }
 
   getHeaders() {
@@ -27,11 +31,12 @@ export class AuthService {
 
   loginAdmin(data: any) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
-    return this.http.post(this.url + 'login/admin', data, {headers: headers}).pipe(
+    return this.http.post(this.url, data, {headers: headers}).pipe(
       tap((response:any) => {
         localStorage.setItem('token', response.token)
         localStorage.setItem('refreshToken', response.refreshToken)
         localStorage.setItem('_id', response.data._id)
+        localStorage.setItem('usuario', response.data.email)
       })
     )
   }
@@ -54,19 +59,6 @@ export class AuthService {
       if(expired) {
         console.log(1)
         await lastValueFrom(this.refreshAdmin(localStorage.getItem('refreshToken')))
-      /*   .subscribe({
-          next: () => {
-            console.log(2)
-            return true
-          },
-          error:(err) => {
-            console.log(3)
-            console.log(err)
-            localStorage.removeItem('token')
-            localStorage.removeItem('refreshToken')
-            return false
-          }
-        }) */
       }
     } catch (error) {
       console.log(4)
@@ -79,11 +71,18 @@ export class AuthService {
 
   refreshAdmin(refreshToken: any) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
-    return this.http.post(this.url + 'login/admin/refresh', {refreshToken: refreshToken}, {headers: headers} /*{ withCredentials: true }*/).pipe(
+    return this.http.post(this.url + '/refresh', {refreshToken: refreshToken}, {headers: headers} /*{ withCredentials: true }*/).pipe(
       tap((response:any) => {
         localStorage.setItem('token', response.token)
         localStorage.setItem('_id', response.data._id)
       })
     )
+  }
+
+  logout(){
+    localStorage.removeItem('_id')
+    localStorage.removeItem('token')
+    localStorage.removeItem('refreshToken')
+    localStorage.clear()
   }
 }

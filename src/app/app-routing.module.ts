@@ -12,7 +12,8 @@ const routes: Routes = [
   {
     path:'panel', children: [
       {path: 'clientes', component: ClientesListComponent, canActivate: [adminGuard]},
-      {path: 'clientes/registro', component: ClientesFormComponent, canActivate: [adminGuard]}
+      {path: 'clientes/registro', component: ClientesFormComponent, canActivate: [adminGuard]},
+      {path: 'clientes/registro/:id', component: ClientesFormComponent, canActivate: [adminGuard]}
     ]
   },
   {path: 'login', component: LoginComponent}

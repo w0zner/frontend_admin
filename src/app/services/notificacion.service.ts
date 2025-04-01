@@ -8,21 +8,18 @@ export class NotificacionService {
 
   constructor() { }
 
-  notificarExito(mensaje: string) {
+  notificarExito(mensaje: string, position?: string) {
     iziToast.show({
       title: 'Exito',
       message: mensaje,
       color: 'green',
-      position: 'topRight'
+      position: position || 'topRight'
     })
   }
 
   notificarError(err?: any, mensaje?:string){
-    console.log('err ' + err)
-    console.log('mensaje' + mensaje)
-    if(err && !mensaje) {
+    if(err) {
       if(err.status==0) {
-        console.log('a')
         iziToast.show({
           title: 'Error',
           message: 'No hay respuesta del servidor',
@@ -30,18 +27,14 @@ export class NotificacionService {
           position: 'topRight'
         })
       } else {
-        console.log('b')
-        console.log(err)
         iziToast.show({
           title: 'Error',
-          message: err.error.message,
+          message: mensaje || err.error.message,
           color: 'red',
           position: 'topRight'
         })
       }
-    } else if (mensaje) {
-      console.log('c')
-      console.log(err)
+    } else {
       iziToast.show({
         title: 'Error',
         message: mensaje,
