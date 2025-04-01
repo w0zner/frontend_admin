@@ -20,6 +20,11 @@ export class AuthService {
     return localStorage.getItem('token')
   }
 
+  getHeaders() {
+    let headers = new HttpHeaders({'Content-Type': 'application/json', 'Authorization': this.getToken()})
+    return headers;
+  }
+
   loginAdmin(data: any) {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
     return this.http.post(this.url + 'login/admin', data, {headers: headers}).pipe(

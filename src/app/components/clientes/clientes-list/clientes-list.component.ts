@@ -14,10 +14,8 @@ export class ClientesListComponent implements OnInit {
   filtroUsuarioForm: FormGroup
   page=1
   pageSize=1
-  token:any
 
   constructor(private fb: FormBuilder, private usuarioService: UsuarioService, private authService: AuthService) {
-    this.token = this.authService.getToken()
     this.filtroUsuarioForm= fb.group({
       nombre:[''],
       apellido:['']
@@ -25,7 +23,7 @@ export class ClientesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.usuarioService.listar(null, null, this.token).subscribe({
+    this.usuarioService.listar(null, null).subscribe({
       next:(response: any)=> {
         this.usuarios = response.data
         console.log(this.usuarios)
@@ -44,7 +42,7 @@ export class ClientesListComponent implements OnInit {
       filtro=this.filtroUsuarioForm.controls['apellido'].value
     }
 
-    this.usuarioService.listar(tipo, filtro, this.token).subscribe({
+    this.usuarioService.listar(tipo, filtro).subscribe({
       next:(response: any)=> {
         this.usuarios = response.data
         console.log(this.usuarios)
