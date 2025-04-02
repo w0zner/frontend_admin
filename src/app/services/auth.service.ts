@@ -57,11 +57,9 @@ export class AuthService {
       const expired = this.jwtHelper.isTokenExpired(token)
 
       if(expired) {
-        console.log(1)
         await lastValueFrom(this.refreshAdmin(localStorage.getItem('refreshToken')))
       }
     } catch (error) {
-      console.log(4)
       localStorage.removeItem('token')
       return false
     }

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { NotificacionService } from 'src/app/services/notificacion.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
-declare const iziToast: any ;
 
 @Component({
   selector: 'app-clientes-list',
@@ -17,7 +17,7 @@ export class ClientesListComponent implements OnInit {
   page=1
   pageSize=1
 
-  constructor(private fb: FormBuilder, private usuarioService: UsuarioService, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private usuarioService: UsuarioService, private authService: AuthService, private router: Router, private notificacion:NotificacionService) {
     this.filtroUsuarioForm= fb.group({
       nombre:[''],
       apellido:['']
@@ -25,10 +25,13 @@ export class ClientesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.listar()
+  }
+
+  listar() {
     this.usuarioService.listar(null, null).subscribe({
       next:(response: any)=> {
         this.usuarios = response.data
-        console.log(this.usuarios)
       },
       error:(err)=>{
         console.error(err)
@@ -47,7 +50,6 @@ export class ClientesListComponent implements OnInit {
     this.usuarioService.listar(tipo, filtro).subscribe({
       next:(response: any)=> {
         this.usuarios = response.data
-        console.log(this.usuarios)
       },
       error:(err)=>{
         console.error(err)
@@ -56,46 +58,18 @@ export class ClientesListComponent implements OnInit {
   }
 
   eliminar(id:any){
-    iziToast.question({
-      timeout: 20000,
-      close: false,
-      overlay: true,
-      displayMode: 'once',
-      id: 'question',
-      zindex: 999,
-      title: 'Hey',
-      message: 'Estás seguro de eliminar el registro?',
-      position: 'center',
-      buttons: [
-          ['<button><b>YES</b></button>',  (instance: { hide: (arg0: { transitionOut: string; }, arg1: any, arg2: string) => void; }, toast: any) => {
-              this.usuarioService.delete(id).subscribe({
-                next: (resp:any) => {
-                  console.log("eliminado")
-
-                },
-                error: (err) => {
-                  console.error(err)
-                },
-                complete: ()=>{
-                  this.router.navigateByUrl('/panel/clientes')
-                }
-              })
-              instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
-
-          }, true],
-          ['<button>NO</button>', function (instance: { hide: (arg0: { transitionOut: string; }, arg1: any, arg2: string) => void; }, toast: any) {
-            console.log('NO')
-              instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
-
-          }],
-      ],
-      onClosing: function(instance: any, toast: any, closedBy: string){
-          console.info('Closing | closedBy: ' + instance + toast + closedBy);
+    this.notificacion.alertConfirmation(
+      () => {
+        this.usuarioService.delete(id).subscribe({
+          next: () => this.listar()
+        });
       },
-      onClosed: function(instance: any, toast: any, closedBy: string){
-          console.info('Closed | closedBy: ' + closedBy);
-      }
-  });
+      null,
+      'Cliente eliminado correctamente',
+      'Error al eliminar el cliente'
+    );
   }
+
+
 
 }

@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid) {
       this.authService.loginAdmin(this.loginForm.value).subscribe({
         next: (response) => {
-          console.log(response)
           this.notificacionService.notificarExito('Bienvenido!', 'bottomRight')
           this.router.navigateByUrl('/')
         },

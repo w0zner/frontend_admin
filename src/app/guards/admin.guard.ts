@@ -9,10 +9,8 @@ export const adminGuard: CanActivateFn = async (route, state) => {
   const isAuth = await authService.isAuthenticated(['ADMIN']);
 
   if(!isAuth){
-    console.log(6)
     router.navigateByUrl('/login')
     return false
   }
-  console.log(7)
   return true;
 };

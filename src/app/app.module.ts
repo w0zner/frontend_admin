@@ -12,6 +12,9 @@ import { LoginComponent } from './components/login/login.component';
 import { ClientesListComponent } from './components/clientes/clientes-list/clientes-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClientesFormComponent } from './components/clientes/clientes-form/clientes-form.component';
+import { CuponListComponent } from './components/cupon/cupon-list/cupon-list.component';
+import { CuponFormComponent } from './components/cupon/cupon-form/cupon-form.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { ClientesFormComponent } from './components/clientes/clientes-form/clien
     SidebarComponent,
     LoginComponent,
     ClientesListComponent,
-    ClientesFormComponent
+    ClientesFormComponent,
+    CuponListComponent,
+    CuponFormComponent
   ],
   imports: [
     BrowserModule,
