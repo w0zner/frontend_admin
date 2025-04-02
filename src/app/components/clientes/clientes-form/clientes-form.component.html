@@ -1,8 +1,8 @@
 <app-sidebar> </app-sidebar>
 
 <div class="main-content">
-  <div class="pt-1 mt-4">
-      <h2 class="mt-2 mt-md-4 mb-3 pt-5">Clientes</h2>
+    <div class="pt-1 mt-4">
+      <h2 class="mt-2 mt-md-4 mb-3 pt-0"></h2>
       <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
         <p class="text-muted"></p>
 
@@ -39,13 +39,13 @@
                       </div>
                       <div class="col-md-4 form-group">
                         <label for="validationCustom01" class="form-label">Teléfono</label>
-                        <input class="form-control" type="text" formControlName="telefono" placeholder="Teléfono" required>
+                        <input class="form-control" type="text" formControlName="telefono" placeholder="Teléfono">
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-4 form-group">
                         <label for="validationCustom01" class="form-label">Fecha nacimiento</label>
-                        <input class="form-control" type="date" formControlName="fecha_nacimiento" required>
+                        <input class="form-control" type="date" formControlName="fecha_nacimiento">
                       </div>
                       <div class="col-md-4">
                         <label for="validationCustom01" class="form-label">Genero</label>
@@ -59,7 +59,7 @@
                   </div>
             </div>
             <div class="card-footer border-0 text-end">
-                <button class="btn btn-primary btn-hover-shadow mr-3"><i class="fa-sharp fa-solid fa-square-check"></i> {{this.id==null?'Guardar':'Actualizar'}}</button>
+                <button class="btn btn-primary btn-hover-shadow mr-3" [disabled]="!clientesForm.valid"><i class="fa-sharp fa-solid fa-square-check"></i> {{this.id==null?'Guardar':'Actualizar'}}</button>
                 <a [routerLink]="['/panel/clientes']"  class="btn btn-secondary rounded-0"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i> Cancelar</a>
             </div>
         </form>

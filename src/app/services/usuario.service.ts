@@ -31,4 +31,8 @@ export class UsuarioService {
   update(id: string, data:any) {
     return this.http.put(this.url + "/" + id, data,{headers: this.headers})
   }
+
+  delete(id:any) {
+    return this.http.delete(this.url + "/" + id, {headers: this.headers})
+  }
 }

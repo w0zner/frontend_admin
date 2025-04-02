@@ -9,10 +9,10 @@ export class NotificacionService {
   constructor() { }
 
   notificarExito(mensaje: string, position?: string) {
-    iziToast.show({
+    iziToast.success({
       title: 'Exito',
       message: mensaje,
-      color: 'green',
+      //color: 'green',
       position: position || 'topRight'
     })
   }
@@ -20,25 +20,25 @@ export class NotificacionService {
   notificarError(err?: any, mensaje?:string){
     if(err) {
       if(err.status==0) {
-        iziToast.show({
+        iziToast.error({
           title: 'Error',
           message: 'No hay respuesta del servidor',
-          color: 'red',
+          //color: 'red',
           position: 'topRight'
         })
       } else {
-        iziToast.show({
+        iziToast.error({
           title: 'Error',
           message: mensaje || err.error.message,
-          color: 'red',
+          //color: 'red',
           position: 'topRight'
         })
       }
     } else {
-      iziToast.show({
+      iziToast.error({
         title: 'Error',
         message: mensaje,
-        color: 'red',
+        //color: 'red',
         position: 'topRight'
       })
     }
