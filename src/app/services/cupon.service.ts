@@ -29,7 +29,7 @@ export class CuponService {
   }
 
   actualizar(id:any, data:any) {
-    return this.http.post(this.url + "/" + id, data, {headers: this.headers})
+    return this.http.put(this.url + "/" + id, data, {headers: this.headers})
   }
 
   eliminar(id: any) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from 'moment';
 import { CuponService } from 'src/app/services/cupon.service';
 import { NotificacionService } from 'src/app/services/notificacion.service';
 
@@ -14,7 +15,7 @@ export class CuponFormComponent implements OnInit {
   cuponesForm: FormGroup
   id:any= null
 
-  constructor(private fb:FormBuilder, private cuponService: CuponService, private notificacionService: NotificacionService, private route: ActivatedRoute) {
+  constructor(private fb:FormBuilder, private cuponService: CuponService, private notificacionService: NotificacionService, private route: ActivatedRoute, private router: Router) {
     this.cuponesForm = this.fb.group({
       codigo: ['', [Validators.required]],
       tipo: ['', [Validators.required]],
@@ -35,7 +36,7 @@ export class CuponFormComponent implements OnInit {
               tipo:  response.data.tipo,
               valor: response.data.valor,
               limite: response.data.limite,
-              createdAt: response.data.createdAt
+              createdAt: moment(response.data.createdAt).format('YYYY-MM-DD')
             })
           }
         })
@@ -45,6 +46,25 @@ export class CuponFormComponent implements OnInit {
 
   registrar() {
     console.log(this.cuponesForm.value)
+    if(this.cuponesForm.valid){
+      if(this.id != null) {
+        this.cuponService.actualizar(this.id, this.cuponesForm.value).subscribe({
+          next: (resp: any) => {
+            this.notificacionService.notificarExito('Cupón actualizado exitosamente')
+            this.router.navigateByUrl('/panel/cupones')
+          },
+          error: err =>  this.notificacionService.notificarError(err)
+        })
+      } else {
+        this.cuponService.guardar(this.cuponesForm.value).subscribe({
+          next: (resp: any)=> {
+            this.notificacionService.notificarExito('Cupón actualizado exitosamente')
+            this.router.navigateByUrl('/panel/cupones')
+          },
+          error: err =>  this.notificacionService.notificarError(err)
+        })
+      }
+    }
   }
 
 }

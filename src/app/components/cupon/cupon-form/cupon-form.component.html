@@ -19,38 +19,38 @@
                     <div class="row">
                       <div class="col-md-4 form-group">
                         <label for="validationCustom01" class="form-label">Código de cupón</label>
-                        <input class="form-control" type="text" formControlName="cedula" placeholder="C.I." required>
+                        <input class="form-control" type="text" formControlName="codigo" placeholder="Código de cupón" required>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-4 form-group">
                         <label for="validationCustom01" class="form-label">Tipo</label>
-                        <select class="form-control custom-select rounded-0" formControlName="genero" id="">
+                        <select class="form-control custom-select rounded-0" formControlName="tipo" id="">
                           <option value="" selected disabled>Seleccionar</option>
-                          <option value="Masculino">Porcentaje</option>
-                          <option value="Femenino">Valor fijo</option>
+                          <option value="porcentaje">Porcentaje</option>
+                          <option value="valor fijo">Valor fijo</option>
                         </select>
                       </div>
                       <div class="col-md-4 form-group">
                         <label for="validationCustom01" class="form-label">Valor</label>
-                        <input class="form-control" type="text" formControlName="apellidos" placeholder="Apellidos" required>
+                        <input class="form-control" type="number" formControlName="valor" placeholder="Valor" required>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-4 form-group">
                         <label for="validationCustom01" class="form-label">Limite</label>
-                        <input class="form-control" type="text" formControlName="email" placeholder="Corre Electrónico" required>
+                        <input class="form-control" type="number" formControlName="limite" placeholder="Limite" required>
                       </div>
-                      <div class="col-md-4 form-group">
+                      <div class="col-md-4 form-group" *ngIf="id">
                         <label for="validationCustom01" class="form-label">Fecha creación</label>
-                        <input class="form-control" type="date" formControlName="fecha_nacimiento">
+                        <input class="form-control" type="date" formControlName="createdAt" readonly>
                       </div>
                   </div>
             </div>
         </div>
             <div class="card-footer border-0 text-end">
-                <button class="btn btn-primary btn-hover-shadow mr-3" [disabled]="!cuponesForm.valid"><i class="fa-sharp fa-solid fa-square-check"></i> {{this.id==null?'Guardar':'Actualizar'}}</button>
-                <a [routerLink]="['/panel/clientes']"  class="btn btn-secondary rounded-0"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i> Cancelar</a>
+                <button class="btn btn-primary btn-hover-shadow mr-3" [disabled]="!cuponesForm.valid"><i class="fa-sharp fa-solid fa-square-check"></i> {{id==null?'Guardar':'Actualizar'}}</button>
+                <a [routerLink]="['/panel/cupones']"  class="btn btn-secondary rounded-0"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i> Cancelar</a>
             </div>
         </form>
     </div>
