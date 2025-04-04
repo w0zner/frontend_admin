@@ -7,6 +7,7 @@ import { ClientesListComponent } from './components/clientes/clientes-list/clien
 import { ClientesFormComponent } from './components/clientes/clientes-form/clientes-form.component';
 import { CuponListComponent } from './components/cupon/cupon-list/cupon-list.component';
 import { CuponFormComponent } from './components/cupon/cupon-form/cupon-form.component';
+import { ProductosFormComponent } from './components/productos/productos-form/productos-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'inicio', pathMatch: 'full'},
@@ -18,7 +19,9 @@ const routes: Routes = [
       {path: 'clientes/registro/:id', component: ClientesFormComponent, canActivate: [adminGuard]},
       {path: 'cupones', component: CuponListComponent, canActivate: [adminGuard]},
       {path: 'cupones/registro', component: CuponFormComponent, canActivate: [adminGuard]},
-      {path: 'cupones/registro/:id', component: CuponFormComponent, canActivate: [adminGuard]}
+      {path: 'cupones/registro/:id', component: CuponFormComponent, canActivate: [adminGuard]},
+
+      {path: 'productos/registro', component: ProductosFormComponent, canActivate: [adminGuard]}
     ]
   },
   {path: 'login', component: LoginComponent}

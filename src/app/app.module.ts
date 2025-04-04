@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClientesFormComponent } from './components/clientes/clientes-form/clientes-form.component';
 import { CuponListComponent } from './components/cupon/cupon-list/cupon-list.component';
 import { CuponFormComponent } from './components/cupon/cupon-form/cupon-form.component';
+import { ProductosFormComponent } from './components/productos/productos-form/productos-form.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CuponFormComponent } from './components/cupon/cupon-form/cupon-form.com
     ClientesListComponent,
     ClientesFormComponent,
     CuponListComponent,
-    CuponFormComponent
+    CuponFormComponent,
+    ProductosFormComponent
   ],
   imports: [
     BrowserModule,
