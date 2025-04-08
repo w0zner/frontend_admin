@@ -43,6 +43,8 @@ export class ProductosFormComponent implements OnInit {
       }
     } else {
       this.notificacionService.notificarError(null, "La imagen no puede ser mayor a 4MB")
+      this.imgSelect= 'assets/img/01.jpg'
+      this.file = null
     }
   }
 
