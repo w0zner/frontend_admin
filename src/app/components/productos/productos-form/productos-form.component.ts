@@ -29,7 +29,7 @@ export class ProductosFormComponent implements OnInit {
     })
 
     this.config = {
-      apiKey: '9i1wvig782ii9ld0e4g5q60ry3dzmb1vipvv2efpor7vheoc', // Add your TinyMCE API key
+      apiKey: '', // Add your TinyMCE API key
       height: 300,
       menubar: false,
       plugins: [
