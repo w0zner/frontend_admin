@@ -16,6 +16,10 @@ export class ProductoService {
     this.headers = this.authService.getHeaders()
   }
 
+  listar(filtro?: any) {
+    return this.http.get(this.url, {headers: this.headers})
+  }
+
   guardar(data: any, image: File) {
     const headers = new HttpHeaders({
       Authorization: this.authService.getToken()

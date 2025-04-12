@@ -15,6 +15,7 @@ import { ClientesFormComponent } from './components/clientes/clientes-form/clien
 import { CuponListComponent } from './components/cupon/cupon-list/cupon-list.component';
 import { CuponFormComponent } from './components/cupon/cupon-form/cupon-form.component';
 import { ProductosFormComponent } from './components/productos/productos-form/productos-form.component';
+import { ProductosListComponent } from './components/productos-list/productos-list.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ProductosFormComponent } from './components/productos/productos-form/pr
     ClientesFormComponent,
     CuponListComponent,
     CuponFormComponent,
-    ProductosFormComponent
+    ProductosFormComponent,
+    ProductosListComponent
   ],
   imports: [
     BrowserModule,

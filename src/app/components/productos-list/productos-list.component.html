@@ -1,0 +1,83 @@
+<app-sidebar> </app-sidebar>
+
+<div class="main-content">
+            <!-- Page title-->
+            <div class="pt-1 mt-4">
+              <h2 class="mt-2 mt-md-4 mb-3 pt-4">Clientes</h2>
+              <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+                <p class="text-muted">Este módulo lista todos los clientes de la tienda.</p>
+                <p class="font-size-sm font-weight-medium pl-md-4">
+                  <a class="text-nowrap" rel="noopener" [routerLink]="['/panel/clientes/registro']">Registrar nuevo<i class="cxi-angle-right font-size-base align-middle ml-1"></i></a>
+                </p>
+              </div>
+            </div>
+
+            <div class="card box-shadow border-0 rounded-0 card-hover">
+
+                  <div class="card-header border-0">
+                     <!--  <form [formGroup]="filtroUsuarioForm" class="form-inline">
+                          <label class="sr-only" for="inline-form-input-name">Apellidos</label>
+                          <input class="form-control  mr-sm-4" (keyup)="filtro('nombre')" formControlName="nombre" type="text" id="inline-form-input-name" placeholder="Nombres">
+                          <label class="sr-only" for="inline-form-input-username">Correo</label>
+                          <div class="input-group  mr-sm-4">
+
+                          <input class="form-control" type="text" (keyup)="filtro('apellido')" formControlName="apellido" id="inline-form-input-username" placeholder="Apellidos">
+                          </div>
+                          <div>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                          </div>
+
+                      </form> -->
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table table-bordered">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th>#</th>
+                                <th>Identidad</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Correo Electrónico</th>
+                                <th>Opciones</th>
+                              </tr>
+                            </thead>
+                            <tr *ngIf="productos.length==0" style="text-align: center;">
+                              <p>No hay registros que mostrar</p>
+                            </tr>
+                            <tbody *ngFor="let item of productos | slice: (page-1)*pageSize : (page-1)*pageSize+pageSize; let indice = index">
+                              <tr>
+                                <td>{{indice + 1}}</td>
+                                <td>{{item.titulo}}</td>
+                                <td>{{item.nombres}}</td>
+                                <td>{{item.apellidos}}</td>
+                                <td>{{item.email}}</td>
+                                <td style="text-align: center;">
+                                  <div class="btn-toolbar" role="toolbar" aria-label="Settings toolbar" style="text-align: center;">
+                                    <a class="btn btn-outline-secondary btn-icon" [routerLink]="['/panel/clientes/registro/', item._id]"><i class="fa-sharp fa-solid fa-pencil"></i></a>
+                                    <a class="btn btn-outline-danger btn-icon" (click)="eliminar(item._id)"><i class="fa-sharp fa-solid fa-trash-can"></i></a>
+                                  </div>
+
+                                  <!-- <button class="btn btn-outline-secondary btn-sm dropdown-toggle rounded-0" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                  aria-expanded="false"><i class="fa-solid fa-wrench"></i> Opciones</button>
+                                  <div class="dropdown-menu rounded-0">
+                                    <a class="dropdown-item" [routerLink]="['/panel/clientes/registro/', item._id]"><i class="fa-sharp fa-solid fa-pen-to-square"></i> Editar</a>
+                                    <a class="dropdown-item" href="#"><i class="fa-sharp fa-solid fa-trash-can"></i> Eliminar</a>
+                                  </div> -->
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                      </div>
+                  </div>
+<!--                   <div class="card-footer border-0">
+                      <ngb-pagination
+                      [(page)]="page"
+                      [pageSize]="pageSize"
+                      [collectionSize]="usuarios.length"
+                      ></ngb-pagination>
+                  </div> -->
+            </div>
+</div>
+
+
