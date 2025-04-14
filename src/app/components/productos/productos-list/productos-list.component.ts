@@ -1,0 +1,52 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProductoService } from 'src/app/services/producto.service';
+
+@Component({
+  selector: 'app-productos-list',
+  templateUrl: './productos-list.component.html',
+  styleUrls: ['./productos-list.component.css']
+})
+export class ProductosListComponent implements OnInit {
+
+  productos:  Array<any>= []
+  filtroForm: FormGroup
+  page=1
+  pageSize=1
+
+  constructor(private fb: FormBuilder, private productoService: ProductoService){
+    this.filtroForm = this.fb.group({
+      titulo: ['', [Validators.required]]
+    })
+  }
+
+  ngOnInit(): void {
+    this.listar()
+  }
+
+  listar(nombre?: any) {
+    this.productoService.listar(nombre).subscribe({
+      next: (response: any) => {
+        console.log(response.data)
+        this.productos= response.data
+      }
+    })
+  }
+
+  filtrar() {
+    if(this.filtroForm.valid) {
+      console.log(2)
+      this.listar(this.filtroForm.controls['titulo'].value)
+    } 
+  }
+
+  limpiar() {
+    this.filtroForm.reset()
+    this.listar()
+  }
+
+  eliminar(id:any){
+
+  }
+
+}

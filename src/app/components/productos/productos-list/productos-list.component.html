@@ -28,6 +28,13 @@
                           </div>
 
                       </form> -->
+                      <form [formGroup]="filtroForm" class="form-inline">
+                        <div class="btn-group" role="group" aria-label="Outline button group">
+                          <input class="form-control  mr-sm-4" formControlName="titulo" type="text" id="inline-form-input-name" placeholder="Nombre">
+                          <button type="button" (click)="filtrar()" class="btn btn-primary btn-sm">Buscar</button>
+                          <button type="button" (click)="limpiar()" class="btn btn-outline-secondary btn-sm">Limpiar</button>
+                        </div>
+                      </form>
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
@@ -35,10 +42,11 @@
                             <thead class="thead-dark">
                               <tr>
                                 <th>#</th>
-                                <th>Identidad</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Correo Electrónico</th>
+                                <th>Titulo</th>
+                                <th>Stock</th>
+                                <th>Precio</th>
+                                <th>Categoria</th>
+                                <th>Ventas</th>
                                 <th>Opciones</th>
                               </tr>
                             </thead>
@@ -49,9 +57,10 @@
                               <tr>
                                 <td>{{indice + 1}}</td>
                                 <td>{{item.titulo}}</td>
-                                <td>{{item.nombres}}</td>
-                                <td>{{item.apellidos}}</td>
-                                <td>{{item.email}}</td>
+                                <td>{{item.stock}}</td>
+                                <td>{{item.precio}}</td>
+                                <td>{{item.categoria}}</td>
+                                <td>{{item.ventas}}</td>
                                 <td style="text-align: center;">
                                   <div class="btn-toolbar" role="toolbar" aria-label="Settings toolbar" style="text-align: center;">
                                     <a class="btn btn-outline-secondary btn-icon" [routerLink]="['/panel/clientes/registro/', item._id]"><i class="fa-sharp fa-solid fa-pencil"></i></a>

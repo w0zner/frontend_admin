@@ -17,7 +17,14 @@ export class ProductoService {
   }
 
   listar(filtro?: any) {
-    return this.http.get(this.url, {headers: this.headers})
+    console.log(filtro)
+    let getUrl = ''
+    if(filtro) {
+      getUrl = this.url + '/' + filtro
+    } else {
+      getUrl = this.url
+    }
+    return this.http.get(getUrl, {headers: this.headers})
   }
 
   guardar(data: any, image: File) {
