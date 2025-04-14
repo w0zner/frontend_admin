@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NotificacionService } from 'src/app/services/notificacion.service';
 import { ProductoService } from 'src/app/services/producto.service';
 
@@ -17,7 +18,7 @@ export class ProductosFormComponent implements OnInit {
   config: any = {}
   public content: string = ""
 
-  constructor(private fb: FormBuilder, private productoService: ProductoService, private notificacionService: NotificacionService){
+  constructor(private fb: FormBuilder, private productoService: ProductoService, private notificacionService: NotificacionService, private router: Router){
     this.productoForm = this.fb.group({
       titulo: ['', [Validators.required]],
       //portada: ['', [Validators.required]],
@@ -82,6 +83,7 @@ export class ProductosFormComponent implements OnInit {
       this.productoService.guardar(this.productoForm.value, this.file).subscribe({
         next: () => {
           this.notificacionService.notificarExito("Producto guardado con exito!")
+          this.router.navigateByUrl('/panel/productos')
         },
         error: (err)=> {
           this.notificacionService.notificarError(null, "Error al guardar el producto")

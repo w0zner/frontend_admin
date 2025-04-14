@@ -45,7 +45,8 @@
                             </div>
       
                             <div class="col-lg-12 form-group">
-                              <textarea class="form-control" required formControlName="contenido" rows="15"></textarea>
+                              <!-- <textarea class="form-control" required formControlName="contenido" rows="15"></textarea> -->
+                              <quill-editor formControlName="contenido" [styles]="{height: '200px'}"></quill-editor>
                               <!-- <editor [init]="config"></editor> -->
                             </div>
       

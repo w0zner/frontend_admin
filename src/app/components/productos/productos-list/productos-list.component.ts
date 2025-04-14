@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { GLOBAL } from 'src/app/services/GLOBAL';
 import { ProductoService } from 'src/app/services/producto.service';
 
 @Component({
@@ -13,8 +14,10 @@ export class ProductosListComponent implements OnInit {
   filtroForm: FormGroup
   page=1
   pageSize=1
+  url: string;
 
   constructor(private fb: FormBuilder, private productoService: ProductoService){
+    this.url = GLOBAL.url + 'productos/obtenerPortada/'
     this.filtroForm = this.fb.group({
       titulo: ['', [Validators.required]]
     })

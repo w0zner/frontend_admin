@@ -16,6 +16,7 @@ import { CuponListComponent } from './components/cupon/cupon-list/cupon-list.com
 import { CuponFormComponent } from './components/cupon/cupon-form/cupon-form.component';
 import { ProductosFormComponent } from './components/productos/productos-form/productos-form.component';
 import { ProductosListComponent } from './components/productos/productos-list/productos-list.component';
+import { QuillModule } from 'ngx-quill';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ProductosListComponent } from './components/productos/productos-list/pr
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    QuillModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
