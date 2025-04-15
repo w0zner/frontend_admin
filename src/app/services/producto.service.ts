@@ -43,4 +43,10 @@ export class ProductoService {
 console.log(fd)
     return this.http.post(this.url, fd, {headers: headers})
   }
+
+  obtenerPorId(id: any) {
+    const obs = this.http.get(this.url + '/obtenerPorId/' + id, {headers: this.headers})
+    console.log(obs)
+    return obs
+  }
 }

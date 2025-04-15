@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { GLOBAL } from 'src/app/services/GLOBAL';
 import { NotificacionService } from 'src/app/services/notificacion.service';
 import { ProductoService } from 'src/app/services/producto.service';
 
@@ -15,36 +16,60 @@ export class ProductosFormComponent implements OnInit {
   productoForm: FormGroup
   imgSelect: any | ArrayBuffer = 'assets/img/01.jpg'
   file: File | null = null
-  config: any = {}
-  public content: string = ""
+  productId: string = ''
+  url: string;
+  content = ''
+  quillEditor: any;
 
-  constructor(private fb: FormBuilder, private productoService: ProductoService, private notificacionService: NotificacionService, private router: Router){
+  constructor(private fb: FormBuilder, private productoService: ProductoService, private notificacionService: NotificacionService, private router: Router, private activatedRoute: ActivatedRoute){
+    this.url = GLOBAL.url + 'productos/obtenerPortada/'
     this.productoForm = this.fb.group({
       titulo: ['', [Validators.required]],
-      //portada: ['', [Validators.required]],
+      portada: [''],
       precio: ['', [Validators.required, Validators.min(0)]],
       descripcion: ['', [Validators.required]],
       contenido: ['', [Validators.required]],
       stock: ['', [Validators.required, Validators.min(0)]],
       categoria: ['', [Validators.required]],
     })
-
-    this.config = {
-      apiKey: '', // Add your TinyMCE API key
-      height: 300,
-      menubar: false,
-      plugins: [
-        'advlist autolink lists link image charmap print preview anchor',
-        'searchreplace visualblocks code fullscreen',
-        'insertdatetime media table paste code help wordcount'
-      ],
-      toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
-    }
-    this.content = '<p>Hola, TinyMCE!</p>';
   }
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(params => {
+      if(params.get('id')) {
+        this.productId = params.get('id') || ''
+        console.log(this.productId)
+        this.productoService.obtenerPorId(this.productId).subscribe({
+          next: (response: any) => {
+             this.productoForm.patchValue({
+              titulo: response.data.titulo,
+              portada: response.data.portada,
+              precio: response.data.precio,
+              descripcion: response.data.descripcion,
+              stock: response.data.stock,
+              categoria: response.data.categoria
+            })
 
+            if (this.quillEditor) {
+              this.quillEditor.clipboard.dangerouslyPasteHTML(response.data.contenido);
+            } else {
+              setTimeout(() => {
+                this.quillEditor.clipboard.dangerouslyPasteHTML(response.data.contenido);
+              }, 300);
+            }
+
+            this.imgSelect = this.url + this.productoForm.controls['portada'].value
+          }
+        })
+      }
+    })
+  }
+
+  onEditorCreated(editor: any) {
+    this.quillEditor = editor;
+    if (this.productId && this.productoForm.value.contenido) {
+      editor.clipboard.dangerouslyPasteHTML(this.productoForm.value.contenido);
+    }
   }
 
   fileChangeEvent(event:any): void {

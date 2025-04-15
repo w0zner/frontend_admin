@@ -46,7 +46,7 @@
       
                             <div class="col-lg-12 form-group">
                               <!-- <textarea class="form-control" required formControlName="contenido" rows="15"></textarea> -->
-                              <quill-editor formControlName="contenido" [styles]="{height: '200px'}"></quill-editor>
+                              <quill-editor formControlName="contenido" [styles]="{height: '200px'}" (onEditorCreated)="onEditorCreated($event)"></quill-editor>
                               <!-- <editor [init]="config"></editor> -->
                             </div>
       
@@ -70,7 +70,7 @@
               </div>
               <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Crear producto</button>
-                  <button class="btn btn-warning">Regresar</button>
+                  <button [routerLink]="['/panel/productos']"  class="btn btn-warning">Cancelar</button>
               </div>
           </form>
       </div> 

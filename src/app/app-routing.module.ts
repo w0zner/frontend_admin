@@ -21,9 +21,9 @@ const routes: Routes = [
       {path: 'cupones', component: CuponListComponent, canActivate: [adminGuard]},
       {path: 'cupones/registro', component: CuponFormComponent, canActivate: [adminGuard]},
       {path: 'cupones/registro/:id', component: CuponFormComponent, canActivate: [adminGuard]},
-
       {path: 'productos', component: ProductosListComponent, canActivate: [adminGuard]},
-      {path: 'productos/registro', component: ProductosFormComponent, canActivate: [adminGuard]}
+      {path: 'productos/registro', component: ProductosFormComponent, canActivate: [adminGuard]},
+      {path: 'productos/registro/:id', component: ProductosFormComponent, canActivate: [adminGuard]}
     ]
   },
   {path: 'login', component: LoginComponent}
