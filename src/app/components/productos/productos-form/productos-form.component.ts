@@ -15,7 +15,7 @@ export class ProductosFormComponent implements OnInit {
 
   productoForm: FormGroup
   imgSelect: any | ArrayBuffer = 'assets/img/01.jpg'
-  file: File | null = null
+  file: File | undefined = undefined
   productId: string = ''
   url: string;
   content = ''
@@ -28,7 +28,7 @@ export class ProductosFormComponent implements OnInit {
       portada: [''],
       precio: ['', [Validators.required, Validators.min(0)]],
       descripcion: ['', [Validators.required]],
-      contenido: ['', [Validators.required]],
+      contenido: [''],
       stock: ['', [Validators.required, Validators.min(0)]],
       categoria: ['', [Validators.required]],
     })
@@ -70,6 +70,7 @@ export class ProductosFormComponent implements OnInit {
     if (this.productId && this.productoForm.value.contenido) {
       editor.clipboard.dangerouslyPasteHTML(this.productoForm.value.contenido);
     }
+    
   }
 
   fileChangeEvent(event:any): void {
@@ -92,32 +93,50 @@ export class ProductosFormComponent implements OnInit {
       } else {
         this.notificacionService.notificarError(null, "El archivo debe ser una imagen válida")
         this.imgSelect= 'assets/img/01.jpg'
-        this.file = null
+        this.file = undefined
       }
     } else {
       this.notificacionService.notificarError(null, "La imagen no puede ser mayor a 4MB")
       this.imgSelect= 'assets/img/01.jpg'
-      this.file = null
+      this.file = undefined
     }
   }
 
   guardar() {
-    if(this.productoForm.valid && this.file) {
-      console.log('Guardando producto...')
-      console.log(this.productoForm.value)
-      this.productoService.guardar(this.productoForm.value, this.file).subscribe({
-        next: () => {
-          this.notificacionService.notificarExito("Producto guardado con exito!")
-          this.router.navigateByUrl('/panel/productos')
-        },
-        error: (err)=> {
-          this.notificacionService.notificarError(null, "Error al guardar el producto")
-        }
-      })
-    } else if(this.productoForm.valid && !this.file){
-      this.notificacionService.notificarError(null, "Debe adjuntar una imagen")
-    } else if(!this.productoForm.valid){
-      this.notificacionService.notificarError(null, "Hay campos incorrectos, verifique el formulario")
+    if(this.productId != null) {
+      console.log('uodate')
+      console.log(this.productoForm.value)  
+      console.log(this.productoForm )
+      if(this.productoForm.valid) {
+        this.productoForm.controls['contenido'].setValue(this.quillEditor.root.innerHTML)
+        this.productoService.update(this.productoForm.value, this.file, this.productId).subscribe({
+          next: (response:any) => {
+            this.notificacionService.notificarExito("Producto actualizado con exito!")
+            this.router.navigateByUrl('/panel/productos')
+          },
+          error: (err)=> {
+            this.notificacionService.notificarError(null, "Error al guardar el producto")
+          }
+        })
+      }
+    } else {
+      if(this.productoForm.valid && this.file) {
+        console.log('Guardando producto...')
+        console.log(this.productoForm.value)
+        this.productoService.guardar(this.productoForm.value, this.file).subscribe({
+          next: () => {
+            this.notificacionService.notificarExito("Producto guardado con exito!")
+            this.router.navigateByUrl('/panel/productos')
+          },
+          error: (err)=> {
+            this.notificacionService.notificarError(null, "Error al guardar el producto")
+          }
+        })
+      } else if(this.productoForm.valid && !this.file){
+        this.notificacionService.notificarError(null, "Debe adjuntar una imagen")
+      } else if(!this.productoForm.valid){
+        this.notificacionService.notificarError(null, "Hay campos incorrectos, verifique el formulario")
+      }
     }
   }
 }

@@ -69,8 +69,8 @@
                     </div>
               </div>
               <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Crear producto</button>
-                  <button [routerLink]="['/panel/productos']"  class="btn btn-warning">Cancelar</button>
+                  <button type="submit" class="btn btn-primary"><i class="fa-sharp fa-solid fa-square-check"></i> {{this.productId==null?'Guardar':'Actualizar'}}</button>
+                  <button [routerLink]="['/panel/productos']"  class="btn btn-warning"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i> Cancelar</button>
               </div>
           </form>
       </div> 

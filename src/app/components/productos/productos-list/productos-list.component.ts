@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GLOBAL } from 'src/app/services/GLOBAL';
+import { NotificacionService } from 'src/app/services/notificacion.service';
 import { ProductoService } from 'src/app/services/producto.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class ProductosListComponent implements OnInit {
   pageSize=1
   url: string;
 
-  constructor(private fb: FormBuilder, private productoService: ProductoService){
+  constructor(private fb: FormBuilder, private productoService: ProductoService, private notificaccionService: NotificacionService){
     this.url = GLOBAL.url + 'productos/obtenerPortada/'
     this.filtroForm = this.fb.group({
       titulo: ['', [Validators.required]]
@@ -49,7 +50,16 @@ export class ProductosListComponent implements OnInit {
   }
 
   eliminar(id:any){
-
+    this.notificaccionService.alertConfirmation(
+      () => {
+        this.productoService.eliminar(id).subscribe({
+          next: () => this.listar()
+        });
+      },
+      null,
+      'Cliente eliminado correctamente',
+      'Error al eliminar el cliente'
+    );
   }
 
 }

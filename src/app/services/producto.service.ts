@@ -49,4 +49,28 @@ console.log(fd)
     console.log(obs)
     return obs
   }
+
+  update(data: any, image: File | undefined, id: string){
+    const headers = new HttpHeaders({
+      Authorization: this.authService.getToken()
+    });
+    console.log('data')
+
+    let fd = new FormData()
+    fd.append('titulo', data.titulo)
+    fd.append('stock', data.stock)
+    fd.append('precio', data.precio)
+    fd.append('descripcion', data.descripcion)
+    fd.append('contenido', data.contenido)
+    fd.append('categoria', data.categoria)
+    if(image) {
+      fd.append('portada', image)
+    }
+    console.log(fd)
+    return this.http.put(this.url + '/' + id , fd, {headers: headers})
+  }
+
+  eliminar(id: string) {
+    return this.http.delete(this.url + '/' + id, {headers: this.headers})
+  }
 }
