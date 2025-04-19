@@ -16,7 +16,7 @@ export class ProductosFormComponent implements OnInit {
   productoForm: FormGroup
   imgSelect: any | ArrayBuffer = 'assets/img/01.jpg'
   file: File | undefined = undefined
-  productId: string = ''
+  productId: string | null = null
   url: string;
   content = ''
   quillEditor: any;

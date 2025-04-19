@@ -73,4 +73,8 @@ console.log(fd)
   eliminar(id: string) {
     return this.http.delete(this.url + '/' + id, {headers: this.headers})
   }
+
+  getInventario(id: string) {
+    return this.http.get(this.url + '/inventario/' + id, {headers: this.headers})
+  }
 }

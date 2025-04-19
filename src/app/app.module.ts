@@ -17,6 +17,7 @@ import { CuponFormComponent } from './components/cupon/cupon-form/cupon-form.com
 import { ProductosFormComponent } from './components/productos/productos-form/productos-form.component';
 import { ProductosListComponent } from './components/productos/productos-list/productos-list.component';
 import { QuillModule } from 'ngx-quill';
+import { InventarioComponent } from './components/productos/inventario/inventario.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { QuillModule } from 'ngx-quill';
     CuponListComponent,
     CuponFormComponent,
     ProductosFormComponent,
-    ProductosListComponent
+    ProductosListComponent,
+    InventarioComponent
   ],
   imports: [
     BrowserModule,
