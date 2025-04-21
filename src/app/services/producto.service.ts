@@ -77,4 +77,12 @@ console.log(fd)
   getInventario(id: string) {
     return this.http.get(this.url + '/inventario/' + id, {headers: this.headers})
   }
+
+  eliminarItemInventario(id: string) {
+    return this.http.delete(this.url + '/inventario/' + id, {headers: this.headers})
+  }
+
+  agregarItemInventario(data:any){
+    return this.http.post(this.url + '/inventario/', data, {headers: this.headers})
+  }
 }

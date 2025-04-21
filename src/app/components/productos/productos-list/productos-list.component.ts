@@ -14,7 +14,7 @@ export class ProductosListComponent implements OnInit {
   productos:  Array<any>= []
   filtroForm: FormGroup
   page=1
-  pageSize=1
+  pageSize=5
   url: string;
 
   constructor(private fb: FormBuilder, private productoService: ProductoService, private notificaccionService: NotificacionService){

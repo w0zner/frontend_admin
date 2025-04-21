@@ -3,25 +3,25 @@
 <div class="main-content">
             <!-- Page title-->
             <div class="pt-1 mt-4">
-              <h2 class="mt-2 mt-md-4 mb-3 pt-4">Inventario del Producto</h2>
-              <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
-                <p class="text-muted">Este módulo lista todos los productos de la tienda.</p>
+              <h2 class="mt-2 mt-md-4 mb-3 pt-4">Inventario del Producto: </h2> 
+              <div class="d-flex flex-wrap flex-md-nowrap justify-content-between" *ngIf="producto">
+                <h5>{{producto.titulo}}</h5>
                 <p class="font-size-sm font-weight-medium pl-md-4">
-                  <a class="text-nowrap" rel="noopener" [routerLink]="['/panel/productos/registro']">Registrar nuevo<i class="cxi-angle-right font-size-base align-middle ml-1"></i></a>
+                  <a class="text-nowrap" rel="noopener" [routerLink]="['/panel/productos']">Regresar<i class="cxi-angle-right font-size-base align-middle ml-1"></i></a>
                 </p>
               </div>
             </div>
 
             <div class="card box-shadow border-0 rounded-0 card-hover">
-
                   <div class="card-header border-0">
-                    <!--   <form [formGroup]="filtroForm" class="form-inline">
-                        <div class="btn-group" role="group" aria-label="Outline button group">
-                          <input class="form-control  mr-sm-4" formControlName="titulo" type="text" id="inline-form-input-name" placeholder="Nombre">
-                          <button type="button" (click)="filtrar()" class="btn btn-primary "><i class="fa-solid fa-magnifying-glass"></i></button>
-                          <button type="button" (click)="limpiar()" class="btn btn-secondary btn-sm"><i class="fa-solid fa-broom"></i></button>
+                     <form [formGroup]="inventarioForm" class="form-inline" >
+                        <div>
+                          <input class="form-control form-control-sm mr-sm-4" formControlName="cantidad" type="text" id="inline-form-input-cantiad" placeholder="Cantidad">
+                          <input class="form-control form-control-sm mr-sm-4" formControlName="proveedor" type="text" id="inline-form-input-proveedor" placeholder="Proveedor">
+                          <button type="button" (click)="agregarInventario()" class="btn btn-outline-secondary btn-sm"><i class="fa-sharp fa-solid fa-plus"></i></button>
+                          <!-- <button type="button" class="btn btn-secondary btn-sm"><i class="fa-solid fa-broom"></i></button> -->
                         </div>
-                      </form> -->
+                      </form> 
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
@@ -32,6 +32,7 @@
                                 <th>Usuario</th>
                                 <th>Cantidad</th>
                                 <th>Proveedor</th>
+                                <th>Motivo</th>
                                 <th>Opciones</th>
                               </tr>
                             </thead>
@@ -49,14 +50,15 @@
                                 <tbody *ngFor="let item of inventario | slice: (page-1)*pageSize : (page-1)*pageSize+pageSize; let indice = index">
                                     <tr>
                                       <td>{{indice + 1}}</td>
-                            
-                                      <td>{{item.usuario.nombre}}</td>
+                                      <td>{{item.usuario.nombres + ' ' + item.usuario.apellidos}}</td>
                                       <td>{{item.cantidad}}</td>
                                       <td>{{item.proveedor}}</td>
+                                      <td>{{item.motivo}}</td>
                                       <td style="text-align: center;">
                                         <div class="btn-toolbar" role="toolbar" aria-label="Settings toolbar" style="text-align: center;">
-                                          <!-- <a class="btn btn-outline-secondary btn-icon" [routerLink]="['/panel/productos/registro/', item._id]"><i class="fa-sharp fa-solid fa-pencil"></i></a>
                                           <a class="btn btn-outline-danger btn-icon" (click)="eliminar(item._id)"><i class="fa-sharp fa-solid fa-trash-can"></i></a>
+                                          <!-- <a class="btn btn-outline-secondary btn-icon" [routerLink]="['/panel/productos/registro/', item._id]"><i class="fa-sharp fa-solid fa-pencil"></i></a>
+                                          
                                           <a class="btn btn-outline-primary btn-icon" [routerLink]="['/panel/productos/inventario/', item._id]"><i class="fa-solid fa-boxes-stacked"></i></a> -->
                                         </div>
                                       </td>
