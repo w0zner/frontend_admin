@@ -18,6 +18,7 @@ import { ProductosFormComponent } from './components/productos/productos-form/pr
 import { ProductosListComponent } from './components/productos/productos-list/productos-list.component';
 import { QuillModule } from 'ngx-quill';
 import { InventarioComponent } from './components/productos/inventario/inventario.component';
+import { ConfigComponent } from './components/config/config.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { InventarioComponent } from './components/productos/inventario/inventari
     CuponFormComponent,
     ProductosFormComponent,
     ProductosListComponent,
-    InventarioComponent
+    InventarioComponent,
+    ConfigComponent
   ],
   imports: [
     BrowserModule,
