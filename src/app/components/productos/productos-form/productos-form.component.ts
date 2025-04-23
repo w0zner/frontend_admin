@@ -133,7 +133,7 @@ export class ProductosFormComponent implements OnInit {
           }
         })
       } else if(this.productoForm.valid && !this.file){
-        this.notificacionService.notificarError(null, "Debe adjuntar una imagen")
+        this.notificacionService.notificarAlerta("Debe adjuntar una imagen")
       } else if(!this.productoForm.valid){
         this.notificacionService.notificarError(null, "Hay campos incorrectos, verifique el formulario")
       }

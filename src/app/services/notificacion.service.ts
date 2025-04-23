@@ -44,6 +44,15 @@ export class NotificacionService {
     }
   }
 
+  notificarAlerta(mensaje?:string, position?: string){
+      iziToast.warning({
+        title: 'Alerta',
+        message: mensaje,
+        //color: 'red',
+        position: position || 'topRight'
+      })
+  }
+
   alertConfirmation(callback: () => void,message?: any, successMessage?: string, errorMessage?: string){
     iziToast.question({
       timeout: 20000,

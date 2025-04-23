@@ -24,24 +24,23 @@ export class ConfiguracionesService {
     return this.http.post(this.url, {}, {headers: this.headers})
   }
 
-  actualizar(data: any, image: File | undefined, id: string){
+  actualizar(data: any, image: File | undefined){
     const headers = new HttpHeaders({
       Authorization: this.authService.getToken()
     });
     console.log('data')
 
     let fd = new FormData()
+    fd.append('categorias', data.categorias)
     fd.append('titulo', data.titulo)
-    fd.append('stock', data.stock)
-    fd.append('precio', data.precio)
-    fd.append('descripcion', data.descripcion)
-    fd.append('contenido', data.contenido)
-    fd.append('categoria', data.categoria)
+    fd.append('establecimiento', data.establecimiento)
+    fd.append('punto', data.punto)
+    fd.append('correlativo', data.correlativo)
     if(image) {
-      fd.append('portada', image)
+      fd.append('logo', image)
     }
     console.log(fd)
-    return this.http.put(this.url + '/' + id , fd, {headers: headers})
+    return this.http.put(this.url + '/', fd, {headers: headers})
   }
 
 }

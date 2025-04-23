@@ -14,15 +14,18 @@
             <h5 style="margin-bottom: 0px;">Configuraciones</h5>
         </div>
         <div class="card-body">
-            <div style="max-width: 48rem;">
+            <div style="max-width: 48rem;" *ngIf="!loading">
                 <span>Aun no se ha creado una configuración</span>
+            </div>
+            <div class="spinner-border text-muted" role="status" *ngIf="loading">
+                <span class="visually-hidden">Loading...</span>
             </div>
         </div>
         <div class="card-footer border-0 text-end">
-            <button class="btn btn-primary mr-3" (click)="existeConfig=!existeConfig"><i class="cxi-settings"></i>  Inicializar</button>
+            <button class="btn btn-primary mr-3" (click)="inicializar()"><i class="cxi-settings"></i>  Inicializar</button>
           </div>
       </div>
-
+      <form [formGroup]="configForm">
       <div class="card box-shadow-sm border-0 rounded-0 card-hover" *ngIf="existeConfig">
             <div class="card-header border-0">
                 <h5 style="margin-bottom: 0px;">Configuraciones</h5>
@@ -33,16 +36,19 @@
                 <div class="form-group row align-items-center">
                   <label class="col-md-3 col-form-label font-weight-medium" for="text-input">Nombre de la tienda</label>
                   <div class="col-md-9">
-                    <input class="form-control" type="text" id="text-input" value="Createx">
+                    <input class="form-control" type="text" id="text-input" formControlName="titulo" placeholder="Nombre de la tienda">
                   </div>
                 </div>
                 <div class="form-group row align-items-center">
                   <label class="col-md-3 col-form-label font-weight-medium" for="text-input">Facturación</label>
-                  <div class="col-md-4">
-                    <input class="form-control" type="number" id="text-input" value="Createx">
+                  <div class="col-md-2">
+                    <input class="form-control" type="number" min="0" max="999" id="text-input" placeholder="Establecimiento" formControlName="establecimiento">
+                  </div>
+                  <div class="col-md-2">
+                    <input class="form-control" type="number" min="0" max="999" id="text-input" placeholder="Punto de Expedición" formControlName="punto">
                   </div>
                   <div class="col-md-5">
-                    <input class="form-control" type="number" id="text-input" value="Createx">
+                    <input class="form-control" type="number" min="0" max="9999999" id="text-input" placeholder="Numeración Desde" formControlName="correlativo">
                   </div>
                 </div>
                 <form [formGroup]="categoriaForm">
@@ -63,17 +69,25 @@
                         <table class="table table-sm">
                           <thead class="thead-dark">
                             <tr>
-
                               <th>Categoria</th>
                               <th>Icono</th>
-
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let cat of categorias">
-                              <td>{{cat.titulo}}</td>
-                              <td>{{cat.icono}}</td>
-                            </tr>
+                            <ng-container *ngIf="categorias.length==0">
+                                <tr>
+                                    <td class="text-center">
+                                        <span class="text-muted">No hay categorias disponibles</span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </ng-container>
+                            <ng-container *ngFor="let cat of categorias">
+                                <tr>
+                                    <td>{{cat.titulo}}</td>
+                                    <td>{{cat.icono}}</td>
+                                </tr>
+                            </ng-container>
                           </tbody>
                         </table>
                       </div>
@@ -85,17 +99,20 @@
                   <label class="col-md-3 col-form-label font-weight-medium" for="file-input">Logo</label>
                   <div class="col-md-9">
                     <div class="custom-file">
-                      <input class="custom-file-input" type="file" id="file-input">
-                      <label class="custom-file-label" for="file-input">Buscar</label>
+                      <input class="custom-file-input" type="file" id="file-input" (change)="fileChangeEvent($event)">
+                      <label class="custom-file-label" for="file-input">Subir una imagen</label>
                     </div>
                   </div>
-
+                  <div class="col-md-6">
+                    <img [src]="imgSelect" class="img-thumbnail" alt="Rounded image">
+                  </div>
                 </div>
               </div>
 
             </div>
             <div class="card-footer border-0 text-end">
-              <button class="btn btn-primary mr-3"><i class="cxi-settings"></i> Actualizar</button>
+              <button class="btn btn-primary mr-3" (click)="actualizar()"><i class="cxi-settings"></i> Actualizar</button>
             </div>
       </div>
+    </form>
 </div>
