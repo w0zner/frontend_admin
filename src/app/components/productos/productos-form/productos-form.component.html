@@ -33,9 +33,7 @@
                                 <label for="">Categoría</label>
                                 <select class="form-control custom-select" formControlName="categoria" id="select-input">
                                   <option value="" selected disabled>Seleccionar</option>
-                                  <option value="1">Categoria 1</option>
-                                  <option value="2">Categoria 2</option>
-                                  <option value="3">Categoria 3</option>
+                                  <option value="{{item.titulo}}" *ngFor="let item of config_global.categorias">{{item.titulo}}</option>
                                 </select>
                             </div>
       

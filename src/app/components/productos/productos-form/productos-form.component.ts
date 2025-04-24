@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ConfiguracionesService } from 'src/app/services/configuraciones.service';
 import { GLOBAL } from 'src/app/services/GLOBAL';
 import { NotificacionService } from 'src/app/services/notificacion.service';
 import { ProductoService } from 'src/app/services/producto.service';
@@ -20,8 +21,9 @@ export class ProductosFormComponent implements OnInit {
   url: string;
   content = ''
   quillEditor: any;
+  config_global: any
 
-  constructor(private fb: FormBuilder, private productoService: ProductoService, private notificacionService: NotificacionService, private router: Router, private activatedRoute: ActivatedRoute){
+  constructor(private fb: FormBuilder, private productoService: ProductoService, private notificacionService: NotificacionService, private router: Router, private activatedRoute: ActivatedRoute, private configService: ConfiguracionesService){
     this.url = GLOBAL.url + 'productos/obtenerPortada/'
     this.productoForm = this.fb.group({
       titulo: ['', [Validators.required]],
@@ -35,6 +37,13 @@ export class ProductosFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.configService.obtenerConfiguracionPublica().subscribe({
+      next: (response: any) => {
+        console.log(response)
+        this.config_global = response.data
+      }
+    })
+
     this.activatedRoute.paramMap.subscribe(params => {
       if(params.get('id')) {
         this.productId = params.get('id') || ''

@@ -20,6 +20,10 @@ export class ConfiguracionesService {
     return this.http.get(this.url, {headers: this.headers})
   }
 
+  obtenerConfiguracionPublica() {
+    return this.http.get(this.url, {headers: new HttpHeaders({'Content-Type': 'application/json'})})
+  }
+
   inicializar() {
     return this.http.post(this.url, {}, {headers: this.headers})
   }
