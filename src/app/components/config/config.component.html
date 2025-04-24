@@ -71,6 +71,7 @@
                             <tr>
                               <th>Categoria</th>
                               <th>Icono</th>
+                              <th></th>
                             </tr>
                           </thead>
                           <tbody>
@@ -82,10 +83,11 @@
                                     <td></td>
                                 </tr>
                             </ng-container>
-                            <ng-container *ngFor="let cat of categorias">
+                            <ng-container *ngFor="let cat of categorias; let i = index">
                                 <tr>
                                     <td>{{cat.titulo}}</td>
-                                    <td>{{cat.icono}}</td>
+                                    <td><i class="{{cat.icono}}"></i> {{cat.icono}}</td>
+                                    <td><a class="btn btn-sm btn-outline-danger btn-icon" (click)="eliminarCategoria(i)"><i class="fa-sharp fa-solid fa-trash-can"></i></a></td>
                                 </tr>
                             </ng-container>
                           </tbody>
@@ -97,13 +99,13 @@
 
                 <div class="form-group row align-items-center">
                   <label class="col-md-3 col-form-label font-weight-medium" for="file-input">Logo</label>
-                  <div class="col-md-9">
+                  <div class="col-md-6">
                     <div class="custom-file">
                       <input class="custom-file-input" type="file" id="file-input" (change)="fileChangeEvent($event)">
                       <label class="custom-file-label" for="file-input">Subir una imagen</label>
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-3">
                     <img [src]="imgSelect" class="img-thumbnail" alt="Rounded image">
                   </div>
                 </div>

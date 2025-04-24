@@ -31,7 +31,7 @@ export class ConfiguracionesService {
     console.log('data')
 
     let fd = new FormData()
-    fd.append('categorias', data.categorias)
+    fd.append('categorias', JSON.stringify(data.categorias))
     fd.append('titulo', data.titulo)
     fd.append('establecimiento', data.establecimiento)
     fd.append('punto', data.punto)
