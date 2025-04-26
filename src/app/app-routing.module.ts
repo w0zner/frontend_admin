@@ -11,6 +11,7 @@ import { ProductosFormComponent } from './components/productos/productos-form/pr
 import { ProductosListComponent } from './components/productos/productos-list/productos-list.component';
 import { InventarioComponent } from './components/productos/inventario/inventario.component';
 import { ConfigComponent } from './components/config/config.component';
+import { ProductoVariedadComponent } from './components/productos/producto-variedad/producto-variedad.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'inicio', pathMatch: 'full'},
@@ -28,7 +29,8 @@ const routes: Routes = [
       {path: 'productos/registro/:id', component: ProductosFormComponent, canActivate: [adminGuard]},
       {path: 'productos/inventario/:id', component: InventarioComponent, canActivate: [adminGuard]},
       {path: 'configuraciones', component: ConfigComponent, canActivate: [adminGuard]}
-      
+      {path: 'productos/variedad/:id', component: ProductoVariedadComponent, canActivate: [adminGuard]},
+
     ]
   },
   {path: 'login', component: LoginComponent}
