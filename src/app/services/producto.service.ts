@@ -85,4 +85,20 @@ console.log(fd)
   agregarItemInventario(data:any){
     return this.http.post(this.url + '/inventario/', data, {headers: this.headers})
   }
+
+  actualizarVariedades(id:any, data: any) {
+    return this.http.put(this.url + '/variedades/' + id, data, {headers: this.headers})
+  }
+
+  subirImagenGaleria(_id: any, image: File, id: string) {
+    const headers = new HttpHeaders({
+      Authorization: this.authService.getToken()
+    });
+
+    let fd = new FormData()
+    fd.append('_id', _id)
+    fd.append('imagen', image)
+    console.log(fd)
+    return this.http.put(this.url + '/subirImagenGaleria/' + id, fd, {headers: headers})
+  }
 }

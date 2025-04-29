@@ -16,6 +16,7 @@ export class ProductosListComponent implements OnInit {
   page=1
   pageSize=5
   url: string;
+  loading=false
 
   constructor(private fb: FormBuilder, private productoService: ProductoService, private notificaccionService: NotificacionService){
     this.url = GLOBAL.url + 'productos/obtenerPortada/'
@@ -29,10 +30,14 @@ export class ProductosListComponent implements OnInit {
   }
 
   listar(nombre?: any) {
+    this.loading=true
     this.productoService.listar(nombre).subscribe({
       next: (response: any) => {
-        console.log(response.data)
         this.productos= response.data
+        this.loading=false
+      },
+      error:(err)=> {
+        this.notificaccionService.notificarError(err)
       }
     })
   }
@@ -41,7 +46,7 @@ export class ProductosListComponent implements OnInit {
     if(this.filtroForm.valid) {
       console.log(2)
       this.listar(this.filtroForm.controls['titulo'].value)
-    } 
+    }
   }
 
   limpiar() {

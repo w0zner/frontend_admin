@@ -9,10 +9,10 @@
         </div>
       </div>
 
-      <form [formGroup]="variedadesForm">
+      <form>
         <div class="card box-shadow-sm border-0 rounded-0 card-hover">
               <div class="card-header border-0 d-flex flex-wrap flex-md-nowrap justify-content-between">
-                  <h5 style="margin-bottom: 0px;">Variedades del producto</h5>
+                  <h5 style="margin-bottom: 0px;">Galeria del produto</h5>
                   <p class="font-size-sm font-weight-medium pl-md-4">
                     <a class="btn btn-sm btn-outline-secondary" role="button" rel="noopener" [routerLink]="['/panel/productos']"><i class="cxi-angle-left font-size-base align-middle ml-1"></i> Regresar</a>
                   </p>
@@ -26,33 +26,73 @@
                 </div>
                 <div class="col-md-8">
                   <h5 class="h5 mb-2 nav-dark" *ngIf="producto">
-                    <span>{{producto.titulo}}</span>
-                   </h5>
-                   <div class="d-flex align-items-center">
+                    <span>{{this.producto.titulo}}</span>
+                  </h5>
+                  <div class="d-flex align-items-center">
                     <span class="h5 d-inline-block mb-0 text-danger">{{producto.precio | currency:'Gs. ':'symbol':'1.0-0'}}</span>
                   </div>
                 </div>
               </div>
 
-              <div class="card-body mt-4">
+              <div class="card-body">
                 <div style="max-width: 48rem;">
-                  <div class="form-group row align-items-center">
-                    <label class="col-md-3 col-form-label font-weight-medium" for="text-input">Titulo</label>
-                    <div class="col-md-7">
-                      <input class="form-control" type="text" id="text-input" formControlName="titulo_variedad" placeholder="Título de la variedad">
+                  <div class="col-md-12 mb-4">
+                    <div class="table-responsive mt-3">
+                      <table class="table table-sm">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th>Miniatura</th>
+                            <th>Nombre Imagen</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <ng-container *ngIf="galeria.length == 0">
+                              <tr>
+                                  <td class="text-center">
+                                      <span class="text-muted">No hay categorias disponibles</span>
+                                  </td>
+                                  <td></td>
+                              </tr>
+                          </ng-container>
+                          <ng-container *ngFor="let item of galeria; let i = index">
+                              <tr>
+                                  <td><img [src]="url + item.imagen" alt="Blog card image" style="width: 80px;"></td>
+                                  <td>{{item.imagen}}</td>
+                                  <td><a class="btn btn-sm btn-outline-danger btn-icon" ><i class="fa-sharp fa-solid fa-trash-can"></i></a></td>
+                              </tr>
+                          </ng-container>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
+                  <div class="form-group row align-items-center">
+                    <div class="col-md-6">
+                      <label for="">Imagen</label>
+                      <div class="custom-file">
+                        <input class="custom-file-input" type="file" placeholder="Imagen" id="file-input" (change)="fileChangeEvent($event)">
+                        <label class="custom-file-label" for="file-input">Seleccionar imagen</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="imgSelect">
+                      <img [src]="imgSelect" class="img-thumbnail" alt="Rounded image">
+                    </div>
+
+                    <!-- <label class="col-md-3 col-form-label font-weight-medium" for="text-input">Titulo</label>
+                    <div class="col-md-7">
+                      <input class="form-control" type="text" id="text-input" formControlName="titulo_variedad" placeholder="Título de la variedad">
+                    </div> -->
+                  </div>
+
 
                     <div class="form-group row align-items-center">
-                      <label class="col-md-3 col-form-label font-weight-medium" for="text-input">Variedades</label>
+                      <!-- <label class="col-md-3 col-form-label font-weight-medium" for="text-input">Variedades</label>
                       <div class="col-md-7">
                         <input class="form-control" type="text" id="text-input" formControlName="descripcion" placeholder="Descripción">
-                      </div>
-                     <!--  <div class="col-md-5">
-                        <input class="form-control" type="text" id="text-input" formControlName="icono" placeholder="Icono">
                       </div> -->
+
                       <div class="col-md-3"></div>
-                      <div class="col-md-9">
+                     <!--  <div class="col-md-9">
                         <a role="button" class="mb-5" (click)="agregarVariedad()">Agregar</a>
                         <div class="table-responsive mt-3">
                           <table class="table table-sm">
@@ -80,13 +120,9 @@
                             </tbody>
                           </table>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
-
-
-
                 </div>
-
               </div>
               <div class="card-footer border-0 text-end">
                 <button class="btn btn-primary mr-3" (click)="actualizar()"><i class="cxi-settings"></i> Actualizar</button>
