@@ -19,7 +19,10 @@
                           <input class="form-control form-control-sm mr-sm-4" formControlName="cantidad" type="text" id="inline-form-input-cantiad" placeholder="Cantidad">
                           <input class="form-control form-control-sm mr-sm-4" formControlName="proveedor" type="text" id="inline-form-input-proveedor" placeholder="Proveedor">
                           <button type="button" (click)="agregarInventario()" class="btn btn-outline-secondary btn-sm"><i class="fa-sharp fa-solid fa-plus"></i></button>
-                          <!-- <button type="button" class="btn btn-secondary btn-sm"><i class="fa-solid fa-broom"></i></button> -->
+                          <button type="button" class="btn btn-sm btn-success" (click)="downloadExcel()">
+                            <i class="cxi-file-download me-2"></i>
+                            Descargar
+                          </button>
                         </div>
                       </form>
                   </div>

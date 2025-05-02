@@ -19,7 +19,7 @@
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle btn-hover-shadow" href="#" data-toggle="dropdown">
         <!-- <i class="cxi-profile align-middle mt-n1 mr-2"></i> -->
-        <i class="fa-sharp fa-solid fa-user-tie"></i> {{usuario || 'Cuenta' }}
+        <i class="cxi-profile"></i> {{usuario || 'Cuenta' }}
       </a>
       <ul class="dropdown-menu">
         <li>
@@ -36,7 +36,9 @@
         </li>
         <li><a class="dropdown-item" href="#"> Another action</a></li>
         <li class="dropdown-divider"></li>
-        <li><a class="dropdown-item" (click)="logout()" style="cursor: pointer;"><i class="fa-sharp fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
+        <li><a class="dropdown-item" (click)="logout()" style="cursor: pointer;">
+          <i class="cxi-logout"></i> Cerrar Sesión</a>
+        </li>
       </ul>
     </li>
 
