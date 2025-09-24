@@ -40,10 +40,11 @@ export class CuponListComponent implements OnInit {
         this.cuponService.eliminar(id).subscribe({
           next: () => this.listar()
         })
-      }),
+      },
       null,
       'Cupón eliminado correctamente',
-      'Error al eliminar el cupón'
+      'Error al eliminar el cupón')
+      
   }
 
 }

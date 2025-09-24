@@ -21,6 +21,8 @@ import { InventarioComponent } from './components/productos/inventario/inventari
 import { ConfigComponent } from './components/config/config.component';
 import { ProductoVariedadComponent } from './components/productos/producto-variedad/producto-variedad.component';
 import { ProductoGaleriaComponent } from './components/productos/producto-galeria/producto-galeria.component';
+import { IndexDescuentoComponent } from './components/descuento/index-descuento/index-descuento.component';
+import { FormDescuentoComponent } from './components/descuento/form-descuento/form-descuento.component';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { ProductoGaleriaComponent } from './components/productos/producto-galeri
     ConfigComponent,
     ProductoVariedadComponent,
     ProductoGaleriaComponent,
+    IndexDescuentoComponent,
+    FormDescuentoComponent,
 
   ],
   imports: [
