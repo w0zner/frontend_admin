@@ -7,7 +7,7 @@
               <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
                 <p class="text-muted">Este módulo lista todos los descuentos de la tienda.</p>
                 <p class="font-size-sm font-weight-medium pl-md-4">
-                  <a class="text-nowrap" rel="noopener" [routerLink]="['/panel/cupones/registro']">Agregar nuevo<i class="cxi-angle-right font-size-base align-middle ml-1"></i></a>
+                  <a class="text-nowrap" rel="noopener" [routerLink]="['/panel/descuentos/registro']">Agregar nuevo<i class="cxi-angle-right font-size-base align-middle ml-1"></i></a>
                 </p>
               </div>
             </div>
@@ -34,11 +34,10 @@
                             <thead class="thead-dark">
                               <tr>
                                 <th>#</th>
-                                <th>Código</th>
-                                <th>Tipo</th>
-                                <th>Valor</th>
-                                <th>Límite</th>
-                                <th>Fecha Creación</th>
+                                <th>Titulo</th>
+                                <th>Descuento</th>
+                                <th>Vigencia</th>
+                                <th>Estado</th>
                                 <th>Opciones</th>
                               </tr>
                             </thead>
@@ -48,11 +47,11 @@
                             <tbody *ngFor="let item of descuentos | slice: (page-1)*pageSize : (page-1)*pageSize+pageSize; let indice = index">
                               <tr>
                                 <td>{{indice + 1}}</td>
-                                <td>{{item.codigo}}</td>
-                                <td>{{item.tipo}}</td>
-                                <td>{{item.valor}}</td>
-                                <td>{{item.limite}}</td>
-                                <td>{{ item.createdAt | date:'dd-MM-yyyy' }}</td>
+                                <td>{{item.titulo}}</td>
+                                <td>{{item.descuento}}</td>
+                                <td>{{item.fecha_inicio}} - {{item.fecha_fin}}</td>
+                                <td>{{item.titulo}}</td>
+                                <!-- <td>{{ item.createdAt | date:'dd-MM-yyyy' }}</td> -->
                                 <td style="text-align: center;">
                                   <div class="btn-toolbar" role="toolbar" aria-label="Settings toolbar" style="text-align: center;">
                                     <a class="btn btn-outline-secondary btn-icon" [routerLink]="['/panel/cupones/registro/', item._id]"><i class="fa-sharp fa-solid fa-pencil"></i></a>

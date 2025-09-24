@@ -1,1 +1,66 @@
-<p>form-descuento works!</p>
+<app-sidebar> </app-sidebar>
+
+<div class="main-content">
+    <div class="pt-1 mt-4">
+      <h2 class="mt-2 mt-md-4 mb-3 pt-0"></h2>
+      <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+        <p class="text-muted"></p>
+
+      </div>
+    </div>
+
+    <div class="card box-shadow border-0 rounded-0 card-hover">
+          <div class="card-header border-0 ">
+              <h5 class="pt-2 pb-2" style="margin-bottom: 0px;">Registro de descuentos</h5>
+          </div>
+          <form [formGroup]="descuentoForm" (submit)="registrar()">
+            <div class="card-body">
+                    <div class="row">
+                      <div class="col-lg-8">
+                          <div class="row">
+                            <div class="col-lg-12 form-group">	
+                                <label for="">Titulo de descuento</label>
+                                <input type="text" class="form-control" formControlName="titulo" placeholder="Titulo de descuento" required>
+                            </div>
+                            <div class="col-lg-6 form-group">	
+                                <label for="">Fecha Inicio</label>
+                                <input class="form-control" type="date" formControlName="fecha_inicio">
+                            </div>
+                            <div class="col-lg-6 form-group">	
+                                <label for="">Fecha Fin</label>
+                                <input class="form-control" type="date" formControlName="fecha_fin">
+                            </div>
+      
+                            <div class="col-lg-6 form-group">
+                                <label for="">Porcentaje %</label>
+                                <input type="text" class="form-control" formControlName="descuento" placeholder="Porcentaje descuento" required>
+                            </div>
+    
+                          </div>
+                      </div>
+                      <div class="col-lg-3">
+                        <div class="row">
+                          <div class="col-lg-12 form-group">	
+                              <label for="">Banner</label>
+                              <div class="custom-file">
+                                <input class="custom-file-input" type="file" placeholder="Imagen" id="file-input" (change)="fileChangeEvent($event)">
+                                <label class="custom-file-label" for="file-input">Seleccionar imagen</label>
+                              </div>
+                          </div>
+                          <div class="col-lg-12">
+                            <img [src]="imgSelect" class="img-thumbnail" alt="Rounded image">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="card-footer border-0 text-end">
+                  <button type="submit" class="btn btn-primary btn-hover-shadow mr-3"><i class="fa-sharp fa-solid fa-square-check"></i> {{this.productId==null?'Guardar':'Actualizar'}}</button>
+                  <button [routerLink]="['/panel/productos']"  class="btn btn-secondary rounded-0"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i> Cancelar</button>
+              </div>
+        </form>
+    </div>
+  </div>
+
+
+
