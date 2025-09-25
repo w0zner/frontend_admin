@@ -1,27 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NotificacionService } from 'src/app/services/notificacion.service';
 
 @Component({
-  selector: 'app-form-descuento',
-  templateUrl: './form-descuento.component.html',
-  styleUrls: ['./form-descuento.component.css']
+  selector: 'app-descuento-form',
+  templateUrl: './descuento-form.component.html',
+  styleUrls: ['./descuento-form.component.css']
 })
-export class FormDescuentoComponent implements OnInit{
+export class DescuentoFormComponent implements OnInit{
 
   imgSelect: any | ArrayBuffer = 'assets/img/01.jpg'
   file: File | undefined = undefined
-  productId: string | null = null
+  descuentoId: string | null = null
   descuentoForm: FormGroup
   id:any= null
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private notificacionService: NotificacionService) {
     this.descuentoForm = this.fb.group({
-      titulo: [''],
-      descuento: [0],
-      fecha_inicio: [''],
-      fecha_fin: [''],
+      titulo: ['', Validators.required],
+      descuento: [0, Validators.required],
+      fecha_inicio: ['', Validators.required],
+      fecha_fin: ['', Validators.required],
       banner: ['']
     })
   }
@@ -34,7 +34,11 @@ export class FormDescuentoComponent implements OnInit{
   }
 
   registrar() {
-
+    console.log('sfl')
+    if(this.descuentoForm.valid && this.file) {
+      console.log(this.descuentoForm.value)
+      console.log(this.file)
+    }
   }
 
     fileChangeEvent(event:any): void {

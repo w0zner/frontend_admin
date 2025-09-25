@@ -13,8 +13,8 @@ import { InventarioComponent } from './components/productos/inventario/inventari
 import { ConfigComponent } from './components/config/config.component';
 import { ProductoVariedadComponent } from './components/productos/producto-variedad/producto-variedad.component';
 import { ProductoGaleriaComponent } from './components/productos/producto-galeria/producto-galeria.component';
-import { IndexDescuentoComponent } from './components/descuento/index-descuento/index-descuento.component';
-import { FormDescuentoComponent } from './components/descuento/form-descuento/form-descuento.component';
+import { DescuentoListComponent } from './components/descuento/descuento-list/descuento-list.component';
+import { DescuentoFormComponent } from './components/descuento/descuento-form/descuento-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'inicio', pathMatch: 'full'},
@@ -34,9 +34,9 @@ const routes: Routes = [
       {path: 'configuraciones', component: ConfigComponent, canActivate: [adminGuard]},
       {path: 'productos/variedad/:id', component: ProductoVariedadComponent, canActivate: [adminGuard]},
       {path: 'productos/galeria/:id', component: ProductoGaleriaComponent, canActivate: [adminGuard]},
-      {path: 'descuentos', component: IndexDescuentoComponent, canActivate: [adminGuard]},
-      {path: 'descuentos/registro', component: FormDescuentoComponent, canActivate: [adminGuard]},
-      {path: 'descuentos/registro/:id', component: FormDescuentoComponent, canActivate: [adminGuard]},
+      {path: 'descuentos', component: DescuentoListComponent, canActivate: [adminGuard]},
+      {path: 'descuentos/registro', component: DescuentoFormComponent, canActivate: [adminGuard]},
+      {path: 'descuentos/registro/:id', component: DescuentoFormComponent, canActivate: [adminGuard]},
 
     ]
   },
