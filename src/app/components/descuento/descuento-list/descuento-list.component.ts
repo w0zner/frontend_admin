@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DescuentoService } from 'src/app/services/descuento.service';
+import { GLOBAL } from 'src/app/services/GLOBAL';
+import { NotificacionService } from 'src/app/services/notificacion.service';
 
 @Component({
   selector: 'app-descuento-list',
@@ -9,14 +11,19 @@ import { DescuentoService } from 'src/app/services/descuento.service';
 export class DescuentoListComponent implements OnInit {
 
   descuentos: Array<any> = []
+  url: string
   page=1
-  pageSize=1
+  pageSize=5
 
-  constructor(private descuentoService: DescuentoService) {
-
+  constructor(private descuentoService: DescuentoService, private notificacionService: NotificacionService) {
+    this.url = GLOBAL.url + 'descuentos/obtenerPortada/'
   }
 
   ngOnInit(): void {
+    this.listar()
+  }
+
+  listar() {
     this.descuentoService.listar().subscribe({
       next: (response: any) => {
         console.log(response)
@@ -26,14 +33,14 @@ export class DescuentoListComponent implements OnInit {
   }
 
    eliminar(id:any){
-   /*  this.notificacionService.alertConfirmation(
+   this.notificacionService.alertConfirmation(
       ()=> {
-        this.cuponService.eliminar(id).subscribe({
+        this.descuentoService.eliminar(id).subscribe({
           next: () => this.listar()
         })
       }, 
       null,
-      'Cupón eliminado correctamente',
-      'Error al eliminar el cupón') */
+      'Descuento eliminado correctamente',
+      'Error al eliminar el descuento') 
   }
 }
