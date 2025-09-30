@@ -23,7 +23,7 @@ export class DescuentoFormComponent implements OnInit{
     this.url = GLOBAL.url + 'descuentos/obtenerPortada/'
     this.descuentoForm = this.fb.group({
       titulo: ['', Validators.required],
-      descuento: [0, Validators.required],
+      descuento: [0, [Validators.required, Validators.pattern(/^([0-9]|[1-9][0-9])$/)]],
       fecha_inicio: ['', Validators.required],
       fecha_fin: ['', Validators.required],
       banner: ['']
@@ -53,15 +53,21 @@ export class DescuentoFormComponent implements OnInit{
           }
         })
 
-        
+
       }
     })
   }
 
   registrar() {
+    const desde= Date.parse(this.descuentoForm.get('fecha_inicio')?.value+"T00:00:00")/1000;
+    const hasta= Date.parse(this.descuentoForm.get('fecha_fin')?.value+"T23:59:59")/1000;
+
+    if(desde>hasta){
+      this.notificacionService.notificarError(null, "La fecha de inicio no puede ser mayor a la fecha fin")
+      return
+    }
+
     if(this.descuentoId != null) {
-      console.log('uodate')
-      console.log(this.descuentoForm.value)  
       if(this.descuentoForm.valid) {
         this.descuentoService.update(this.descuentoForm.value, this.file, this.descuentoId).subscribe({
           next: (response:any) => {
@@ -69,7 +75,7 @@ export class DescuentoFormComponent implements OnInit{
             this.router.navigateByUrl('/panel/descuentos')
           },
           error: (err)=> {
-            this.notificacionService.notificarError(null, "Error al guardar el descuento")
+            this.notificacionService.notificarError(null, "Error al actualizar el descuento")
           }
         })
       }
@@ -81,6 +87,9 @@ export class DescuentoFormComponent implements OnInit{
           next: (response: any) => {
             this.notificacionService.notificarExito('Registro guardado con exito!')
             this.router.navigateByUrl('/panel/descuentos')
+          },
+          error: (err)=> {
+            this.notificacionService.notificarError(null, "Error al guardar el descuento")
           }
         })
       } else if(this.descuentoForm.valid && !this.file){
@@ -89,7 +98,7 @@ export class DescuentoFormComponent implements OnInit{
         this.notificacionService.notificarError(null, "Hay campos incorrectos, verifique el formulario")
       }
     }
-    
+
   }
 
     fileChangeEvent(event:any): void {

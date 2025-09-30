@@ -37,7 +37,7 @@
                                 <th>Titulo</th>
                                 <th>Descuento</th>
                                 <th>Vigencia</th>
-                                <!-- <th>Estado</th> -->
+                                <th>Estado</th>
                                 <th>Opciones</th>
                               </tr>
                             </thead>
@@ -57,7 +57,14 @@
                                 </td>
                                 <td>{{item.descuento}} %</td>
                                 <td>{{item.fecha_inicio | date:'dd/MM/yyyy'}} - {{item.fecha_fin | date:'dd/MM/yyyy'}}</td>
-                                <!-- <td>{{item.titulo}}</td> -->
+                                <td>
+                                  <span class="badge"
+                                  [ngClass]="{
+                                    'bg-success': item.estado==='Vigente',
+                                    'bg-primary': item.estado==='Proximamente',
+                                    'bg-secondary': item.estado==='Finalizado'
+                                  }">{{item.estado}}</span>
+                                </td>
                                 <!-- <td>{{ item.createdAt | date:'dd-MM-yyyy' }}</td> -->
                                 <td style="text-align: center;">
                                   <div class="btn-toolbar" role="toolbar" aria-label="Settings toolbar" style="text-align: center;">
@@ -78,6 +85,6 @@
                       ></ngb-pagination>
                   </div>
             </div>
-        
+
 </div>
 

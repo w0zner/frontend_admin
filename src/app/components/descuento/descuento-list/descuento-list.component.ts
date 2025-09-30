@@ -28,6 +28,21 @@ export class DescuentoListComponent implements OnInit {
       next: (response: any) => {
         console.log(response)
         this.descuentos = response.data
+
+        this.descuentos.forEach(descuento => {
+          const desde= Date.parse(descuento.fecha_inicio+"T00:00:00")/1000;
+          const hasta= Date.parse(descuento.fecha_fin+"T23:59:59")/1000;
+          const hoy= Date.parse(new Date().toString())/1000;
+
+          if(hoy<desde){
+            descuento.estado = 'Proximamente'
+          } else if(hoy>=desde && hoy<=hasta){
+            descuento.estado = 'Vigente'
+          } else if(hoy>hasta){
+            descuento.estado = 'Finalizado'
+          }
+
+        });
       }
     })
   }
@@ -38,9 +53,9 @@ export class DescuentoListComponent implements OnInit {
         this.descuentoService.eliminar(id).subscribe({
           next: () => this.listar()
         })
-      }, 
+      },
       null,
       'Descuento eliminado correctamente',
-      'Error al eliminar el descuento') 
+      'Error al eliminar el descuento')
   }
 }
