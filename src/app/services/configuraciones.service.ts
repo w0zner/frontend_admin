@@ -47,4 +47,11 @@ export class ConfiguracionesService {
     return this.http.put(this.url + '/', fd, {headers: headers})
   }
 
+  obtenerMensajesContactos() {
+    return this.http.get(GLOBAL.url + 'contacto', {headers: this.headers})
+  }
+
+  resolverMensaje(id: string) {
+    return this.http.put(GLOBAL.url + 'contacto/' + id, {}, {headers: this.headers})
+  }
 }

@@ -23,6 +23,7 @@ import { ProductoVariedadComponent } from './components/productos/producto-varie
 import { ProductoGaleriaComponent } from './components/productos/producto-galeria/producto-galeria.component';
 import { DescuentoListComponent } from './components/descuento/descuento-list/descuento-list.component';
 import { DescuentoFormComponent } from './components/descuento/descuento-form/descuento-form.component';
+import { IndexContactoComponent } from './components/contacto/index-contacto/index-contacto.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { DescuentoFormComponent } from './components/descuento/descuento-form/de
     ProductoGaleriaComponent,
     DescuentoListComponent,
     DescuentoFormComponent,
+    IndexContactoComponent,
   ],
   imports: [
     BrowserModule,
