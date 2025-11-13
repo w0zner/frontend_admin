@@ -9,10 +9,12 @@ import { GLOBAL } from './GLOBAL';
 export class ProductoService {
 
   private url: string;
+  private urlReview: string;
   private headers: any
 
   constructor(private http: HttpClient, private authService: AuthService) {
     this.url = GLOBAL.url + 'productos'
+    this.urlReview = GLOBAL.url + 'review'
     this.headers = this.authService.getHeaders()
   }
 
@@ -100,5 +102,9 @@ console.log(fd)
     fd.append('imagen', image)
     console.log(fd)
     return this.http.put(this.url + '/subirImagenGaleria/' + id, fd, {headers: headers})
+  }
+
+  obtenerResenhasPorProducto(producto:any) {
+    return this.http.get(this.urlReview + "/obtener-resenhas/" + producto,  {headers: this.headers})
   }
 }

@@ -17,76 +17,54 @@
                   </p>
               </div>
 
-              <!-- <div class="row align-items-center" style="background-color: #f3eed1; margin: 0px;">
+               <div class="row align-items-center" style="background-color: #f3eed1; margin: 0px;">
                 <div class="col-md-4">
                   <a class="image-inner card-img-top" [routerLink]="['/panel/productos/registro/', producto._id]" *ngIf="producto">
-                    <img [src]="producto.portada ? url + producto.portada : 'assets/img/default-product.png'" alt="Blog card image">
+                    <img [src]="producto.portada ? url + producto.portada : 'assets/img/default-product.png'" alt="Blog card image" style="max-width: 50%;">
                   </a>
                 </div>
                 <div class="col-md-8">
                   <h5 class="h5 mb-2 nav-dark" *ngIf="producto">
                     <span>{{producto.titulo}}</span>
-                   </h5>
-                   <div class="d-flex align-items-center">
+                  </h5>
+                   <!-- <div class="d-flex align-items-center">
                     <span class="h5 d-inline-block mb-0 text-danger">{{producto.precio | currency:'Gs. ':'symbol':'1.0-0'}}</span>
-                  </div>
+                  </div> -->
                 </div>
               </div>
+
+              
 
               <div class="card-body mt-4">
-                <div style="max-width: 48rem;">
-                  <div class="form-group row align-items-center">
-                    <label class="col-md-3 col-form-label font-weight-medium" for="text-input">Titulo</label>
-                    <div class="col-md-7">
-                      <input class="form-control" type="text" id="text-input" formControlName="titulo_variedad" placeholder="Título de la variedad">
-                    </div>
-                  </div>
-
-                    <div class="form-group row align-items-center">
-                      <label class="col-md-3 col-form-label font-weight-medium" for="text-input">Variedades</label>
-                      <div class="col-md-7">
-                        <input class="form-control" type="text" id="text-input" formControlName="descripcion" placeholder="Descripción">
-                      </div>
-     
-                      <div class="col-md-3"></div>
-                      <div class="col-md-9">
-                        <a role="button" class="mb-5" (click)="agregarVariedad()">Agregar</a>
-                        <div class="table-responsive mt-3">
-                          <table class="table table-sm">
-                            <thead class="thead-dark">
-                              <tr>
-                                <th>Variedades</th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <ng-container *ngIf="variedades.length == 0">
-                                  <tr>
-                                      <td class="text-center">
-                                          <span class="text-muted">No hay categorias disponibles</span>
-                                      </td>
-                                      <td></td>
-                                  </tr>
-                              </ng-container>
-                              <ng-container *ngFor="let variedad of variedades; let i = index">
-                                  <tr>
-                                      <td>{{variedad.descripcion}}</td>
-                                      <td><a class="btn btn-sm btn-outline-danger btn-icon" (click)="eliminarVariedad(i)"><i class="fa-sharp fa-solid fa-trash-can"></i></a></td>
-                                  </tr>
-                              </ng-container>
-                            </tbody>
-                          </table>
+                <div class="row" >
+                  <!-- Product review -->
+                   <div class="mb-4 pb-4 border-bottom" *ngIf="reviews.length === 0">
+                        <span class="text-muted">No hay reseñas para este producto</span>
+                   </div>
+                    <div class="mb-4 pb-4 border-bottom" *ngFor="let item of reviews">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-4 mb-sm-0 mb-3">
+                            <h4 class="fs-lg">{{item.usuario.nombres + ' ' + item.usuario.apellidos}}</h4>
+                            <a class="text-decoration-none text-muted mb-2">{{item.usuario.email}}</a>
+                            <span class="d-block mb-3 fs-sm text-muted" style="display: inline;"> 
+                                {{item.opcion}}
+                                <i *ngIf="item.opcion == 'Me gusta'" class="cxi-like me-2 fs-base align-middle mt-n1 text-success"></i>
+                                <i *ngIf="item.opcion == 'No me gusta'" class="cxi-dislike me-2 fs-base align-middle mt-n1 text-danger"></i>
+                            </span>
+                            </div>
+                            <div class="col">
+                            <p class="mb-2">
+                                Venta Ref.: #{{item.venta._id}} - 
+                                {{item.mensaje}}
+                            </p>
+                            <span class="d-block mb-3 fs-sm text-muted">{{item.createdAt | date}}</span>
+                            </div>
                         </div>
-                      </div>
-                    </div>
-
-
-
+                    </div>  
                 </div>
-
               </div>
               <div class="card-footer border-0 text-end">
-                <button class="btn btn-primary mr-3" (click)="actualizar()"><i class="cxi-settings"></i> Actualizar</button>
-              </div> -->
+                <!-- <button class="btn btn-primary mr-3" (click)="actualizar()"><i class="cxi-settings"></i> Actualizar</button> -->
+              </div> 
         </div>
 </div>
