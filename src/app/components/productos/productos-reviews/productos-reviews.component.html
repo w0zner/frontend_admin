@@ -41,21 +41,24 @@
                    <div class="mb-4 pb-4 border-bottom" *ngIf="reviews.length === 0">
                         <span class="text-muted">No hay reseñas para este producto</span>
                    </div>
-                    <div class="mb-4 pb-4 border-bottom" *ngFor="let item of reviews">
+                    <div class="mb-4 pb-1 border-bottom" *ngFor="let item of reviews">
                         <div class="row">
                             <div class="col-md-3 col-sm-4 mb-sm-0 mb-3">
-                            <h4 class="fs-lg">{{item.usuario.nombres + ' ' + item.usuario.apellidos}}</h4>
-                            <a class="text-decoration-none text-muted mb-2">{{item.usuario.email}}</a>
-                            <span class="d-block mb-3 fs-sm text-muted" style="display: inline;"> 
-                                {{item.opcion}}
-                                <i *ngIf="item.opcion == 'Me gusta'" class="cxi-like me-2 fs-base align-middle mt-n1 text-success"></i>
-                                <i *ngIf="item.opcion == 'No me gusta'" class="cxi-dislike me-2 fs-base align-middle mt-n1 text-danger"></i>
+                            <h4 class="fs-lg mb-0">{{item.usuario.nombres + ' ' + item.usuario.apellidos}}</h4>
+                            <a class="text-decoration-none text-muted">{{item.usuario.email}}</a>
+                            <span class="d-block mb-3 fs-sm text-muted mt-2" style="display: inline;"> 
+                                <div class="rating">
+                                  <i class="cxi-star-filled"
+                                      *ngFor="let star of stars; let i = index"
+                                      [class.active]="i < (item.estrellas)">
+                                  </i>
+                                </div>
+                                <p>[{{item.estrellas}} estrellas]</p>
                             </span>
                             </div>
                             <div class="col">
-                            <p class="mb-2">
-                                Venta Ref.: #{{item.venta._id}} - 
-                                {{item.mensaje}}
+                            <p class="mb-1">
+                                {{item.mensaje}} - <span class="text-muted">Venta Ref.: <b>#{{item.venta._id}}</b></span> 
                             </p>
                             <span class="d-block mb-3 fs-sm text-muted">{{item.createdAt | date}}</span>
                             </div>

@@ -13,6 +13,7 @@ export class ProductosReviewsComponent implements OnInit {
   producto: any
   url: string=""
   reviews: any[] = []
+  stars = [1, 2, 3, 4, 5];
 
   constructor(private activatedRoute: ActivatedRoute, private productoService: ProductoService,) {
     this.url = GLOBAL.url + 'productos/obtenerPortada/'
