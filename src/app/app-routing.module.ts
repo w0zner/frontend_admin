@@ -17,6 +17,8 @@ import { DescuentoListComponent } from './components/descuento/descuento-list/de
 import { DescuentoFormComponent } from './components/descuento/descuento-form/descuento-form.component';
 import { IndexContactoComponent } from './components/contacto/index-contacto/index-contacto.component';
 import { ProductosReviewsComponent } from './components/productos/productos-reviews/productos-reviews.component';
+import { VentasListComponent } from './components/ventas/ventas-list/ventas-list.component';
+import { VentasFormComponent } from './components/ventas/ventas-form/ventas-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'inicio', pathMatch: 'full'},
@@ -41,7 +43,9 @@ const routes: Routes = [
       {path: 'descuentos/registro', component: DescuentoFormComponent, canActivate: [adminGuard]},
       {path: 'descuentos/registro/:id', component: DescuentoFormComponent, canActivate: [adminGuard]},
       {path: 'contactos', component: IndexContactoComponent, canActivate: [adminGuard]},
-
+      {path: 'ventas', component: VentasListComponent, canActivate: [adminGuard]},
+      {path: 'ventas/registro', component: VentasFormComponent, canActivate: [adminGuard]},
+      {path: 'ventas/:id', component: VentasFormComponent, canActivate: [adminGuard]},
     ]
   },
   {path: 'login', component: LoginComponent}

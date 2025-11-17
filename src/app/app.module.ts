@@ -25,6 +25,8 @@ import { DescuentoListComponent } from './components/descuento/descuento-list/de
 import { DescuentoFormComponent } from './components/descuento/descuento-form/descuento-form.component';
 import { IndexContactoComponent } from './components/contacto/index-contacto/index-contacto.component';
 import { ProductosReviewsComponent } from './components/productos/productos-reviews/productos-reviews.component';
+import { VentasFormComponent } from './components/ventas/ventas-form/ventas-form.component';
+import { VentasListComponent } from './components/ventas/ventas-list/ventas-list.component';
 
 
 @NgModule({
@@ -47,6 +49,8 @@ import { ProductosReviewsComponent } from './components/productos/productos-revi
     DescuentoFormComponent,
     IndexContactoComponent,
     ProductosReviewsComponent,
+    VentasListComponent,
+    VentasFormComponent,
   ],
   imports: [
     BrowserModule,
