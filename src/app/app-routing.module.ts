@@ -44,7 +44,6 @@ const routes: Routes = [
       {path: 'descuentos/registro/:id', component: DescuentoFormComponent, canActivate: [adminGuard]},
       {path: 'contactos', component: IndexContactoComponent, canActivate: [adminGuard]},
       {path: 'ventas', component: VentasListComponent, canActivate: [adminGuard]},
-      {path: 'ventas/registro', component: VentasFormComponent, canActivate: [adminGuard]},
       {path: 'ventas/:id', component: VentasFormComponent, canActivate: [adminGuard]},
     ]
   },

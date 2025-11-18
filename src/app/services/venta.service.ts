@@ -19,4 +19,8 @@ export class VentaService {
   obtenerVentas(desde: any, hasta: any) {
     return this.http.get(this.url + '/obtener-ventas/'+desde + '/' +hasta , {headers: this.headers})
   }
+
+  obtenerVentaPorId(id: any) {
+    return this.http.get(this.url + "/obtener-venta-admin/" + id, { headers: this.headers });
+  }
 }

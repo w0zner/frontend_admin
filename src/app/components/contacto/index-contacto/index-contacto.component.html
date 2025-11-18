@@ -1,61 +1,59 @@
 <app-sidebar> </app-sidebar>
 
 <div class="main-content">
-            <!-- Page title-->
-            <div class="pt-1 mt-4">
-              <h2 class="mt-2 mt-md-4 mb-3 pt-4">Mensajes de contacto de la tienda</h2>
-              <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
-                <p class="text-muted">Este módulo lista todos los mensajes de contactos de la tienda.</p>
-                <p class="font-size-sm font-weight-medium pl-md-4">
-                  <!-- <a class="text-nowrap" rel="noopener" [routerLink]="['/panel/cupones/registro']">Registrar nuevo<i class="cxi-angle-right font-size-base align-middle ml-1"></i></a> -->
-                </p>
+  <!-- Page title-->
+  <div class="pt-1 mt-4">
+    <h2 class="mt-2 mt-md-4 mb-3 pt-4">Mensajes de contacto de la tienda</h2>
+    <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+      <p class="text-muted">Este módulo lista todos los mensajes de contactos de la tienda.</p>
+      <p class="font-size-sm font-weight-medium pl-md-4">
+        <!-- <a class="text-nowrap" rel="noopener" [routerLink]="['/panel/cupones/registro']">Registrar nuevo<i class="cxi-angle-right font-size-base align-middle ml-1"></i></a> -->
+      </p>
+    </div>
+  </div>
+  <hr>
+  <div class="card box-shadow border-0 rounded-0 card-hover">
+    <div *ngIf="mensajes.length == 0" class="p-4">
+      <span class="text-muted">No hay mensajes hasta el momento.</span>
+    </div>
+    <div class="card-body" *ngIf="mensajes.length > 0">
+      <div class="table-responsive">
+        <!-- Product review -->
+        <div class="mb-4 pb-4 border-bottom">
+          <div class="row mt-2"
+            *ngFor="let mensaje of mensajes | slice: (page-1)*pageSize : (page-1)*pageSize+pageSize; let indice = index">
+            <div class="col-md-3 col-sm-4 mb-sm-0 mb-3">
+              <h5 class="mb-2 fs-md">{{mensaje.cliente}}</h5>
+              <span class="d-block mb-3 fs-sm text-muted">{{mensaje.createdAt | date:'medium'}}</span>
+              <div class="mt-n1 star-rating">
+                <span class="badge "
+                  [ngClass]="{'bg-primary': mensaje.estado === 'Abierto', 'bg-secondary' : mensaje.estado === 'Cerrado' }">{{mensaje.estado}}</span>
+                <!-- <span class="badge bg-secondary">Secondary</span> -->
               </div>
             </div>
-
-            <div class="card box-shadow border-0 rounded-0 card-hover">
-
-                  <div class="card-body">
-                      <div class="table-responsive">
-                        <!-- Product review -->
-<div class="mb-4 pb-4 border-bottom">
-  <div class="row mt-2" *ngFor="let mensaje of mensajes | slice: (page-1)*pageSize : (page-1)*pageSize+pageSize; let indice = index">
-    <div class="col-md-3 col-sm-4 mb-sm-0 mb-3">
-      <h5 class="mb-2 fs-md">{{mensaje.cliente}}</h5>
-      <span class="d-block mb-3 fs-sm text-muted">{{mensaje.createdAt | date:'medium'}}</span>
-      <div class="mt-n1 star-rating">
-        <span class="badge " [ngClass]="{'bg-primary': mensaje.estado === 'Abierto', 'bg-secondary' : mensaje.estado === 'Cerrado' }">{{mensaje.estado}}</span>
-        <!-- <span class="badge bg-secondary">Secondary</span> -->
+            <div class="col">
+              <p class="mb-2" style="background-color: beige; border-radius: 5px; padding: 20px">
+                <span class="fs-sm text-muted">Enviado desde: </span> <a
+                  class="me-1 fw-bold text-decoration-none">{{mensaje.correo}}</a>
+                <br>
+                <span class="fs-sm text-muted">Asunto: {{mensaje.asunto}}</span>
+                <br>
+                <span class="fs-sm text-muted">Mensaje: </span>{{mensaje.mensaje}}
+              </p>
+              <div class="d-flex justify-content-between mb-3">
+                <a class="nav-link p-0 fs-sm me-1 fw-bold text-decoration-none" (click)="resolverMensaje(mensaje._id)">
+                  <i class="cxi-chat me-2 fs-base align-middle mt-n1 "></i>
+                  Resolver
+                </a>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer border-0">
+        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="mensajes.length"></ngb-pagination>
       </div>
     </div>
-    <div class="col">
-      <p class="mb-2" style="background-color: beige; border-radius: 5px; padding: 20px">
-        <span class="fs-sm text-muted">Enviado desde: </span> <a class="me-1 fw-bold text-decoration-none">{{mensaje.correo}}</a>
-        <br>
-        <span class="fs-sm text-muted">Asunto: {{mensaje.asunto}}</span>
-        <br>
-        <span class="fs-sm text-muted">Mensaje: </span>{{mensaje.mensaje}}
-      </p>
-      <div class="d-flex justify-content-between mb-3">
-        <a class="nav-link p-0 fs-sm me-1 fw-bold text-decoration-none" (click)="resolverMensaje(mensaje._id)">
-          <i class="cxi-chat me-2 fs-base align-middle mt-n1 "></i>
-          Resolver
-        </a>
-      </div>
-    </div>
-    <hr>
   </div>
 </div>
-                         
-                      </div>
-                  </div>
-                   <div class="card-footer border-0">
-                      <ngb-pagination
-                      [(page)]="page"
-                      [pageSize]="pageSize"
-                      [collectionSize]="mensajes.length"
-                      ></ngb-pagination>
-                  </div> 
-            </div>
-</div>
-
-
