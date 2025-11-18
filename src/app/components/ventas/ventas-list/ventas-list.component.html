@@ -1,19 +1,14 @@
 <app-sidebar> </app-sidebar>
 
 <div class="main-content">
-    <!-- Page title-->
     <div class="pt-1 mt-4">
-        <h2 class="mt-2 mt-md-4 mb-3 pt-4">Ventas</h2>
+        <h3 class="mt-2 mt-md-4 mb-3 pt-4">Ventas</h3>
         <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
-        <p class="text-muted">Este módulo lista todas las ventas de la tienda.</p>
-        
+            <p class="text-muted">Este módulo lista todas las ventas de la tienda.</p>
         </div>
     </div>
 
     <div class="card box-shadow-sm">
-        <!-- <div class="card-header">
-            <h5 style="margin-bottom: 0px;"></h5>
-        </div> -->
         <div class="card-header">
             <div class="row">
                 <div class="col-5">
@@ -29,26 +24,28 @@
                     </div>
                 </div>
                 <div class="col-2">
-                    <div class="btn-group" style="display: block; display: flex; justify-content: center; margin-top: 35px;" >
-                        <button type="button" class="btn btn-primary" (click)="consultarVentas()"><i class="cxi-search"></i> Buscar</button>
-                        <button type="button" class="btn btn-secondary" (click)="limpiar()"><i class="cxi-arrow-reload"></i></button>
+                    <div class="btn-group"
+                        style="display: block; display: flex; justify-content: center; margin-top: 35px;">
+                        <button type="button" class="btn btn-primary" (click)="consultarVentas()"><i
+                                class="cxi-search"></i> Buscar</button>
+                        <button type="button" class="btn btn-secondary" (click)="limpiar()"><i
+                                class="cxi-arrow-reload"></i></button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <div class="card-footer">
-            <button type="button" class="btn btn-primary" (click)="consultarVentas()">Filtrar</button>
-        </div> -->
-        <div class="card-body">
-            <ng-container *ngIf="ventas.length == 0">
-                <span class="text-muted">No hay registros de ventas.</span>
-            </ng-container>
-            <ng-container *ngIf="ventas.length > 0">
-                <div *ngFor="let item of ventas | slice: (page-1)*pageSize : (page-1)*pageSize+pageSize; let indice = index">
+        <ng-container *ngIf="ventas.length == 0">
+            <span class="text-muted">No hay registros de ventas.</span>
+        </ng-container>
+        <ng-container *ngIf="ventas.length > 0">
+            <div class="card-body">
+                <div
+                    *ngFor="let item of ventas | slice: (page-1)*pageSize : (page-1)*pageSize+pageSize; let indice = index">
                     <div class="row mt-3 justify-content-between">
                         <div class="col">
                             <h3 class="h5 mb-2 nav-dark">
-                                <a [routerLink]="['/panel/ventas', item._id]" class="nav-link">{{item.usuario.nombres + " " + item.usuario.apellidos}}</a>
+                                <a [routerLink]="['/panel/ventas', item._id]" class="nav-link">{{item.usuario.nombres +
+                                    " " + item.usuario.apellidos}}</a>
                             </h3>
                         </div>
                         <div class="col text-right d-flex justify-content-end" style="gap: 10px;">
@@ -57,10 +54,10 @@
                                     <span class="cxi-settings"></span>
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a href="#" class="dropdown-item">Regular link</a>
-                                    <a href="#" class="dropdown-item">Another regular link</a>
+                                    <a class="dropdown-item" (click)="obtenerVentaEstado(item)" data-toggle="modal" data-target="#modalCentered">Actualizar Estado</a>
+                                    <!-- <a href="#" class="dropdown-item">Another regular link</a>
                                     <a href="#" class="dropdown-item active">Active link</a>
-                                    <a href="#" class="dropdown-item disabled">Disabled link</a>
+                                    <a href="#" class="dropdown-item disabled">Disabled link</a> -->
                                 </div>
                             </div>
                             <span class="badge badge-info mb-3">{{item.estado}}</span>
@@ -70,42 +67,93 @@
                         <div class="col-12">
                             <ul class="nav nav-muted mb-2 pb-1">
                                 <li class="nav-item mr-2">
-                                <span class="badge badge-dark MR-3">{{item.nventa}}</span>
-                                <span class="text-border px-1">|</span>
+                                    <span class="badge badge-dark MR-3">{{item.nventa}}</span>
+                                    <span class="text-border px-1">|</span>
                                 </li>
                                 <li class="nav-item mr-2">
-                                <span class="nav-link d-inline-block mr-2 p-0 font-size-sm font-weight-normal">
-                                    {{item.createdAt | date}}
-                                </span>
-                                <span class="text-border px-1">|</span>
+                                    <span class="nav-link d-inline-block mr-2 p-0 font-size-sm font-weight-normal">
+                                        {{item.createdAt | date}}
+                                    </span>
+                                    <span class="text-border px-1">|</span>
                                 </li>
                                 <li class="nav-item mr-2">
-                                <span class="nav-link d-inline-block mr-2 p-0 font-size-sm font-weight-normal">
-                                    <i class="cxi-truck mt-n1 mr-2 font-size-base align-middle"></i>
-                                    {{item.envio_titulo || "No definido"}} 
-                                </span>
+                                    <span class="nav-link d-inline-block mr-2 p-0 font-size-sm font-weight-normal">
+                                        <i class="cxi-truck mt-n1 mr-2 font-size-base align-middle"></i>
+                                        {{item.envio_titulo || "No definido"}}
+                                    </span>
                                 </li>
                             </ul>
                         </div>
                         <div class="col-12 mb-3">
                             <div class="d-flex align-items-center">
-                                <span class="h5 d-inline-block mb-0">{{item.subtotal | currency:'PYG ':'symbol':'1.0-0'}}</span>
+                                <span class="h5 d-inline-block mb-0">{{item.subtotal | currency:'PYG':'symbol':'1.0-0'}}</span>
                             </div>
                         </div>
-                    </div> 
-                    <hr>            
+                    </div>
+                    <hr>
                 </div>
-                <div class="card-footer border-0">
-                      <ngb-pagination
-                      [(page)]="page"
-                      [pageSize]="pageSize"
-                      [collectionSize]="ventas.length"
-                      ></ngb-pagination>
-                  </div>
-            </ng-container>
+            </div>
+            <div class="card-footer">
+                <ngb-pagination class="mb-0"
+                    [(page)]="page" 
+                    [pageSize]="pageSize"
+                    [collectionSize]="ventas.length">
+                </ngb-pagination>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalCentered" tabindex="-1" role="dialog" aria-labelledby="modalCenteredLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalCenteredLabel">
+                    Actualizar
+                </h4>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form>
+                <div class="modal-body">
+                   <!--  <div>
+                        <div class="alert alert-warning" role="alert">
+                            Ha pasado más de 30 días de su
+                            compra.
+                        </div>
+                    </div> -->
+                    <!-- (change)="onDepartamentoChange($event)" -->
+                    <div>
+                        <label for="ac-country">Estado</label>
+                        <div class="d-flex pb-3" style="padding-bottom: 10px">
+                            
+                            <select id="ac-country"
+                                class="custom-select rounded-0"
+                                [(ngModel)]="estadoSeleccionado">
+                            <option value="" disabled selected>Seleccionar</option>
+
+                            <option *ngFor="let e of estadosVenta"
+                                    [ngValue]="e">
+                                {{ e.label }}
+                            </option>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">
+                        Cerrar
+                    </button>
+                    <button class="btn btn-primary btn-sm" type="submit" >
+                        <!-- {{idReview!==undefined ? 'Actualizar' : 'Guardar'}} -->
+                         Guardar
+                    </button>
+                </div>
+            </form>
         </div>
-        <div class="card-footer">
-            
-        </div>
-    </div> 
+    </div>
 </div>
