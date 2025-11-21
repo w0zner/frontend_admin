@@ -23,4 +23,16 @@ export class VentaService {
   obtenerVentaPorId(id: any) {
     return this.http.get(this.url + "/obtener-venta-admin/" + id, { headers: this.headers });
   }
+
+  actualizarEstado(id: any, estado: any) {
+    return this.http.put(this.url + "/actualizar-estado/" + id, estado, { headers: this.headers })
+  }
+
+  obtenerVentaPorNroVenta(nventa: any) {
+    return this.http.get(this.url + "/obtener-ventas-nventa/" + nventa, { headers: this.headers });
+  }
+
+  obtenerVentaPorEstado(estado: any) {
+    return this.http.get(this.url + "/obtener-ventas-estado/" + estado, { headers: this.headers });
+  }
 }

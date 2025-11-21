@@ -2,7 +2,8 @@
 <header class="navbar navbar-expand navbar-light fixed-top navbar-box-shadow bg-light px-3 px-lg-4" data-scroll-header
   data-fixed-element>
   <a class="navbar-brand d-lg-none" href="dev-setup.html">
-    <img src="assets/img/components/logo/logo-dark.svg" alt="Createx" width="130" />
+    <!-- <img src="assets/img/components/logo/logo-dark.svg" alt="Createx" width="130" /> -->
+    <img src="assets/img/store-64.png" alt="Tienda" width="130">
   </a>
   <button class="navbar-toggler d-block d-lg-none mr-3 ml-auto" type="button" data-toggle="offcanvas"
     data-target="componentsNav">
@@ -17,24 +18,15 @@
     </li> -->
 
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle btn-hover-shadow" href="#" data-toggle="dropdown">
+      <a class="nav-link dropdown-toggle btn-hover-shadow" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <!-- <i class="cxi-profile align-middle mt-n1 mr-2"></i> -->
         <i class="cxi-profile"></i> {{usuario || 'Cuenta' }}
       </a>
       <ul class="dropdown-menu">
         <li>
-          <a class="dropdown-item" href="#">Action link</a>
+          <a class="dropdown-item" href="#">Perfil</a>
         </li>
-        <li class="dropdown">
-          <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Dropdown</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action link</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-            <li><a class="dropdown-item" href="#">Yet another link</a></li>
-          </ul>
-        </li>
-        <li><a class="dropdown-item" href="#"> Another action</a></li>
+        <li><a class="dropdown-item" href="#">Preferencias</a></li>
         <li class="dropdown-divider"></li>
         <li><a class="dropdown-item" (click)="logout()" style="cursor: pointer;">
           <i class="cxi-logout"></i> Cerrar Sesión</a>
@@ -49,10 +41,11 @@
 <aside class="cs-offcanvas cs-offcanvas-expand bg-dark" id="componentsNav">
   <div class="cs-offcanvas-cap d-none d-lg-block py-4">
     <a class="navbar-brand py-2" href="dev-setup.html">
-      <img src="assets/img/components/logo/logo-white.svg" alt="Createx" width="130" />
+      <!-- <img src="assets/img/components/logo/logo-white.svg" alt="Createx" width="130" /> -->
+      <img src="assets/img/store-64.png" alt="Tienda" width="60">
     </a>
 
-    <span class="badge badge-warning">Docs</span>
+    <span class="badge badge-warning">Tienda</span>
   </div>
   <div class="cs-offcanvas-cap d-flex d-lg-none">
     <div class="d-flex align-items-center mt-1">

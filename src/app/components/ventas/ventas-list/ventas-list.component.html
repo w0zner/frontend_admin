@@ -11,18 +11,47 @@
     <div class="card box-shadow-sm">
         <div class="card-header">
             <div class="row">
-                <div class="col-5">
-                    <div class="form-group">
-                        <label class="form-label" for="pass-visibility">Desde</label>
-                        <input class="form-control form-control-sm" type="date" [(ngModel)]="desde">
+                <ng-container *ngIf="tipoConsulta === 'fechas'">
+                    <div class="col-5">
+                        <div class="form-group">
+                            <label class="form-label" for="pass-visibility">Desde</label>
+                            <input class="form-control form-control-sm" type="date" [(ngModel)]="desde">
+                        </div>
                     </div>
-                </div>
-                <div class="col-5">
-                    <div class="form-group">
-                        <label class="form-label" for="pass-visibility">Hasta</label>
-                        <input class="form-control form-control-sm" type="date" [(ngModel)]="hasta">
+                    <div class="col-5">
+                        <div class="form-group">
+                            <label class="form-label" for="pass-visibility">Hasta</label>
+                            <input class="form-control form-control-sm" type="date" [(ngModel)]="hasta">
+                        </div>
                     </div>
-                </div>
+                </ng-container>
+                 <ng-container *ngIf="tipoConsulta === 'estado'">
+                    <div class="col-10">
+                        <div class="form-group">
+                            <label class="form-label" for="pass-visibility">Estados</label>
+                            <select id="venta-estados"
+                                    name="estados"
+                                    class="form-control form-control-sm custom-select rounded-0"
+                                    [(ngModel)]="estadoBuscar"
+                                    (change)="onEstadosBuscarChange($event)"
+                                    >
+                                <option value=0 disabled selected>Seleccionar</option> 
+                                <option *ngFor="let e of estadosVenta"
+                                        value={{e.value}}>
+                                    {{ e.label }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                 </ng-container>
+                  <ng-container *ngIf="tipoConsulta === 'venta'">
+                    <div class="col-10">
+                        <div class="form-group">
+                            <label class="form-label" for="pass-visibility">Nro Venta</label>
+                            <input class="form-control form-control-sm" placeholder="Ingrese el número de ventas" type="text" [(ngModel)]="nroVenta">
+                        </div>
+                    </div>
+                  </ng-container>
                 <div class="col-2">
                     <div class="btn-group"
                         style="display: block; display: flex; justify-content: center; margin-top: 35px;">
@@ -30,12 +59,22 @@
                                 class="cxi-search"></i> Buscar</button>
                         <button type="button" class="btn btn-secondary" (click)="limpiar()"><i
                                 class="cxi-arrow-reload"></i></button>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="cxi-settings"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                            <a (click)="elegirTipoConsulta('fechas')" class="dropdown-item" style="cursor: pointer;">Rango de fecha</a>
+                            <a (click)="elegirTipoConsulta('venta')"class="dropdown-item" style="cursor: pointer;">Número venta</a>
+                            <a (click)="elegirTipoConsulta('estado')" class="dropdown-item" style="cursor: pointer;">Estado</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <ng-container *ngIf="ventas.length == 0">
-            <span class="text-muted">No hay registros de ventas.</span>
+            <span class="text-muted m-4">No hay registros de ventas.</span>
         </ng-container>
         <ng-container *ngIf="ventas.length > 0">
             <div class="card-body">
@@ -44,23 +83,23 @@
                     <div class="row mt-3 justify-content-between">
                         <div class="col">
                             <h3 class="h5 mb-2 nav-dark">
-                                <a [routerLink]="['/panel/ventas', item._id]" class="nav-link">{{item.usuario.nombres +
-                                    " " + item.usuario.apellidos}}</a>
+                                <a [routerLink]="['/panel/ventas', item._id]" class="nav-link">{{item.usuario.nombres + " " + item.usuario.apellidos}}</a>
                             </h3>
                         </div>
                         <div class="col text-right d-flex justify-content-end" style="gap: 10px;">
                             <div class="dropdown">
-                                <a style="cursor: pointer;" class="dropdown-toggle" data-toggle="dropdown">
+                                <a style="cursor: pointer;" class="dropdown-toggle" data-toggle="dropdown" (click)="obtenerVentaEstado(item)" data-toggle="modal" data-target="#modalCentered">
                                     <span class="cxi-settings"></span>
                                 </a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" (click)="obtenerVentaEstado(item)" data-toggle="modal" data-target="#modalCentered">Actualizar Estado</a>
-                                    <!-- <a href="#" class="dropdown-item">Another regular link</a>
+                              <!--   <div class="dropdown-menu">
+                                    <a class="dropdown-item" style="cursor: pointer;" >Actualizar Estado</a>
+                                     <a href="#" class="dropdown-item">Another regular link</a>
                                     <a href="#" class="dropdown-item active">Active link</a>
-                                    <a href="#" class="dropdown-item disabled">Disabled link</a> -->
-                                </div>
+                                    <a href="#" class="dropdown-item disabled">Disabled link</a> [ngClass]="{'badge-info': item.estado === 'Procesando'}">
+
+                                </div> -->
                             </div>
-                            <span class="badge badge-info mb-3">{{item.estado}}</span>
+                            <span class="badge mb-3 + {{item.badge}}" >{{item.estado}}</span>
                         </div>
                     </div>
                     <div class="row">
@@ -106,7 +145,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="modalCentered" tabindex="-1" role="dialog" aria-labelledby="modalCenteredLabel"
+<div class="modal fade" id="modalCentered" #modalCentered tabindex="-1" role="dialog" aria-labelledby="modalCenteredLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -120,27 +159,21 @@
             </div>
             <form>
                 <div class="modal-body">
-                   <!--  <div>
-                        <div class="alert alert-warning" role="alert">
-                            Ha pasado más de 30 días de su
-                            compra.
-                        </div>
-                    </div> -->
-                    <!-- (change)="onDepartamentoChange($event)" -->
                     <div>
                         <label for="ac-country">Estado</label>
                         <div class="d-flex pb-3" style="padding-bottom: 10px">
-                            
                             <select id="ac-country"
-                                class="custom-select rounded-0"
-                                [(ngModel)]="estadoSeleccionado">
-                            <option value="" disabled selected>Seleccionar</option>
-
-                            <option *ngFor="let e of estadosVenta"
-                                    [ngValue]="e">
-                                {{ e.label }}
-                            </option>
-                        </select>
+                                    name="estados"
+                                    class="custom-select rounded-0"
+                                    [(ngModel)]="estadoSeleccionadoTarget"
+                                    (change)="onDepartamentoChange($event)"
+                                    >
+                                <!-- <option value="" disabled selected>Seleccionar</option>  [ngValue]="e"-->
+                                <option *ngFor="let e of estadosVenta"
+                                        value={{e.value}}>
+                                    {{ e.label }}
+                                </option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -148,7 +181,7 @@
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">
                         Cerrar
                     </button>
-                    <button class="btn btn-primary btn-sm" type="submit" >
+                    <button class="btn btn-primary btn-sm" type="button" (click)="actualizarEstado()" [disabled]="!hasActualizarEstado" data-dismiss="modal">
                         <!-- {{idReview!==undefined ? 'Actualizar' : 'Guardar'}} -->
                          Guardar
                     </button>
