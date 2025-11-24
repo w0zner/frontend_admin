@@ -81,6 +81,8 @@ export class AuthService {
     localStorage.removeItem('_id')
     localStorage.removeItem('token')
     localStorage.removeItem('refreshToken')
+    localStorage.removeItem('logoTienda')
+    localStorage.removeItem('nombreTienda')
     localStorage.clear()
   }
 }

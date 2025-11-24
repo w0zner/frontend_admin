@@ -1,8 +1,8 @@
 <div class="row" style="width: 100%; height: 100%;">
-    <div class="col-lg-5 mx-auto pt-4" style="display: flex;align-items: center;">
+    <div class="col-lg-4 mx-auto p-4 mt-5" style="display: flex;align-items: center; border: 1px solid #eee; border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
         <div class="px-md-5 px-4">
-            <h3 class="modal-title mt-4 mb-0 text-center mb-5">Iniciar sesión</h3>
-            <p class="font-size-sm text-muted text-center">Inicie sesión en su cuenta utilizando el correo electrónico y la contraseña proporcionados durante el registro.</p>
+            <h3 class="modal-title mt-3 text-center mb-4">Login</h3>
+            
             <form [formGroup]="loginForm" (submit)="login()" class="needs-validation">
               <div class="form-group">
                 <label for="signin-email">Correo electrónico</label>
@@ -28,12 +28,14 @@
                 </div>
                 <a href="#" class="font-size-sm text-decoration-none">Forgot password?</a>
               </div> -->
-              <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+              <button type="submit" class="btn btn-block p-3 text-light mt-3" style="background-color: #212529;">Ingresar</button>
             <!--   <p class="font-size-sm pt-4 mb-0">
                 Don't have an account?
                 <a href="#" class="font-weight-bold text-decoration-none" data-view="#modal-signup-view">Sign up</a>
               </p> -->
+              <p class="font-size-sm text-muted text-center mt-3">Inicie sesión en su cuenta utilizando el correo electrónico y la contraseña proporcionados durante el registro.</p>
             </form>
           </div>
     </div>
+    <span style="margin-top: 10px; font-size: 12px; text-align: center;" class="text-muted">ManageStore © Version 1.0.5 - 2025</span>
 </div>

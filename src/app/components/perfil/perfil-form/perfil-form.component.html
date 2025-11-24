@@ -1,0 +1,163 @@
+<app-sidebar> </app-sidebar>
+
+<div class="main-content">
+    <div class="pt-1 mt-4">
+      <h2 class="mt-2 mt-md-4 mb-3 pt-0"></h2>
+      <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+        <p class="text-muted"></p>
+
+      </div>
+    </div>
+
+    <div class="card box-shadow border-0 rounded-0 card-hover">
+        <div class="card-header border-0 ">
+            <h5 class="pt-2 pb-2" style="margin-bottom: 0px;">Datos del perfil</h5>
+        </div>
+        <form [formGroup]="perfilForm" (ngSubmit)="actualizarPerfil()">
+            <div class="card-body">
+                <div class="row pb-3">
+                    <div class="row ml-2 mt-1 mb-4 p-4" style="display: flex; align-items: center; justify-content: center; background-color: beige; width: 99%;">
+                        <div class="col-sm-3 form-group ml-4" style="display: flex; align-items: center; justify-content: center;">
+                            <input
+                                class="form-check-input rounded-0"
+                                formControlName="extranjero"
+                                type="checkbox"
+                                id="ex-check-1"
+                            />
+                                <label class="form-check-label" for="ex-check-1" style="margin-left: 120px;">
+                                    Perfil extranjero
+                                </label>
+                        </div>
+                        <div class="col-sm-4" *ngIf="perfilForm.get('extranjero')?.value == true">
+                            <label for="ac-country">Tipo documento</label>
+                            <select
+                                id="ac-city"
+                                class="custom-select rounded-0 form-control form-control-sm"
+                                formControlName="tipo_documento"
+                            >
+                                <option value="" disabled selected>Seleccionar</option>
+                                <option value="dni">DNI</option>
+                                <option value="ruc">RUC</option>
+                                <option value="pasaporte">Pasaporte</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                    <label for="ac-address">Documento de identidad</label>
+                    <input
+                        type="text"
+                        id="ac-address"
+                        class="form-control"
+                        formControlName="cedula"
+                        value="4786912"
+                    />
+                    </div>
+                    <div class="col-sm-6 form-group">
+                    <label for="ac-email">Correo Electronico</label>
+                    <input
+                        type="email"
+                        id="ac-email"
+                        class="form-control"
+                        value="ann.black@example.com"
+                        formControlName="email"
+                    />
+                    </div>
+                    <div class="col-sm-6 form-group">
+                    <label for="ac-fn">Nombre</label>
+                    <input
+                        type="text"
+                        id="ac-fn"
+                        class="form-control"
+                        value="Annette"
+                        formControlName="nombres"
+                    />
+                    </div>
+                    <div class="col-sm-6 form-group">
+                    <label for="ac-ln">Apellido</label>
+                    <input
+                        type="text"
+                        id="ac-ln"
+                        class="form-control"
+                        value="Black"
+                        formControlName="apellidos"
+                    />
+                    </div>
+                    <div class="col-sm-6 form-group">
+                    <label for="ac-country">Ciudad</label>
+                    <select
+                        id="ac-city"
+                        class="custom-select rounded-0"
+                        formControlName="ciudad"
+                    >
+                        <option value="" disabled selected>Seleccionar</option>
+                        <option value="asuncion">Asunción</option>
+                        <option value="ciudad-del-este">Ciudad del Este</option>
+                        <option value="encarnacion">Encarnación</option>
+                        <option value="luque">Luque</option>
+                        <option value="lambare">Lambaré</option>
+                        <option value="san-lorenzo">San Lorenzo</option>
+                        <option value="capiata">Capiatá</option>
+                        <option value="fernando-de-la-mora">Fernando de la Mora</option>
+                        <option value="limpio">Limpio</option>
+                        <option value="mariano-roque-alonso">
+                        Mariano Roque Alonso
+                        </option>
+                        <option value="ita">Itá</option>
+                        <option value="itaqua">Itauguá</option>
+                        <option value="villarrica">Villarrica</option>
+                        <option value="caacupe">Caacupé</option>
+                        <option value="coronel-oviedo">Coronel Oviedo</option>
+                        <option value="concepcion">Concepción</option>
+                        <option value="pedro-juan-caballero">
+                        Pedro Juan Caballero
+                        </option>
+                        <option value="pilar">Pilar</option>
+                        <option value="ayolas">Ayolas</option>
+                        <option value="san-pedro">San Pedro</option>
+                        <option value="villalbin">San Juan Bautista (Misiones)</option>
+                    </select>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                    <label for="ac-phone">Telefono</label>
+                    <input
+                        type="text"
+                        id="ac-phone"
+                        class="form-control"
+                        value="(629) 555-0129"
+                        formControlName="telefono"
+                    />
+                    </div>
+                    <div class="col-sm-6 form-group">
+                    <label for="genero" class="form-label">Genero</label>
+                    <select
+                        class="form-control custom-select rounded-0"
+                        formControlName="genero"
+                        id="genero"
+                    >
+                        <option value="" selected disabled>Seleccionar</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                    </select>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                    <label for="ac-zip">Fecha de Nacimiento</label>
+                    <input
+                        class="form-control"
+                        type="date"
+                        formControlName="fecha_nacimiento"
+                    />
+                    </div>                   
+                </div>
+            </div>
+            <div class="card-footer border-0 text-end p-3">
+                <button class="btn btn-primary btn-hover-shadow mr-3" [disabled]="!perfilForm.valid"><i
+                        class="fa-sharp fa-solid fa-square-check"></i> Actualizar</button>
+                <a [routerLink]="['/inicio']" class="btn btn-secondary rounded-0"><i
+                        class="fa-sharp fa-solid fa-rectangle-xmark"></i> Cancelar</a>
+            </div>
+        </form>
+    </div>
+  </div>
+
+
+

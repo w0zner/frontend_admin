@@ -19,10 +19,12 @@ import { IndexContactoComponent } from './components/contacto/index-contacto/ind
 import { ProductosReviewsComponent } from './components/productos/productos-reviews/productos-reviews.component';
 import { VentasListComponent } from './components/ventas/ventas-list/ventas-list.component';
 import { VentasFormComponent } from './components/ventas/ventas-form/ventas-form.component';
+import { PerfilFormComponent } from './components/perfil/perfil-form/perfil-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'inicio', pathMatch: 'full'},
   {path: 'inicio', component: InicioComponent, canActivate: [adminGuard]},
+  {path: 'perfil', component: PerfilFormComponent, canActivate: [adminGuard]},
   {
     path:'panel', children: [
       {path: 'clientes', component: ClientesListComponent, canActivate: [adminGuard]},

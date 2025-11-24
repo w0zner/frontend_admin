@@ -15,7 +15,7 @@ export class ClientesListComponent implements OnInit {
   usuarios: Array<any> = []
   filtroUsuarioForm: FormGroup
   page=1
-  pageSize=1
+  pageSize=5
 
   constructor(private fb: FormBuilder, private usuarioService: UsuarioService, private authService: AuthService, private router: Router, private notificacion:NotificacionService) {
     this.filtroUsuarioForm= fb.group({

@@ -27,6 +27,9 @@ import { IndexContactoComponent } from './components/contacto/index-contacto/ind
 import { ProductosReviewsComponent } from './components/productos/productos-reviews/productos-reviews.component';
 import { VentasFormComponent } from './components/ventas/ventas-form/ventas-form.component';
 import { VentasListComponent } from './components/ventas/ventas-list/ventas-list.component';
+import { UsuariosListComponent } from './components/usuario/usuarios-list/usuarios-list.component';
+import { UsuariosFormComponent } from './components/usuario/usuarios-form/usuarios-form.component';
+import { PerfilFormComponent } from './components/perfil/perfil-form/perfil-form.component';
 
 
 @NgModule({
@@ -51,6 +54,9 @@ import { VentasListComponent } from './components/ventas/ventas-list/ventas-list
     ProductosReviewsComponent,
     VentasListComponent,
     VentasFormComponent,
+    UsuariosListComponent,
+    UsuariosFormComponent,
+    PerfilFormComponent,
   ],
   imports: [
     BrowserModule,
