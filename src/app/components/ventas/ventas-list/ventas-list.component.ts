@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NotificacionService } from 'src/app/services/notificacion.service';
 import { VentaService } from 'src/app/services/venta.service';
-import { Modal } from 'bootstrap';
+//import { Modal } from 'bootstrap';
 
 @Component({
   selector: 'app-ventas-list',
