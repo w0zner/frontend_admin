@@ -51,7 +51,7 @@ export class VentasListComponent implements OnInit  {
         this.ventaService.obtenerVentas(this.desde, this.hasta).subscribe({
           next: (response:any) => {
             console.log(response.data)
-            this.ventas = response.data;    
+            this.ventas = response.data;
             this.ventas = this.ventas.map(elm => {
               const estado = this.estadosVenta.find(e => e.value === elm.estado)
 
@@ -59,7 +59,7 @@ export class VentasListComponent implements OnInit  {
                 ...elm,
                 badge: estado ? estado.badge : ''
               }
-            })    
+            })
           }
         })
     } else if(this.tipoConsulta === 'venta') {
@@ -67,7 +67,7 @@ export class VentasListComponent implements OnInit  {
         this.ventaService.obtenerVentaPorNroVenta(this.nroVenta).subscribe({
           next: (response:any) => {
             console.log(response.data)
-            this.ventas = response.data;    
+            this.ventas = response.data;
             this.ventas = this.ventas.map(elm => {
               const estado = this.estadosVenta.find(e => e.value === elm.estado)
 
@@ -75,14 +75,14 @@ export class VentasListComponent implements OnInit  {
                 ...elm,
                 badge: estado ? estado.badge : ''
               }
-            })    
+            })
           }
         })
     } else if(this.tipoConsulta === 'estado') {
         this.ventaService.obtenerVentaPorEstado(this.estadoBuscar).subscribe({
           next: (response:any) => {
             console.log(response.data)
-            this.ventas = response.data;    
+            this.ventas = response.data;
             this.ventas = this.ventas.map(elm => {
               const estado = this.estadosVenta.find(e => e.value === elm.estado)
 
@@ -90,7 +90,7 @@ export class VentasListComponent implements OnInit  {
                 ...elm,
                 badge: estado ? estado.badge : ''
               }
-            })    
+            })
           }
         })
     }
@@ -119,7 +119,7 @@ export class VentasListComponent implements OnInit  {
         this.notificacionesService.notificarExito("Orden actualizada con éxito!.")
         this.consultarVentas();
       }
-    }) 
+    })
   }
 
   onDepartamentoChange(selected:any) {
