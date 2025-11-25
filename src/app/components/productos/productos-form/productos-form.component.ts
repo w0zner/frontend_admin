@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfiguracionesService } from 'src/app/services/configuraciones.service';
 import { GLOBAL } from 'src/app/services/GLOBAL';
 import { NotificacionService } from 'src/app/services/notificacion.service';
 import { ProductoService } from 'src/app/services/producto.service';
+import Quill from 'quill';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { ProductoService } from 'src/app/services/producto.service';
   templateUrl: './productos-form.component.html',
   styleUrls: ['./productos-form.component.css']
 })
-export class ProductosFormComponent implements OnInit {
+export class ProductosFormComponent implements OnInit, AfterViewInit {
 
   productoForm: FormGroup
   imgSelect: any | ArrayBuffer = 'assets/img/01.jpg'
@@ -34,6 +35,19 @@ export class ProductosFormComponent implements OnInit {
       stock: ['', [Validators.required, Validators.min(0)]],
       categoria: ['', [Validators.required]],
     })
+  }
+  ngAfterViewInit(): void {
+    const quill = new Quill('#editor', {
+      theme: 'snow',
+      modules: {
+        // Conectamos la toolbar definida en el HTML
+        toolbar: [
+          ['bold', 'italic', 'underline'],
+          [{ list: 'ordered'}, { list: 'bullet' }],
+          ['clean']
+        ]
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -79,7 +93,7 @@ export class ProductosFormComponent implements OnInit {
     if (this.productId && this.productoForm.value.contenido) {
       editor.clipboard.dangerouslyPasteHTML(this.productoForm.value.contenido);
     }
-    
+
   }
 
   fileChangeEvent(event:any): void {
@@ -114,7 +128,7 @@ export class ProductosFormComponent implements OnInit {
   guardar() {
     if(this.productId != null) {
       console.log('uodate')
-      console.log(this.productoForm.value)  
+      console.log(this.productoForm.value)
       console.log(this.productoForm )
       if(this.productoForm.valid) {
         this.productoForm.controls['contenido'].setValue(this.quillEditor.root.innerHTML)

@@ -4,10 +4,10 @@
         <h1 class="mt-2 mt-md-4 mb-3 pt-0"></h1>
         <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
           <p class="text-muted"></p>
-          
+
         </div>
       </div>
-    
+
       <div class="card box-shadow border-0 rounded-0 card-hover">
             <div class="card-header border-0">
                 <h5 class="pt-2 pb-2" style="margin-bottom: 0px;">Registro de producto</h5>
@@ -17,42 +17,46 @@
                     <div class="row">
                       <div class="col-lg-8">
                           <div class="row">
-                            <div class="col-lg-12 form-group">	
+                            <div class="col-lg-12 form-group">
                                 <label for="">Titulo de producto</label>
                                 <input type="text" class="form-control" formControlName="titulo" placeholder="Titulo de producto" required>
                             </div>
-                            <div class="col-lg-4 form-group">	
+                            <div class="col-lg-4 form-group">
                                 <label for="">Stock</label>
                                 <input type="number" class="form-control" formControlName="stock" placeholder="Cantidad inicial" required>
                             </div>
-                            <div class="col-lg-4 form-group">	
+                            <div class="col-lg-4 form-group">
                                 <label for="">Precio</label>
                                 <input type="number" class="form-control" formControlName="precio" placeholder="Precio" required>
                             </div>
-                            <div class="col-lg-4 form-group">	
+                            <div class="col-lg-4 form-group">
                                 <label for="">Categoría</label>
                                 <select class="form-control custom-select" formControlName="categoria" id="select-input">
                                   <option value="" selected disabled>Seleccionar</option>
                                   <option value="{{item.titulo}}" *ngFor="let item of config_global.categorias">{{item.titulo}}</option>
                                 </select>
                             </div>
-      
+
                             <div class="col-lg-12 form-group">
                                 <label for="">Descripción corta</label>
                                 <textarea class="form-control" placeholder="Titulo de producto" formControlName="descripcion" required rows="5"></textarea>
                             </div>
-      
+
                             <div class="col-lg-12 form-group">
                               <!-- <textarea class="form-control" required formControlName="contenido" rows="15"></textarea> -->
-                              <quill-editor formControlName="contenido" [styles]="{height: '200px'}" (onEditorCreated)="onEditorCreated($event)"></quill-editor>
+                              <!-- <quill-editor formControlName="contenido" [styles]="{height: '200px'}" (onEditorCreated)="onEditorCreated($event)"></quill-editor> -->
                               <!-- <editor [init]="config"></editor> -->
+                              <div id="editor" formControlName="contenido">
+                                <!-- <h2>Demo Content</h2>
+                                <p>Preset build with <code>snow</code> theme, and some common formats.</p> -->
+                              </div>
                             </div>
-      
+
                           </div>
                       </div>
                       <div class="col-lg-3">
                         <div class="row">
-                          <div class="col-lg-12 form-group">	
+                          <div class="col-lg-12 form-group">
                               <label for="">Portada</label>
                               <div class="custom-file">
                                 <input class="custom-file-input" type="file" placeholder="Imagen" id="file-input" (change)="fileChangeEvent($event)">
@@ -71,5 +75,5 @@
                   <button [routerLink]="['/panel/productos']"  class="btn btn-secondary rounded-0"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i> Cancelar</button>
               </div>
           </form>
-      </div> 
+      </div>
 </div>

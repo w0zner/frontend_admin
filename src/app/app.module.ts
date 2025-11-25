@@ -16,7 +16,7 @@ import { CuponListComponent } from './components/cupon/cupon-list/cupon-list.com
 import { CuponFormComponent } from './components/cupon/cupon-form/cupon-form.component';
 import { ProductosFormComponent } from './components/productos/productos-form/productos-form.component';
 import { ProductosListComponent } from './components/productos/productos-list/productos-list.component';
-import { QuillModule } from 'ngx-quill';
+//import { QuillModule } from 'ngx-quill';
 import { InventarioComponent } from './components/productos/inventario/inventario.component';
 import { ConfigComponent } from './components/config/config.component';
 import { ProductoVariedadComponent } from './components/productos/producto-variedad/producto-variedad.component';
@@ -65,7 +65,7 @@ import { PerfilFormComponent } from './components/perfil/perfil-form/perfil-form
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
-    QuillModule.forRoot()
+    //QuillModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
