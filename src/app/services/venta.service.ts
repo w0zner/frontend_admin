@@ -35,4 +35,13 @@ export class VentaService {
   obtenerVentaPorEstado(estado: any) {
     return this.http.get(this.url + "/obtener-ventas-estado/" + estado, { headers: this.headers });
   }
+
+  //KPI
+  obtenerKpiGanancias() {
+    return this.http.get(this.url + "/obtener-kpi-ganancias/", { headers: this.headers });
+  }
+
+  obtenerKpiCantidad() {
+    return this.http.get(this.url + "/obtener-kpi-cantidad/", { headers: this.headers });
+  }
 }
