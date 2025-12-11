@@ -16,8 +16,10 @@
         <form [formGroup]="perfilForm" (ngSubmit)="actualizarPerfil()">
             <div class="card-body">
                 <div class="row pb-3">
-                    <div class="row ml-2 mt-1 mb-4 p-4" style="display: flex; align-items: center; justify-content: center; background-color: beige; width: 99%;">
-                        <div class="col-sm-3 form-group ml-4" style="display: flex; align-items: center; justify-content: center;">
+                    <!-- <div class="row ml-2 mt-1 mb-4 p-4" style="display: flex; align-items: center; justify-content: center; background-color: beige; width: 99%;">
+                        
+                    </div> -->
+                    <div class="col-6 form-group" style="display: flex; align-items: center; justify-content: center;">
                             <input
                                 class="form-check-input rounded-0"
                                 formControlName="extranjero"
@@ -25,10 +27,13 @@
                                 id="ex-check-1"
                             />
                                 <label class="form-check-label" for="ex-check-1" style="margin-left: 120px;">
-                                    Perfil extranjero
+                                    Soy extranjero
                                 </label>
                         </div>
-                        <div class="col-sm-4" *ngIf="perfilForm.get('extranjero')?.value == true">
+                        <div class="col-6 form-group" *ngIf="perfilForm.get('extranjero')?.value == false">
+
+                        </div>
+                        <div class="col-6 form-group" *ngIf="perfilForm.get('extranjero')?.value == true">
                             <label for="ac-country">Tipo documento</label>
                             <select
                                 id="ac-city"
@@ -41,7 +46,6 @@
                                 <option value="pasaporte">Pasaporte</option>
                             </select>
                         </div>
-                    </div>
                     <div class="col-sm-6 form-group">
                     <label for="ac-address">Documento de identidad</label>
                     <input

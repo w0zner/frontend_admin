@@ -2,3 +2,26 @@
   margin-left: 255px; /* Ajusta al ancho de tu sidebar */
   padding: 20px;
 }
+
+.card-footer{
+        padding: 0px 15px 15px;
+
+        hr{
+          margin-top: 10px;
+          margin-bottom: 15px;
+        }
+}
+
+.icon-big {
+        font-size: 3em;
+        min-height: 64px;
+
+        i{
+            line-height: 59px;
+        }
+}
+
+.card-stats {
+  border: 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
