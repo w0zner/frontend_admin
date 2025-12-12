@@ -63,7 +63,6 @@ export class ConfigComponent implements OnInit {
   obtenerConfiguracion() {
     this.configService.obtenerConfiguracion().subscribe({
       next: (response:any) => {
-        console.log(response.data)
 
         if(response.data) {
           this.configForm.patchValue({
@@ -120,7 +119,6 @@ export class ConfigComponent implements OnInit {
     let file;
     if(event.target.files && event.target.files[0]) {
       file = <File> event.target.files[0];
-      console.log(file)
     } else {
       this.notificacionService.notificarError(null, "No hay archivo de imagen")
     }
@@ -129,7 +127,6 @@ export class ConfigComponent implements OnInit {
       if(file.type=='image/png' || file.type=='image/jpeg' || file.type=='image/jpg' || file.type=='image/gif') {
         const reader = new FileReader()
         reader.onload = e => this.imgSelect = reader.result;
-        console.log(this.imgSelect)
 
         reader.readAsDataURL(file)
         this.file = file
@@ -146,17 +143,9 @@ export class ConfigComponent implements OnInit {
   }
 
   actualizar() {
-    console.log(this.categorias)
-    console.log(this.configForm.value)
     if(this.configForm.valid) {
-      // this.configForm.patchValue({
-      //   categorias: this.categorias,
-      // })
-      console.log(this.configForm.value)
-      console.log(this.file)
       this.configService.actualizar(this.configForm.value, this.file).subscribe({
         next: (response: any) => {
-          console.log(response)
           this.obtenerConfiguracion()
           this.notificacionService.notificarExito('Configuración actualizada exitosamente!')
         },

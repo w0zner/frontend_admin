@@ -24,7 +24,6 @@ export class IndexContactoComponent implements OnInit {
   obtenerMensajes() {
     this.configuracionesService.obtenerMensajesContactos().subscribe({
       next: (response: any) => {
-        console.log(response.data)
         this.mensajes = response.data;
       }
     })

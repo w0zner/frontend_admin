@@ -33,22 +33,13 @@
 
             <div class="card-body">
               <div style="max-width: 48rem;">
+                <div class="mb-2 p-1" style="background-color: beige;">
+                  <b>Identidad de la tienda</b>
+                </div>
                 <div class="form-group row align-items-center">
                   <label class="col-md-3 col-form-label font-weight-medium" for="text-input">Nombre de la tienda</label>
                   <div class="col-md-9">
                     <input class="form-control" type="text" id="text-input" formControlName="titulo" placeholder="Nombre de la tienda">
-                  </div>
-                </div>
-                <div class="form-group row align-items-center">
-                  <label class="col-md-3 col-form-label font-weight-medium" for="text-input">Facturación</label>
-                  <div class="col-md-2">
-                    <input class="form-control" type="number" min="0" max="999" id="text-input" placeholder="Establecimiento" formControlName="establecimiento">
-                  </div>
-                  <div class="col-md-2">
-                    <input class="form-control" type="number" min="0" max="999" id="text-input" placeholder="Punto de Expedición" formControlName="punto">
-                  </div>
-                  <div class="col-md-5">
-                    <input class="form-control" type="number" min="0" max="9999999" id="text-input" placeholder="Numeración Desde" formControlName="correlativo">
                   </div>
                 </div>
                 <form [formGroup]="categoriaForm">
@@ -66,7 +57,7 @@
                     <div class="col-md-9">
                       <a role="button" (click)="agregarCategorias()" class="mb-5">Agregar</a>
                       <div class="table-responsive mt-3">
-                        <table class="table table-sm">
+                        <table class="table table-sm table-hover">
                           <thead class="thead-dark">
                             <tr>
                               <th>Categoria</th>
@@ -87,7 +78,7 @@
                                 <tr>
                                     <td>{{cat.titulo}}</td>
                                     <td><i class="{{cat.icono}}"></i> {{cat.icono}}</td>
-                                    <td><a class="btn btn-sm btn-outline-danger btn-icon" (click)="eliminarCategoria(i)"><i class="fa-sharp fa-solid fa-trash-can"></i></a></td>
+                                    <td><a class="btn btn-sm btn-outline-danger btn-icon border-0" (click)="eliminarCategoria(i)"><i class="fa-sharp fa-solid fa-trash-can"></i></a></td>
                                 </tr>
                             </ng-container>
                           </tbody>
@@ -109,6 +100,25 @@
                     <img [src]="imgSelect" class="img-thumbnail" alt="Rounded image">
                   </div>
                 </div>
+                                
+
+                <div class="mb-2 p-1" style="background-color: beige;">
+                  <b>Facuración</b>
+                </div>
+                <div class="form-group row align-items-center">
+                  <label class="col-md-3 col-form-label font-weight-medium" for="text-input">Facturación</label>
+                  <div class="col-md-2">
+                    <input class="form-control" type="number" min="0" max="999" id="text-input" placeholder="Establecimiento" formControlName="establecimiento">
+                  </div>
+                  <div class="col-md-2">
+                    <input class="form-control" type="number" min="0" max="999" id="text-input" placeholder="Punto de Expedición" formControlName="punto">
+                  </div>
+                  <div class="col-md-5">
+                    <input class="form-control" type="number" min="0" max="9999999" id="text-input" placeholder="Numeración Desde" formControlName="correlativo">
+                  </div>
+                </div>
+                
+
               </div>
 
             </div>

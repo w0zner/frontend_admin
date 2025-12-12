@@ -51,7 +51,6 @@ export class ProductoGaleriaComponent implements OnInit {
     let file;
     if(event.target.files && event.target.files[0]) {
       file = <File> event.target.files[0];
-      console.log(file)
     } else {
       this.notificacionService.notificarError(null, "No hay archivo de imagen")
     }
@@ -60,7 +59,6 @@ export class ProductoGaleriaComponent implements OnInit {
       if(file.type=='image/png' || file.type=='image/jpeg' || file.type=='image/jpg' || file.type=='image/gif') {
         const reader = new FileReader()
         reader.onload = e => this.imgSelect = reader.result;
-        console.log(this.imgSelect)
 
         reader.readAsDataURL(file)
         this.file = file

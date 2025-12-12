@@ -45,7 +45,6 @@ export class CuponFormComponent implements OnInit {
   }
 
   registrar() {
-    console.log(this.cuponesForm.value)
     if(this.cuponesForm.valid){
       if(this.id != null) {
         this.cuponService.actualizar(this.id, this.cuponesForm.value).subscribe({

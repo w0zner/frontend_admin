@@ -34,14 +34,17 @@
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
-                          <table class="table table-bordered">
+                          <table class="table table-hover">
                             <thead class="thead-dark">
                               <tr>
                                 <th>#</th>
                                 <th>Identidad</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
+                                <th>Teléfono</th>
                                 <th>Correo Electrónico</th>
+                                <th>Verificado</th>
+                                <th>Estado</th>
                                 <th>Opciones</th>
                               </tr>
                             </thead>
@@ -49,12 +52,19 @@
                               <p>No hay registros que mostrar</p>
                             </tr>
                             <tbody *ngFor="let item of usuarios | slice: (page-1)*pageSize : (page-1)*pageSize+pageSize; let indice = index">
-                              <tr>
+                              <tr [ngClass]="{'text-muted': item.activo==false}">
                                 <td>{{indice + 1}}</td>
                                 <td>{{item.cedula}}</td>
                                 <td>{{item.nombres}}</td>
                                 <td>{{item.apellidos}}</td>
+                                <td>{{item.telefono}}</td>
                                 <td>{{item.email}}</td>
+                                <td>{{item.verificado == true ? 'Si' : 'No'}}</td>
+                                <td>
+                                  <a class="btn" style="border: 0px;" [ngClass]="{'btn-outline-success': item.activo==true, 'btn-outline-secondary': item.activo==false}" (click)="actualizarEstado(item)">
+                                      <i class="fa-sharp fa-solid" [ngClass]="{'fa-square-check': item.activo==true, 'fa-square-xmark': item.activo==false}"></i>
+                                  </a>
+                                </td>
                                 <td style="text-align: center;">
                                   <div class="btn-toolbar" role="toolbar" aria-label="Settings toolbar" style="text-align: center;">
                                     <a class="btn btn-outline-secondary btn-icon" [routerLink]="['/panel/clientes/registro/', item._id]"><i class="fa-sharp fa-solid fa-pencil"></i></a>

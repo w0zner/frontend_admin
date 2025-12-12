@@ -17,7 +17,6 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
     this.ventaService.obtenerKpiGanancias().subscribe({
       next: (resp:any) => {
-        console.log(resp)
         this.total = resp.enero + resp.febrero + resp.marzo + resp.abril + resp.mayo + resp.junio + resp.julio + resp.agosto + resp.septiembre + resp.octubre + resp.noviembre + resp.diciembre;
 
         const ctx = document.getElementById('myChartGanacias') as HTMLCanvasElement;
@@ -57,13 +56,13 @@ export class InicioComponent implements OnInit {
         }
       },
       error: (err:any) => {
-        console.log(err)
+        console.error(err)
       }
     })
 
     this.ventaService.obtenerKpiCantidad().subscribe({
       next: (resp:any) => {
-        console.log(resp)
+        console.error(resp)
         this.cantidad = resp.enero + resp.febrero + resp.marzo + resp.abril + resp.mayo + resp.junio + resp.julio + resp.agosto + resp.septiembre + resp.octubre + resp.noviembre + resp.diciembre;
 
         const ctx = document.getElementById('myChartCantidades') as HTMLCanvasElement;
@@ -103,7 +102,7 @@ export class InicioComponent implements OnInit {
         }
       },
       error: (err:any) => {
-        console.log(err)
+        console.error(err)
       }
     })
 

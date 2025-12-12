@@ -50,7 +50,6 @@ export class VentasListComponent implements OnInit  {
     if(this.tipoConsulta==='fechas'){
         this.ventaService.obtenerVentas(this.desde, this.hasta).subscribe({
           next: (response:any) => {
-            console.log(response.data)
             this.ventas = response.data;
             this.ventas = this.ventas.map(elm => {
               const estado = this.estadosVenta.find(e => e.value === elm.estado)
@@ -63,10 +62,8 @@ export class VentasListComponent implements OnInit  {
           }
         })
     } else if(this.tipoConsulta === 'venta') {
-      console.log(this.nroVenta)
         this.ventaService.obtenerVentaPorNroVenta(this.nroVenta).subscribe({
           next: (response:any) => {
-            console.log(response.data)
             this.ventas = response.data;
             this.ventas = this.ventas.map(elm => {
               const estado = this.estadosVenta.find(e => e.value === elm.estado)
@@ -81,7 +78,6 @@ export class VentasListComponent implements OnInit  {
     } else if(this.tipoConsulta === 'estado') {
         this.ventaService.obtenerVentaPorEstado(this.estadoBuscar).subscribe({
           next: (response:any) => {
-            console.log(response.data)
             this.ventas = response.data;
             this.ventas = this.ventas.map(elm => {
               const estado = this.estadosVenta.find(e => e.value === elm.estado)
@@ -111,11 +107,8 @@ export class VentasListComponent implements OnInit  {
   }
 
   actualizarEstado(){
-    console.log(this.ventaId)
-    console.log(this.estadoSeleccionadoTarget)
     this.ventaService.actualizarEstado(this.ventaId, this.seleccionado).subscribe({
       next: (response: any) => {
-        console.log(response)
         this.notificacionesService.notificarExito("Orden actualizada con éxito!.")
         this.consultarVentas();
       }
@@ -123,9 +116,7 @@ export class VentasListComponent implements OnInit  {
   }
 
   onDepartamentoChange(selected:any) {
-    console.log(selected.target.value)
     this.seleccionado = this.estadosVenta.find(elm => elm.value === selected.target.value)
-    console.log(this.seleccionado)
     if(this.seleccionado?.id! < this.estadoSeleccionado.id) {
       this.notificacionesService.notificarAlerta("Estado seleccionado inválido.")
       this.estadoSeleccionadoTarget= this.estadoSeleccionado.value;

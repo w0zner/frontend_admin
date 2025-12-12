@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { CuponService } from 'src/app/services/cupon.service';
 import { NotificacionService } from 'src/app/services/notificacion.service';
 

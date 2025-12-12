@@ -58,7 +58,6 @@ export class ProductosListComponent implements OnInit {
 
   filtrar() {
     if(this.filtroForm.valid) {
-      console.log(2)
       this.listar(this.filtroForm.controls['titulo'].value)
     }
   }

@@ -17,31 +17,31 @@ export class VentaService {
   }
 
   obtenerVentas(desde: any, hasta: any) {
-    return this.http.get(this.url + '/obtener-ventas/'+desde + '/' +hasta , {headers: this.headers})
+    return this.http.get(this.url + '/obtener-ventas/'+desde + '/' +hasta)
   }
 
   obtenerVentaPorId(id: any) {
-    return this.http.get(this.url + "/obtener-venta-admin/" + id, { headers: this.headers });
+    return this.http.get(this.url + "/obtener-venta-admin/" + id);
   }
 
   actualizarEstado(id: any, estado: any) {
-    return this.http.put(this.url + "/actualizar-estado/" + id, estado, { headers: this.headers })
+    return this.http.put(this.url + "/actualizar-estado/" + id, estado,)
   }
 
   obtenerVentaPorNroVenta(nventa: any) {
-    return this.http.get(this.url + "/obtener-ventas-nventa/" + nventa, { headers: this.headers });
+    return this.http.get(this.url + "/obtener-ventas-nventa/" + nventa,);
   }
 
   obtenerVentaPorEstado(estado: any) {
-    return this.http.get(this.url + "/obtener-ventas-estado/" + estado, { headers: this.headers });
+    return this.http.get(this.url + "/obtener-ventas-estado/" + estado,);
   }
 
   //KPI
   obtenerKpiGanancias() {
-    return this.http.get(this.url + "/obtener-kpi-ganancias/", { headers: this.headers });
+    return this.http.get(this.url + "/obtener-kpi-ganancias/");
   }
 
   obtenerKpiCantidad() {
-    return this.http.get(this.url + "/obtener-kpi-cantidad/", { headers: this.headers });
+    return this.http.get(this.url + "/obtener-kpi-cantidad/");
   }
 }

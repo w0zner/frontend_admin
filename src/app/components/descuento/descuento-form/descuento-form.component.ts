@@ -32,14 +32,12 @@ export class DescuentoFormComponent implements OnInit{
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      console.log(params.get('id'))
       this.id = params.get('id')
 
       if(params.get('id')) {
         this.descuentoId = params.get('id')
         this.descuentoService.obtenerPorId(this.descuentoId).subscribe({
           next: (response:any) => {
-            console.log(response)
             this.descuentoForm.patchValue({
               titulo: response.data.titulo,
               descuento:  response.data.descuento,
@@ -81,8 +79,6 @@ export class DescuentoFormComponent implements OnInit{
       }
     } else {
       if(this.descuentoForm.valid && this.file) {
-        console.log(this.descuentoForm.value)
-        console.log(this.file)
         this.descuentoService.guardar(this.descuentoForm.value, this.file).subscribe({
           next: (response: any) => {
             this.notificacionService.notificarExito('Registro guardado con exito!')
@@ -105,7 +101,6 @@ export class DescuentoFormComponent implements OnInit{
     let file;
     if(event.target.files && event.target.files[0]) {
       file = <File> event.target.files[0];
-      console.log(file)
     } else {
       this.notificacionService.notificarError(null, "No hay archivo de imagen")
     }
@@ -114,7 +109,6 @@ export class DescuentoFormComponent implements OnInit{
       if(file.type=='image/png' || file.type=='image/jpeg' || file.type=='image/jpg' || file.type=='image/gif') {
         const reader = new FileReader()
         reader.onload = e => this.imgSelect = reader.result;
-        console.log(this.imgSelect)
 
         reader.readAsDataURL(file)
         this.file = file

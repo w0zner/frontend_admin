@@ -53,7 +53,6 @@ export class ProductosFormComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.configService.obtenerConfiguracionPublica().subscribe({
       next: (response: any) => {
-        console.log(response)
         this.config_global = response.data
       }
     })
@@ -61,7 +60,6 @@ export class ProductosFormComponent implements OnInit, AfterViewInit {
     this.activatedRoute.paramMap.subscribe(params => {
       if(params.get('id')) {
         this.productId = params.get('id') || ''
-        console.log(this.productId)
         this.productoService.obtenerPorId(this.productId).subscribe({
           next: (response: any) => {
              this.productoForm.patchValue({
@@ -100,7 +98,6 @@ export class ProductosFormComponent implements OnInit, AfterViewInit {
     let file;
     if(event.target.files && event.target.files[0]) {
       file = <File> event.target.files[0];
-      console.log(file)
     } else {
       this.notificacionService.notificarError(null, "No hay archivo de imagen")
     }
@@ -109,7 +106,6 @@ export class ProductosFormComponent implements OnInit, AfterViewInit {
       if(file.type=='image/png' || file.type=='image/jpeg' || file.type=='image/jpg' || file.type=='image/gif') {
         const reader = new FileReader()
         reader.onload = e => this.imgSelect = reader.result;
-        console.log(this.imgSelect)
 
         reader.readAsDataURL(file)
         this.file = file
@@ -127,9 +123,6 @@ export class ProductosFormComponent implements OnInit, AfterViewInit {
 
   guardar() {
     if(this.productId != null) {
-      console.log('uodate')
-      console.log(this.productoForm.value)
-      console.log(this.productoForm )
       if(this.productoForm.valid) {
         this.productoForm.controls['contenido'].setValue(this.quillEditor.root.innerHTML)
         this.productoService.update(this.productoForm.value, this.file, this.productId).subscribe({
@@ -144,8 +137,6 @@ export class ProductosFormComponent implements OnInit, AfterViewInit {
       }
     } else {
       if(this.productoForm.valid && this.file) {
-        console.log('Guardando producto...')
-        console.log(this.productoForm.value)
         this.productoService.guardar(this.productoForm.value, this.file).subscribe({
           next: () => {
             this.notificacionService.notificarExito("Producto guardado con exito!")

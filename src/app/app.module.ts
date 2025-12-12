@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +30,7 @@ import { VentasListComponent } from './components/ventas/ventas-list/ventas-list
 import { UsuariosListComponent } from './components/usuario/usuarios-list/usuarios-list.component';
 import { UsuariosFormComponent } from './components/usuario/usuarios-form/usuarios-form.component';
 import { PerfilFormComponent } from './components/perfil/perfil-form/perfil-form.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
 @NgModule({
@@ -67,7 +68,12 @@ import { PerfilFormComponent } from './components/perfil/perfil-form/perfil-form
     NgbModule,
     //QuillModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, 
+      multi: true // ¡MUY IMPORTANTE! Permite registrar múltiples interceptores
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

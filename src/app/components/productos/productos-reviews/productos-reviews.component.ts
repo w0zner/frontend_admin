@@ -21,7 +21,6 @@ export class ProductosReviewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
-      console.log(params.get('id'))
       const id = params.get('id');
       this.obtenerProducto(id);
     })
@@ -30,11 +29,9 @@ export class ProductosReviewsComponent implements OnInit {
   obtenerProducto(id: any) {
     this.productoService.obtenerPorId(id).subscribe({
       next:(response:any)=>{
-        console.log(response)
         this.producto=response.data
         this.productoService.obtenerResenhasPorProducto(this.producto._id).subscribe({
           next: (response: any) => {
-            console.log(response);
             this.reviews = response.data;
           }
         })

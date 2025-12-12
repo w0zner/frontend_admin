@@ -20,12 +20,10 @@ export class VentasFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.activated.paramMap.subscribe(params => {
-      console.log(params.get('id'))
       const id = params.get('id')
 
       this.ventaService.obtenerVentaPorId(id).subscribe({
         next:(response: any) => {
-          console.log(response.data)
           this.orden = response.venta
           this.detalles = response.detalles
         }

@@ -39,7 +39,6 @@ export class ProductoVariedadComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params=> {
       if(params.get('id')) {
         const id=params.get('id')
-        console.log(id)
         this.obtenerProducto(id!)
       }
     })
@@ -48,7 +47,6 @@ export class ProductoVariedadComponent implements OnInit {
   obtenerProducto(id: string) {
     this.productoService.obtenerPorId(id).subscribe({
       next:(response:any)=>{
-        console.log(response)
         this.producto=response.data
 
         this.variedadesForm.patchValue({

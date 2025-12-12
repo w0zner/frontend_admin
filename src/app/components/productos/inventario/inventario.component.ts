@@ -35,7 +35,6 @@ export class InventarioComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       if(params.get('id')) {
         this.id = params.get('id') || ''
-        console.log(this.id)
         this.listar()
       }
     })
@@ -52,7 +51,6 @@ export class InventarioComponent implements OnInit {
           this.productoService.getInventario(this.id!).subscribe({
             next: (response: any) => {
               this.inventario = response.data
-              console.log(this.inventario)
               this.inventario.forEach(element=>{
                 this.itemsExportacion.push({
                   producto: this.producto.titulo,

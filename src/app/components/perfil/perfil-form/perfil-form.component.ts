@@ -30,16 +30,13 @@ export class PerfilFormComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log(localStorage.getItem('_id'))
     this.usuarioService.getById(localStorage.getItem('_id') || '').subscribe((res: any) => {
-      console.log(res)
       this.perfilForm.patchValue(res.data)
     })
   }
 
   actualizarPerfil() {
     this.usuarioService.update(localStorage.getItem('_id') || '', this.perfilForm.value).subscribe((res: any) => {
-      console.log(res)
       this.notificacionService.notificarExito('Tu perfil se actualizó correctamente.')
       this.router.navigate(['/inicio'])
     })

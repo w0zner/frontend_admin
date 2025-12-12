@@ -70,6 +70,14 @@ export class ClientesListComponent implements OnInit {
     );
   }
 
+  actualizarEstado(item: any) {
+    this.usuarioService.updateStatus(item._id, {estado:!item.activo}).subscribe({
+      next: (response: any) => {
+        this.listar();
+      }
+    })
+  }
+
 
 
 }
