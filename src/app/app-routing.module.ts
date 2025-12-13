@@ -20,6 +20,7 @@ import { ProductosReviewsComponent } from './components/productos/productos-revi
 import { VentasListComponent } from './components/ventas/ventas-list/ventas-list.component';
 import { VentasFormComponent } from './components/ventas/ventas-form/ventas-form.component';
 import { PerfilFormComponent } from './components/perfil/perfil-form/perfil-form.component';
+import { UsuariosListComponent } from './components/usuario/usuarios-list/usuarios-list.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'inicio', pathMatch: 'full'},
@@ -47,6 +48,7 @@ const routes: Routes = [
       {path: 'contactos', component: IndexContactoComponent, canActivate: [adminGuard]},
       {path: 'ventas', component: VentasListComponent, canActivate: [adminGuard]},
       {path: 'ventas/:id', component: VentasFormComponent, canActivate: [adminGuard]},
+      {path: 'usuarios', component: UsuariosListComponent, canActivate: [adminGuard]},
     ]
   },
   {path: 'login', component: LoginComponent}
