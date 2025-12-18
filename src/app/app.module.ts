@@ -31,6 +31,7 @@ import { UsuariosListComponent } from './components/usuario/usuarios-list/usuari
 import { UsuariosFormComponent } from './components/usuario/usuarios-form/usuarios-form.component';
 import { PerfilFormComponent } from './components/perfil/perfil-form/perfil-form.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { TopnavComponent } from './components/topnav/topnav.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     UsuariosListComponent,
     UsuariosFormComponent,
     PerfilFormComponent,
+    TopnavComponent
   ],
   imports: [
     BrowserModule,
