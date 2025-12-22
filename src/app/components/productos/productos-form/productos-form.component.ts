@@ -37,13 +37,16 @@ export class ProductosFormComponent implements OnInit, AfterViewInit {
     })
   }
   ngAfterViewInit(): void {
-    const quill = new Quill('#editor', {
+    this.quillEditor = new Quill('#editor', {
       theme: 'snow',
       modules: {
         // Conectamos la toolbar definida en el HTML
         toolbar: [
           ['bold', 'italic', 'underline'],
           [{ list: 'ordered'}, { list: 'bullet' }],
+          [{ 'align': [] }],
+          [{ 'size': ['small', false, 'large', 'huge'] }],
+          [{ 'font': [] }],
           ['clean']
         ]
       }
@@ -70,6 +73,7 @@ export class ProductosFormComponent implements OnInit, AfterViewInit {
               stock: response.data.stock,
               categoria: response.data.categoria
             })
+            console.log('contenido', response.data.contenido)
 
             if (this.quillEditor) {
               this.quillEditor.clipboard.dangerouslyPasteHTML(response.data.contenido);
