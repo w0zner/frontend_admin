@@ -23,19 +23,28 @@
   
         <!-- Dropdown -->
  
-  
+        <a class="navbar-user-link mr-4 rounded-circle p-1" role="button" data-bs-toggle="offcanvas" href="#" aria-controls="sidebarOffcanvasActivity" style="border: 1px solid #ccc;">
+          <span class="icon">
+            <i class="fe fe-bell"></i>
+          </span>
+        </a>
+
         <!-- Dropdown -->
         <div class="dropdown">
   
+          
+
           <!-- Toggle -->
-          <a class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="avatar avatar-sm avatar-online dropdown-toggle rounded-circle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: 1px solid #ccc;">
             <!-- <img src="https://dashkit.goodthemes.co/assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle" /> -->
             <img src="./assets/img/avatars/profiles/avatar-10.png" alt="..." class="avatar-img rounded-circle" />
           </a>
   
           <!-- Menu -->
           <div class="dropdown-menu dropdown-menu-right">
-      
+             <a class="dropdown-item" style="cursor:pointer" (click)="logout()">
+              <span class="fe fe-star me-4"></span> Perfil
+            </a>
             <a class="dropdown-item" style="cursor:pointer" (click)="logout()">
               <span class="fe fe-log-out me-4"></span> Cerrar sesión
             </a>

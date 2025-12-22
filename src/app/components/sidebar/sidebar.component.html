@@ -1,16 +1,23 @@
-<nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light" id="sidebar">
+<nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light" id="sidebar" style="background: #3b506c; box-shadow: rgba(59, 80, 108, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;" >
     <div class="container-fluid">
 
-      <!-- Toggler -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <!-- style="background: #eb267b; background: radial-gradient(circle, rgba(235, 38, 123, 1) 0%, rgba(250, 250, 250, 1) 99%);" -->
+      <!-- style="background: #3f393c; background: radial-gradient(circle, rgba(63, 57, 60, 1) 0%, rgba(250, 250, 250, 1) 99%);" -->
 
       <!-- Brand -->
-      <a class="navbar-brand" [routerLink]="['/clientes']" >
+       
+      <!-- <a class="navbar-brand" [routerLink]="['/clientes']" >
         <img src="./assets/img/logo.svg" class="navbar-brand-img mx-auto" style="max-height: 4rem !important;" alt="...">
-      </a>
-
+      </a> -->
+      <div >
+        <a class="navbar-brand ">
+        <!-- <img src="assets/img/components/logo/logo-white.svg" alt="Createx" width="130" /> -->
+          <img [src]="imgSelect" class="navbar-brand-img mx-auto" style="border: 1px solid #ccc; border-radius: 8px; max-height: 10rem !important;" alt="...">
+        <!-- <img src="assets/img/store-64.png" alt="Tienda" width="60"> img-thumbnail style="max-height: 4rem !important;"-->
+        </a>
+        <h5 class="text-center mt-2 text-light">{{NombreTienda}}</h5>
+      </div>
+      
       <!-- User (xs) -->
       <div class="navbar-user d-md-none">
 
@@ -53,8 +60,15 @@
 
         <!-- Navigation d-md-none-->
         <ul class="navbar-nav">
-         
-          <li class="nav-item">
+          <!-- <li class="nav-item">
+            <button  type="button" data-toggle="collapse" data-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          <i class="fe fe-menu"></i>
+          </button>
+          </li> -->
+          
+
+          <li class="nav-item d-md-none">
             <a class="nav-link " [routerLink]="['/clientes']" routerLinkActive="active" >
               <i class="fe fe-user"></i> Clientes
             </a>
@@ -71,8 +85,8 @@
         <hr class="navbar-divider my-3">
 
         <!-- Heading -->
-        <h6 class="navbar-heading">
-          CONTROL
+        <h6 class="navbar-heading text-light">
+          COMPONENTES
         </h6>
 
         <!-- Navigation -->

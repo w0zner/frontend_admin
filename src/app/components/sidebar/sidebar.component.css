@@ -6,3 +6,19 @@
    width:100%;
    font-size: 12px;
 }
+
+.nav-item .nav-link {
+ color: white;
+}
+
+.nav-item {
+  padding: 4px;
+}
+
+
+.nav-item .nav-link.active {
+  color: #12263f;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
