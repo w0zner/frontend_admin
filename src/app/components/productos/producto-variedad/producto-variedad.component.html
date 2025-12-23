@@ -10,7 +10,7 @@
       </div>
 
       <form [formGroup]="variedadesForm">
-        <div class="card box-shadow-sm border-0 rounded-0 card-hover">
+        <div class="card box-shadow-sm border-0  card-hover">
               <div class="card-header border-0 d-flex flex-wrap flex-md-nowrap justify-content-between">
                   <h5 style="margin-bottom: 0px;">Variedades del producto</h5>
                   <p class="font-size-sm font-weight-medium pl-md-4">
@@ -74,7 +74,7 @@
                               <ng-container *ngFor="let variedad of variedades; let i = index">
                                   <tr>
                                       <td>{{variedad.descripcion}}</td>
-                                      <td><a class="btn btn-sm btn-outline-danger btn-icon" (click)="eliminarVariedad(i)"><i class="fa-sharp fa-solid fa-trash-can"></i></a></td>
+                                      <td><a class="btn btn-sm btn-outline-danger btn-icon" (click)="eliminarVariedad(i)"><i class="fe fe-trash"></i></a></td>
                                   </tr>
                               </ng-container>
                             </tbody>

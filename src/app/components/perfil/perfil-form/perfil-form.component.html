@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <div class="card box-shadow border-0 rounded-0 card-hover">
+    <div class="card box-shadow border-0  card-hover">
         <div class="card-header border-0 ">
             <h5 class="pt-2 pb-2" style="margin-bottom: 0px;">Datos del perfil</h5>
         </div>
@@ -17,11 +17,11 @@
             <div class="card-body">
                 <div class="row pb-3">
                     <!-- <div class="row ml-2 mt-1 mb-4 p-4" style="display: flex; align-items: center; justify-content: center; background-color: beige; width: 99%;">
-                        
+
                     </div> -->
                     <div class="col-6 form-group" style="display: flex; align-items: center; justify-content: center;">
                             <input
-                                class="form-check-input rounded-0"
+                                class="form-check-input "
                                 formControlName="extranjero"
                                 type="checkbox"
                                 id="ex-check-1"
@@ -37,7 +37,7 @@
                             <label for="ac-country">Tipo documento</label>
                             <select
                                 id="ac-city"
-                                class="custom-select rounded-0 form-control form-control-sm"
+                                class="custom-select  form-control form-control-sm"
                                 formControlName="tipo_documento"
                             >
                                 <option value="" disabled selected>Seleccionar</option>
@@ -90,7 +90,7 @@
                     <label for="ac-country">Ciudad</label>
                     <select
                         id="ac-city"
-                        class="custom-select rounded-0"
+                        class="custom-select "
                         formControlName="ciudad"
                     >
                         <option value="" disabled selected>Seleccionar</option>
@@ -134,7 +134,7 @@
                     <div class="col-sm-6 form-group">
                     <label for="genero" class="form-label">Genero</label>
                     <select
-                        class="form-control custom-select rounded-0"
+                        class="form-control custom-select "
                         formControlName="genero"
                         id="genero"
                     >
@@ -150,13 +150,13 @@
                         type="date"
                         formControlName="fecha_nacimiento"
                     />
-                    </div>                   
+                    </div>
                 </div>
             </div>
             <div class="card-footer border-0 text-end p-3">
                 <button class="btn btn-primary btn-hover-shadow mr-3" [disabled]="!perfilForm.valid"><i
                         class="fa-sharp fa-solid fa-square-check"></i> Actualizar</button>
-                <a [routerLink]="['/inicio']" class="btn btn-secondary rounded-0"><i
+                <a [routerLink]="['/inicio']" class="btn btn-secondary "><i
                         class="fa-sharp fa-solid fa-rectangle-xmark"></i> Cancelar</a>
             </div>
         </form>

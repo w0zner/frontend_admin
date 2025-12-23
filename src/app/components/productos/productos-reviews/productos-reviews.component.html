@@ -9,7 +9,7 @@
         </div>
       </div>
 
-        <div class="card box-shadow-sm border-0 rounded-0 card-hover">
+        <div class="card box-shadow-sm border-0  card-hover">
               <div class="card-header border-0 d-flex flex-wrap flex-md-nowrap justify-content-between">
                   <h5 style="margin-bottom: 0px;">Reseñas</h5>
                   <p class="font-size-sm font-weight-medium pl-md-4">
@@ -33,7 +33,7 @@
                 </div>
               </div>
 
-              
+
 
               <div class="card-body mt-4">
                 <div class="row" >
@@ -46,7 +46,7 @@
                             <div class="col-md-3 col-sm-4 mb-sm-0 mb-3">
                             <h4 class="fs-lg mb-0">{{item.usuario.nombres + ' ' + item.usuario.apellidos}}</h4>
                             <a class="text-decoration-none text-muted">{{item.usuario.email}}</a>
-                            <span class="d-block mb-3 fs-sm text-muted mt-2" style="display: inline;"> 
+                            <span class="d-block mb-3 fs-sm text-muted mt-2" style="display: inline;">
                                 <div class="rating">
                                   <i class="cxi-star-filled"
                                       *ngFor="let star of stars; let i = index"
@@ -58,16 +58,16 @@
                             </div>
                             <div class="col">
                             <p class="mb-1">
-                                {{item.mensaje}} - <span class="text-muted">Venta Ref.: <b>#{{item.venta._id}}</b></span> 
+                                {{item.mensaje}} - <span class="text-muted">Venta Ref.: <b>#{{item.venta._id}}</b></span>
                             </p>
                             <span class="d-block mb-3 fs-sm text-muted">{{item.createdAt | date}}</span>
                             </div>
                         </div>
-                    </div>  
+                    </div>
                 </div>
               </div>
               <div class="card-footer border-0 text-end">
                 <!-- <button class="btn btn-primary mr-3" (click)="actualizar()"><i class="cxi-settings"></i> Actualizar</button> -->
-              </div> 
+              </div>
         </div>
 </div>

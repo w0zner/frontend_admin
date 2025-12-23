@@ -1,17 +1,18 @@
 <app-sidebar> </app-sidebar>
 <div class="main-content">
-    <div class="pt-1 mt-4">
-        <h1 class="mt-2 mt-md-4 mb-3 pt-0"></h1>
-        <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
-          <p class="text-muted"></p>
-
+    <div class="header">
+      <div class="header-body">
+        <div class="row align-items-center">
+          <div class="col">
+            <div class="header-title">
+              <h4 style="margin-bottom: 0px;">Registro de producto</h4>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="card box-shadow border-0 rounded-0 card-hover">
-            <div class="card-header border-0">
-                <h5 class="pt-2 pb-2" style="margin-bottom: 0px;">Registro de producto</h5>
-            </div>
+      <div class="card box-shadow border-0 card-hover">
             <form [formGroup]="productoForm" (submit)="guardar()" class="needs-validation">
               <div class="card-body">
                     <div class="row">
@@ -70,9 +71,9 @@
                       </div>
                     </div>
               </div>
-              <div class="card-footer border-0 text-end">
-                  <button type="submit" class="btn btn-primary btn-hover-shadow mr-3"><i class="fa-sharp fa-solid fa-square-check"></i> {{this.productId==null?'Guardar':'Actualizar'}}</button>
-                  <button [routerLink]="['/panel/productos']"  class="btn btn-secondary rounded-0"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i> Cancelar</button>
+              <div class="card-footer border-0 text-end m-2">
+                  <button type="submit" class="btn btn-success btn-hover-shadow mr-3"><i class="fa-sharp fa-solid fa-square-check"></i> {{this.productId==null?'Guardar':'Actualizar'}}</button>
+                  <button [routerLink]="['/panel/productos']"  class="btn btn-secondary"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i> Cancelar</button>
               </div>
           </form>
       </div>

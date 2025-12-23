@@ -2,20 +2,29 @@
 
 <div class="main-content">
             <!-- Page title-->
-            <div class="pt-1 mt-4">
-              <h3 class="mt-2 mt-md-4 mb-3 pt-4">Descuentos</h3>
-              <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
-                <p class="text-muted">Este módulo lista todos los descuentos de la tienda.</p>
-                <p class="font-size-sm font-weight-medium pl-md-4">
-                  <a class="text-nowrap" rel="noopener" [routerLink]="['/panel/descuentos/registro']">Agregar nuevo<i class="cxi-angle-right font-size-base align-middle ml-1"></i></a>
-                </p>
+            <div class="header">
+              <div class="header-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <div class="header-title">
+                      <h4 style="margin-bottom: 0px;">Descuentos</h4>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+                          <p class="font-size-sm font-weight-medium pl-md-4">
+                            <a class="btn btn-primary lift" role="button" rel="noopener" [routerLink]="['/panel/descuentos/registro']"><i class="fe fe-plus"></i> Registrar nuevo</a>
+                          </p>
+                      </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="card box-shadow border-0 rounded-0 card-hover">
+            <div class="card box-shadow border-0 card-hover">
 
-                  <div class="card-header border-0">
-<!--                       <form [formGroup]="filtroUsuarioForm" class="form-inline">
+<!--                   <div class="card-header border-0">
+                      <form [formGroup]="filtroUsuarioForm" class="form-inline">
                           <label class="sr-only" for="inline-form-input-name">Apellidos</label>
                           <input class="form-control  mr-sm-4" (keyup)="filtro('nombre')" formControlName="nombre" type="text" id="inline-form-input-name" placeholder="Nombres">
                           <label class="sr-only" for="inline-form-input-username">Correo</label>
@@ -26,11 +35,11 @@
                             <i class="fa-solid fa-magnifying-glass"></i>
                           </div>
 
-                      </form> -->
-                  </div>
+                      </form>
+                  </div>-->
                   <div class="card-body">
                       <div class="table-responsive">
-                          <table class="table table-bordered">
+                          <table class="table table-hover">
                             <thead class="thead-dark">
                               <tr>
                                 <th>#</th>
@@ -51,7 +60,7 @@
                                   <h6 style="padding-bottom: 0; margin-bottom: 0;">
                                     <img style="width: 50px;"
                                       [src]="item.banner ? url + item.banner : 'assets/img/default-product.png'"
-                                      class="img-thumbnail rounded-0" alt="Rounded image">
+                                      class="img-thumbnail " alt="Rounded image">
                                     {{item.titulo}}
                                   </h6>
                                 </td>
@@ -68,8 +77,8 @@
                                 <!-- <td>{{ item.createdAt | date:'dd-MM-yyyy' }}</td> -->
                                 <td style="text-align: center;">
                                   <div class="btn-toolbar" role="toolbar" aria-label="Settings toolbar" style="text-align: center;">
-                                    <a class="btn btn-outline-secondary btn-icon" [routerLink]="['/panel/descuentos/registro/', item._id]"><i class="fa-sharp fa-solid fa-pencil"></i></a>
-                                    <a class="btn btn-outline-danger btn-icon" (click)="eliminar(item._id)"><i class="fa-sharp fa-solid fa-trash-can"></i></a>
+                                    <a class="btn btn-outline-secondary btn-icon border-0" [routerLink]="['/panel/descuentos/registro/', item._id]"><i class="fe fe-edit"></i></a>
+                                    <a class="btn btn-outline-danger btn-icon border-0" (click)="eliminar(item._id)"><i class="fe fe-trash"></i></a>
                                   </div>
                                 </td>
                               </tr>

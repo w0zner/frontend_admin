@@ -1,18 +1,22 @@
 <app-sidebar> </app-sidebar>
 
 <div class="main-content">
-    <div class="pt-1 mt-4">
+    <!-- <div class="pt-1 mt-0">
         <h1 class="mt-2 mt-md-4 mb-3 pt-0"></h1>
         <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
           <p class="text-muted"></p>
 
         </div>
+      </div> -->
+      <div class="header">
+        <div class="header-body">
+          <div class="header-title">
+            <h4 style="margin-bottom: 0px;">Configuraciones</h4>
+          </div>
+        </div>
       </div>
 
-      <div class="card box-shadow-sm border-0 rounded-0 card-hover" *ngIf="!existeConfig">
-        <div class="card-header border-0">
-            <h5 style="margin-bottom: 0px;">Configuraciones</h5>
-        </div>
+      <div class="card box-shadow-sm card-hover border-0" *ngIf="!existeConfig">
         <div class="card-body">
             <div style="max-width: 48rem;" *ngIf="!loading">
                 <span>Aun no se ha creado una configuración</span>
@@ -25,15 +29,16 @@
             <button class="btn btn-primary mr-3" (click)="inicializar()"><i class="cxi-settings"></i>  Inicializar</button>
           </div>
       </div>
+
       <form [formGroup]="configForm">
-      <div class="card box-shadow-sm border-0 rounded-0 card-hover" *ngIf="existeConfig">
-            <div class="card-header border-0">
+      <div class="card border-0 card-hover" *ngIf="existeConfig">
+            <!-- <div class="card-header border-0">
                 <h5 style="margin-bottom: 0px;">Configuraciones</h5>
-            </div>
+            </div> -->
 
             <div class="card-body">
               <div style="max-width: 48rem;">
-                <div class="mb-2 p-1" style="background-color: beige;">
+                <div class="mb-2 p-1 text-light rounded-2" style="background-color: #3b506c;">
                   <b>Identidad de la tienda</b>
                 </div>
                 <div class="form-group row align-items-center">
@@ -55,7 +60,7 @@
 
                     </div>
                     <div class="col-md-9">
-                      <a role="button" (click)="agregarCategorias()" class="mb-5">Agregar</a>
+                      <a role="button" (click)="agregarCategorias()" class="mb-5 text-primary">Agregar</a>
                       <div class="table-responsive mt-3">
                         <table class="table table-sm table-hover">
                           <thead class="thead-dark">
@@ -78,7 +83,7 @@
                                 <tr>
                                     <td>{{cat.titulo}}</td>
                                     <td><i class="{{cat.icono}}"></i> {{cat.icono}}</td>
-                                    <td><a class="btn btn-sm btn-outline-danger btn-icon border-0" (click)="eliminarCategoria(i)"><i class="fa-sharp fa-solid fa-trash-can"></i></a></td>
+                                    <td><a class="btn btn-sm btn-outline-danger btn-icon border-0" (click)="eliminarCategoria(i)"><i class="fe fe-trash"></i></a></td>
                                 </tr>
                             </ng-container>
                           </tbody>
@@ -100,10 +105,10 @@
                     <img [src]="imgSelect" class="img-thumbnail" alt="Rounded image">
                   </div>
                 </div>
-                                
 
-                <div class="mb-2 p-1" style="background-color: beige;">
-                  <b>Facuración</b>
+
+                <div class="mb-2 p-1 text-light rounded-2" style="background-color: #3b506c;">
+                  <b>Facturación</b>
                 </div>
                 <div class="form-group row align-items-center">
                   <label class="col-md-3 col-form-label font-weight-medium" for="text-input">Facturación</label>
@@ -117,7 +122,7 @@
                     <input class="form-control" type="number" min="0" max="9999999" id="text-input" placeholder="Numeración Desde" formControlName="correlativo">
                   </div>
                 </div>
-                
+
 
               </div>
 

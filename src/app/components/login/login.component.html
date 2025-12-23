@@ -1,4 +1,88 @@
-<div class="row d-flex justify-content-center">
+ <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-5 col-xl-4 my-5">
+
+          <!-- Heading -->
+          <h4 class="display-4 text-center mb-3">
+            Login
+          </h4>
+
+          <!-- Subheading -->
+          <p class="text-body-secondary text-center mb-5">
+            Administración de la tienda
+          </p>
+
+          <!-- Form -->
+          <form [formGroup]="loginForm" (submit)="login()" class="needs-validation">
+
+            <!-- Email address -->
+            <div class="form-group">
+
+              <!-- Label -->
+              <label class="form-label">
+                Correo electrónico
+              </label>
+
+              <!-- Input -->
+              <input type="email" class="form-control" formControlName="email" placeholder="name@address.com">
+
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+              <div class="row">
+                <div class="col">
+
+                  <!-- Label -->
+                  <label class="form-label">
+                    Contraseña
+                  </label>
+
+                </div>
+                <div class="col-auto">
+
+                  <!-- Help text -->
+                  <a href="password-reset-cover.html" class="form-text small text-body-secondary">
+                    Haz olvidado tu contraseña?
+                  </a>
+
+                </div>
+              </div> <!-- / .row -->
+
+              <!-- Input group -->
+              <div class="input-group input-group-merge">
+
+                <!-- Input -->
+                <input class="form-control" type="password" formControlName="password" placeholder="Enter your password">
+
+                <!-- Icon -->
+               <!--  <span class="input-group-text">
+                  <i class="fe fe-eye"></i>
+                </span> -->
+
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <button class="btn btn-lg w-100 btn-primary mb-3">
+              Ingresar
+            </button>
+
+            <!-- Link -->
+            <!-- <div class="text-center">
+              <small class="text-body-secondary text-center">
+                Don't have an account yet? <a href="sign-up.html">Sign up</a>.
+              </small>
+            </div> -->
+
+          </form>
+
+        </div>
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
+
+
+<!-- <div class="row d-flex justify-content-center">
     <div class="col-lg-4 col-md-4 col-sm-2">
          <div class="card p-4 mt-5" style=" border: 0px; border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
       <div class="card-header" style="border-bottom: 0px; background-color: white;">
@@ -32,11 +116,9 @@
           </div>
     </div>
     </div>
-    <!-- <div class="col-lg-4 col-md-4 mx-auto p-4 mt-5 pl-3; pr-3;" style="display: flex;align-items: center; border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
 
-    </div> -->
     <span style="margin-top: 10px; font-size: 12px; text-align: center;" class="text-muted">ManageStore © Version 1.0.5 - 2025</span>
-</div>
+</div> -->
 <!-- <p class="font-size-sm text-muted text-center mt-3">Inicie sesión en su cuenta utilizando el correo electrónico y la contraseña proporcionados durante el registro.</p> -->
 
 
