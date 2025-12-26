@@ -1,32 +1,33 @@
 <app-sidebar> </app-sidebar>
 
 <div class="main-content">
-    <div class="pt-1 mt-4">
-      <h2 class="mt-2 mt-md-4 mb-3 pt-0"></h2>
-      <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
-        <p class="text-muted"></p>
 
+<div class="header">
+      <div class="header-body">
+        <div class="row align-items-center">
+          <div class="col">
+            <div class="header-title">
+              <h4 style="margin-bottom: 0px;">Perfil</h4>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="card box-shadow border-0  card-hover">
-        <div class="card-header border-0 ">
-            <h5 class="pt-2 pb-2" style="margin-bottom: 0px;">Datos del perfil</h5>
-        </div>
+    <div class="card box-shadow border-0  card-hover" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;">
         <form [formGroup]="perfilForm" (ngSubmit)="actualizarPerfil()">
             <div class="card-body">
                 <div class="row pb-3">
                     <!-- <div class="row ml-2 mt-1 mb-4 p-4" style="display: flex; align-items: center; justify-content: center; background-color: beige; width: 99%;">
 
                     </div> -->
-                    <div class="col-6 form-group" style="display: flex; align-items: center; justify-content: center;">
+                    <div class="col-6 form-group" style="display: flex; align-items: center; justify-content: start;">
                             <input
-                                class="form-check-input "
+                                class="form-check-input ml-4"
                                 formControlName="extranjero"
                                 type="checkbox"
                                 id="ex-check-1"
                             />
-                                <label class="form-check-label" for="ex-check-1" style="margin-left: 120px;">
+                                <label class="form-check-label" for="ex-check-1" style="margin-left: 60px;">
                                     Soy extranjero
                                 </label>
                         </div>

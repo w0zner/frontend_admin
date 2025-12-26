@@ -20,6 +20,10 @@ export class UsuarioService {
     return this.http.get(this.url + "/buscar/" + tipo + "/" + filtro, {headers: this.headers})
   }
 
+  listarUsuarioSistemaAdmin(tipo: any, filtro: any) {
+    return this.http.get(this.url + "/buscar-usuario-sistema/" + tipo + "/" + filtro, {headers: this.headers})
+  }
+
   registrar(data: any) {
     return this.http.post(this.url, data, {headers: this.headers})
   }

@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="card box-shadow border-0">
+    <div class="card box-shadow border-0 rounded-2 p-4" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;">
         <div class="card-header p-5">
             <div class="row">
               <ng-container *ngIf="tipoConsulta === 'fechas'">
@@ -54,7 +54,7 @@
                 </div>
               </ng-container>
               <div class="col-2">
-                <div class="btn-group" style="display: block; display: flex; justify-content: center; margin-top: 35px;">
+                <div class="btn-group" style="display: block; display: flex; justify-content: center; margin-top: 18px;">
                   <button type="button" class="btn btn-primary" (click)="consultarVentas()"><i class="fe fe-search"></i>
                     Buscar</button>
                   <button type="button" class="btn btn-secondary" (click)="limpiar()"><i class="fe fe-corner-down-left"></i></button>

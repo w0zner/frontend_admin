@@ -16,11 +16,15 @@ export class UsuariosListComponent {
     filtroUsuarioForm: FormGroup
     page=1
     pageSize=5
+    tipoFiltro: string = 'rol'
 
     constructor(private fb: FormBuilder, private usuarioService: UsuarioService, private authService: AuthService, private router: Router, private notificacion:NotificacionService) {
       this.filtroUsuarioForm= fb.group({
         nombre:[''],
-        apellido:['']
+        apellido:[''],
+        email:[''],
+        rol:[''],
+        estado:['']
       })
     }
 
@@ -29,7 +33,7 @@ export class UsuariosListComponent {
     }
 
     listar() {
-      this.usuarioService.listar(null, null).subscribe({
+      this.usuarioService.listarUsuarioSistemaAdmin(null, null).subscribe({
         next:(response: any)=> {
           this.usuarios = response.data
         },
@@ -43,11 +47,17 @@ export class UsuariosListComponent {
       let filtro: any
       if(tipo && tipo=='nombre'){
         filtro=this.filtroUsuarioForm.controls['nombre'].value
-      }else if(tipo && tipo=='apellido'){
+      } else if(tipo && tipo=='apellido'){
         filtro=this.filtroUsuarioForm.controls['apellido'].value
+      } else if(tipo && tipo=='email'){
+        filtro=this.filtroUsuarioForm.controls['email'].value
+      } else if(tipo && tipo=='rol'){
+        filtro=this.filtroUsuarioForm.controls['rol'].value
+      } else if(tipo && tipo=='estado'){
+        filtro=this.filtroUsuarioForm.controls['estado'].value
       }
 
-      this.usuarioService.listar(tipo, filtro).subscribe({
+      this.usuarioService.listarUsuarioSistemaAdmin(tipo, filtro).subscribe({
         next:(response: any)=> {
           this.usuarios = response.data
         },
@@ -55,6 +65,11 @@ export class UsuariosListComponent {
           console.error(err)
         }
       })
+    }
+
+    mostrarFiltro(tipo: string) {
+      this.filtroUsuarioForm.reset()
+      this.tipoFiltro = tipo
     }
 
     eliminar(id:any){
@@ -71,6 +86,11 @@ export class UsuariosListComponent {
     }
 
     actualizarEstado(item: any) {
+      if(item.rol.nombre == 'ADMIN') {
+        this.notificacion.notificarError(null, 'No se puede cambiar el estado de un administrador');
+        return;
+      }
+
       this.usuarioService.updateStatus(item._id, {estado:!item.activo}).subscribe({
         next: (response: any) => {
           this.listar();
