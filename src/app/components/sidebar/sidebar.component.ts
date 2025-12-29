@@ -14,7 +14,8 @@ export class SidebarComponent implements OnInit{
   usuario: string = ''
   url: string = ''
   imgSelect: string = ''
-  NombreTienda: string = ''
+  nombreTienda: string = ''
+  colorTienda: string = ''
 
   constructor(private authService: AuthService, private router: Router, private configuracionesService: ConfiguracionesService){
     this.url = GLOBAL.url + 'config/obtenerLogo/'
@@ -22,8 +23,12 @@ export class SidebarComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.imgSelect = localStorage.getItem('logoTienda') || this.establecerLogo()
-    this.NombreTienda = localStorage.getItem('nombreTienda') || this.establecerNombreTienda()
+
+      this.imgSelect = localStorage.getItem('logoTienda') || this.establecerLogo()
+      this.nombreTienda = localStorage.getItem('nombreTienda') || this.establecerNombreTienda()
+      this.colorTienda = localStorage.getItem('colorTienda') || this.establecerColorTienda()
+
+
   }
 
   establecerLogo(): string{
@@ -40,15 +45,18 @@ export class SidebarComponent implements OnInit{
 
   establecerNombreTienda(): string{
     this.configuracionesService.obtenerConfiguracion().subscribe((res: any) => {
-      this.NombreTienda = res.data?.titulo || 'Tienda'
-      localStorage.setItem('nombreTienda', this.NombreTienda)
+      this.nombreTienda = res.data?.titulo || 'Tienda'
+      localStorage.setItem('nombreTienda', this.nombreTienda)
     })
-    return this.NombreTienda
+    return this.nombreTienda
   }
 
-  logout(){
-    this.authService.logout()
-    this.router.navigateByUrl('/login')
+  establecerColorTienda(): string{
+    this.configuracionesService.obtenerConfiguracion().subscribe((res: any) => {
+      console.log(res)
+      this.colorTienda = res.data?.color //|| '#3b506c'
+      localStorage.setItem('colorTienda', this.colorTienda)
+    })
+    return this.colorTienda
   }
-
 }

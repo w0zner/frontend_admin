@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   private token: any
+  loading= false
 
   constructor(
     private fb: FormBuilder,
@@ -34,18 +35,22 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.loading=true
     if(this.loginForm.valid) {
       this.authService.loginAdmin(this.loginForm.value).subscribe({
         next: (response) => {
           this.notificacionService.notificarExito('Bienvenido!', 'bottomRight')
           this.router.navigateByUrl('/')
+          this.loading=false
         },
         error: (err) => {
           this.notificacionService.notificarError(err)
+          this.loading=false
         }
       })
     } else {
       this.notificacionService.notificarError(null, 'Hay datos no válidos o vacios')
+      this.loading=false
     }
   }
 

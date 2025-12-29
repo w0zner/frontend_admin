@@ -83,6 +83,9 @@ export class AuthService {
     localStorage.removeItem('refreshToken')
     localStorage.removeItem('logoTienda')
     localStorage.removeItem('nombreTienda')
+    localStorage.removeItem('colorTienda')
+    localStorage.removeItem('usuario')
+
     localStorage.clear()
   }
 }

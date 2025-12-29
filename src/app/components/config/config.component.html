@@ -38,7 +38,7 @@
 
             <div class="card-body">
               <div style="max-width: 48rem;">
-                <div class="mb-2 p-1 text-light rounded-2" style="background-color: #3b506c;">
+                <div class="mb-2 p-1 text-light rounded-2" [style.background]="color">
                   <b>Identidad de la tienda</b>
                 </div>
                 <div class="form-group row align-items-center">
@@ -107,7 +107,7 @@
                 </div>
 
 
-                <div class="mb-2 p-1 text-light rounded-2" style="background-color: #3b506c;">
+                <div class="mb-2 p-1 text-light rounded-2" [style.background]="color">
                   <b>Facturación</b>
                 </div>
                 <div class="form-group row align-items-center">
@@ -120,6 +120,16 @@
                   </div>
                   <div class="col-md-5">
                     <input class="form-control" type="number" min="0" max="9999999" id="text-input" placeholder="Numeración Desde" formControlName="correlativo">
+                  </div>
+                </div>
+
+                <div class="mb-2 p-1 text-light rounded-2" [style.background]="color">
+                  <b>Color de enfasis</b>
+                </div>
+                <div class="form-group row align-items-center">
+                  <label class="col-md-3 col-form-label font-weight-medium" for="text-input">Color</label>
+                  <div class="col-md-6">
+                    <input class="form-control p-1" type="color" id="text-input" placeholder="Color" formControlName="color">
                   </div>
                 </div>
 

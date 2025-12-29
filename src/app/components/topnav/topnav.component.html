@@ -1,4 +1,8 @@
-<nav class="navbar navbar-expand-md navbar-light d-none d-md-flex" id="topbar">
+<nav class="navbar navbar-expand-md navbar-light d-none d-md-flex" id="topbar"
+[ngStyle]="{
+    'background': 'linear-gradient(90deg, var(--color-tienda) 15%, #ffffff 100%)'
+  }"
+>
     <div class="container-fluid">
 
       <!-- Form -->
@@ -43,10 +47,10 @@
           <!-- Menu -->
           <div class="dropdown-menu dropdown-menu-right">
              <a class="dropdown-item" style="cursor:pointer" routerLink="/perfil">
-              <span class="fe fe-star me-4"></span> Perfil
+              <span class="fe fe-star me-3"></span> Perfil
             </a>
             <a class="dropdown-item" style="cursor:pointer" (click)="logout()">
-              <span class="fe fe-log-out me-4"></span> Cerrar sesión
+              <span class="fe fe-log-out me-3"></span> Cerrar sesión
             </a>
           </div>
 

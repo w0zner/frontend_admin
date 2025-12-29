@@ -12,3 +12,37 @@
  .card {
   border: 1px solid black;
  }
+
+/*  .btn-primary {
+  --bs-btn-bg: var(--color-tienda);
+  --bs-btn-border-color: var(--color-tienda);
+  --bs-btn-hover-bg: color-mix(in srgb, var(--color-tienda) 85%, black);
+  --bs-btn-hover-border-color: color-mix(in srgb, var(--color-tienda) 85%, black);
+}
+ */
+
+ .app-auth .btn-primary {
+  --bs-btn-bg: var(--color-tienda);
+  --bs-btn-border-color: var(--color-tienda);
+  --bs-btn-hover-bg: color-mix(in srgb, var(--color-tienda) 85%, black);
+  --bs-btn-hover-border-color: color-mix(in srgb, var(--color-tienda) 85%, black);
+}
+
+/* THEAD DARK */
+.app-auth .thead-dark,
+.app-auth thead.thead-dark {
+  background-color: var(--color-tienda);
+  color: #fff;
+}
+
+/* TABLE HEADER STYLING */
+.app-auth th {
+  background-color: var(--color-tienda) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.app-auth thead th {
+  background-color: var(--color-tienda) !important;
+  color: #fff !important;
+}

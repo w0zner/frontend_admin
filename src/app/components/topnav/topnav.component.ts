@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-topnav',
@@ -9,20 +10,15 @@ import { Router } from '@angular/router';
 export class TopnavComponent implements OnInit {
 
   constructor(
-    private _router:Router
+    private authService: AuthService, private router: Router
   ) { }
 
   ngOnInit(): void {
   }
 
   logout(){
-    window.location.reload();
-    localStorage.removeItem('token');
-    localStorage.removeItem('_id');
-    localStorage.removeItem('user_data');
-    this._router.navigate(['/']).then(() => {
-      window.location.reload();
-    });;
+    this.authService.logout()
+    this.router.navigateByUrl('/login')
   }
 
 }

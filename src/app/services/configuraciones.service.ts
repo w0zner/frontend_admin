@@ -29,6 +29,7 @@ export class ConfiguracionesService {
   }
 
   actualizar(data: any, image: File | undefined){
+
     const headers = new HttpHeaders({
       Authorization: this.authService.getToken()
     });
@@ -40,6 +41,7 @@ export class ConfiguracionesService {
     fd.append('establecimiento', data.establecimiento)
     fd.append('punto', data.punto)
     fd.append('correlativo', data.correlativo)
+    fd.append('color', data.color)
     if(image) {
       fd.append('logo', image)
     }

@@ -1,1 +1,74 @@
-<p>usuarios-form works!</p>
+<app-sidebar> </app-sidebar>
+
+<div class="main-content">
+
+    <div class="header">
+      <div class="header-body">
+        <div class="row align-items-center">
+          <div class="col">
+            <div class="header-title">
+              <h4 style="margin-bottom: 0px;">Registro de usuario</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card box-shadow border-0">
+          <form [formGroup]="clientesForm" (submit)="registrar()">
+            <div class="card-body">
+                  <div>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label for="validationCustom01" class="form-label">Cédula de identidad</label>
+                        <input class="form-control" type="text" formControlName="cedula" placeholder="C.I." required>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label for="validationCustom01" class="form-label">Nombres</label>
+                        <input class="form-control" type="text" formControlName="nombres" placeholder="Nombres" required>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label for="validationCustom01" class="form-label">Apellidos</label>
+                        <input class="form-control" type="text" formControlName="apellidos" placeholder="Apellidos" required>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label for="validationCustom01" class="form-label">Correo electrónico</label>
+                        <input class="form-control" type="text" formControlName="email" placeholder="Corre Electrónico" required>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label for="validationCustom01" class="form-label">Rol</label>
+                        <select class="form-control custom-select" formControlName="rol" id="">
+                          <option *ngFor="let rol of roles" [value]="rol.nombre">{{ rol.nombre }}</option>
+
+                        </select>
+                      </div>
+                    </div>
+                    <!-- <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label for="validationCustom01" class="form-label">Fecha nacimiento</label>
+                        <input class="form-control" type="date" formControlName="fecha_nacimiento">
+                      </div>
+                      <div class="col-md-4">
+                        <label for="validationCustom01" class="form-label">Genero</label>
+                        <select class="form-control custom-select" formControlName="genero" id="">
+                          <option value="" selected disabled>Seleccionar</option>
+                          <option value="Masculino">Masculino</option>
+                          <option value="Femenino">Femenino</option>
+                        </select>
+                      </div>
+                    </div> -->
+                  </div>
+            </div>
+            <div class="card-footer border-0 text-end">
+                <button class="btn btn-success btn-hover-shadow mr-3" [disabled]="!clientesForm.valid"><i class="fa-sharp fa-solid fa-square-check"></i> {{this.id==null?'Guardar':'Actualizar'}}</button>
+                <a [routerLink]="['/panel/clientes']"  class="btn btn-secondary"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i> Cancelar</a>
+            </div>
+        </form>
+    </div>
+  </div>
+
+
+

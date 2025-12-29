@@ -25,6 +25,7 @@ export class ConfigComponent implements OnInit {
   file: File | undefined = undefined
   url: string;
   categoriasControl : any
+  color: string = '#3b506c';
 
   constructor(private fb: FormBuilder, private notificacionService: NotificacionService, private configService: ConfiguracionesService) {
     this.url = GLOBAL.url + 'config/obtenerLogo/'
@@ -40,6 +41,7 @@ export class ConfigComponent implements OnInit {
       establecimiento: ['', [Validators.required]],
       punto: ['', [Validators.required]],
       correlativo: ['', [Validators.required]],
+      color: [''],
     })
   }
 
@@ -72,10 +74,12 @@ export class ConfigComponent implements OnInit {
             establecimiento: response.data.establecimiento,
             punto: response.data.punto,
             correlativo: response.data.correlativo,
+            color: response.data.color
           })
           this.categorias=response.data.categorias
           this.imgSelect = this.url + response.data.logo
           this.existeConfig = true
+          this.color = response.data.color;
         }
       }
     })
@@ -86,12 +90,12 @@ export class ConfigComponent implements OnInit {
 
       this.categoriasControl = this.configForm.get('categorias');
       const cat = this.categoriasControl?.value || [];
-    
+
       cat.push({
         titulo: this.categoriaForm.controls['titulo'].value,
         icono: this.categoriaForm.controls['icono'].value,
       });
-    
+
       this.categoriasControl?.setValue(cat);
 
       /* this.categorias.push({titulo: this.categoriaForm.controls['titulo'].value, icono: this.categoriaForm.controls['icono'].value})
@@ -107,10 +111,10 @@ export class ConfigComponent implements OnInit {
   eliminarCategoria(index: number) {
     const categoriasControl = this.configForm.get('categorias');
     const categorias = categoriasControl?.value || [];
-  
+
     // Eliminamos el item por índice
     categorias.splice(index, 1);
-  
+
     // Actualizamos el form
     categoriasControl?.setValue(categorias);
   }

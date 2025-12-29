@@ -13,7 +13,7 @@
                   <div class="col-auto">
                     <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
                           <p class="font-size-sm font-weight-medium pl-md-4">
-                            <a class="btn btn-secondary lift" role="button" rel="noopener" [routerLink]="['/panel/clientes/registro']"><i class="fe fe-plus"></i> Registrar nuevo</a>
+                            <a class="btn btn-secondary lift" role="button" rel="noopener" [routerLink]="['/panel/usuarios/registro']"><i class="fe fe-plus"></i> Registrar nuevo</a>
                           </p>
                       </div>
                   </div>
@@ -91,6 +91,7 @@
                                 <th>Nombre y Apellido</th>
                                 <th>Tipo</th>
                                 <th>Correo Electrónico</th>
+                                <th>Ultimo Acceso</th>
                                 <th>Verificado</th>
                                 <th>Estado</th>
                                 <th>Opciones</th>
@@ -106,6 +107,7 @@
                                 <td>{{item.nombres + ' ' + item.apellidos}}</td>
                                 <td>{{item.rol.nombre == 'USER' ? 'Cliente' : 'Administrador'}}</td>
                                 <td>{{item.email}}</td>
+                                <td>{{item.ultimoIngreso | date:'dd/MM/yyyy HH:mm:ss' }}</td>
                                 <td>{{item.verificado == true ? 'Si' : 'No'}}</td>
                                 <td>
                                   <a class="btn" style="border: 0px;" [ngClass]="{'btn-outline-success': item.activo==true, 'btn-outline-danger': item.activo==false}" (click)="actualizarEstado(item)">
