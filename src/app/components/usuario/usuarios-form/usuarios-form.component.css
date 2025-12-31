@@ -1,5 +1,6 @@
 .main-content {
-  margin-left: 255px; /* Ajusta al ancho de tu sidebar */
+  margin-left: 265px; /* Ajusta al ancho de tu sidebar */
+  margin-right: 25px;
   padding: 20px;
 }
 

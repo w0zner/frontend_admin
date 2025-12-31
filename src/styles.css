@@ -9,6 +9,16 @@
 
  */
 
+ body {
+  font-family: 'Cerebri Sans', sans-serif;
+}
+
+.main-content {
+  margin-left: 265px; /* Ajusta al ancho de tu sidebar */
+  margin-right: 25px;
+  padding: 20px;
+}
+
  .card {
   border: 1px solid black;
  }
@@ -27,6 +37,14 @@
   --bs-btn-hover-bg: color-mix(in srgb, var(--color-tienda) 85%, black);
   --bs-btn-hover-border-color: color-mix(in srgb, var(--color-tienda) 85%, black);
 }
+
+.app-auth .btn-primary:disabled {
+  --bs-btn-disabled-bg: color-mix(in srgb, var(--color-tienda) 35%, #fff);
+  --bs-btn-disabled-border-color: color-mix(in srgb, var(--color-tienda) 45%, #fff);
+  --bs-btn-disabled-color: #fff;
+  opacity: 1;
+}
+
 
 /* THEAD DARK */
 .app-auth .thead-dark,

@@ -1,101 +1,189 @@
-<nav style="border: 1px solid var(--color-tienda);" class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light" id="sidebar"
-[ngStyle]="{
-    'background': 'var(--color-tienda)',
-    'box-shadow': 'rgba(59, 80, 108, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px'
+<nav
+  class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light"
+  id="sidebar"
+  [ngStyle]="{
+    background: '#ffffff',
+    'box-shadow':
+      'rgba(59, 80, 108, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px'
   }"
 >
-    <div class="container-fluid">
+  <div class="container-fluid">
+    <!-- style="background: #eb267b; background: radial-gradient(circle, rgba(235, 38, 123, 1) 0%, rgba(250, 250, 250, 1) 99%);" -->
+    <!-- style="background: #3f393c; background: radial-gradient(circle, rgba(63, 57, 60, 1) 0%, rgba(250, 250, 250, 1) 99%);" -->
 
-      <!-- style="background: #eb267b; background: radial-gradient(circle, rgba(235, 38, 123, 1) 0%, rgba(250, 250, 250, 1) 99%);" -->
-      <!-- style="background: #3f393c; background: radial-gradient(circle, rgba(63, 57, 60, 1) 0%, rgba(250, 250, 250, 1) 99%);" -->
+    <!-- Brand 'var(--color-tienda)',-->
 
-      <!-- Brand -->
-
-      <!-- <a class="navbar-brand" [routerLink]="['/clientes']" >
+    <!-- <a class="navbar-brand" [routerLink]="['/clientes']" >
         <img src="./assets/img/logo.svg" class="navbar-brand-img mx-auto" style="max-height: 4rem !important;" alt="...">
       </a> -->
-      <div >
-        <a class="navbar-brand ">
+    <div>
+      <a class="navbar-brand">
         <!-- <img src="assets/img/components/logo/logo-white.svg" alt="Createx" width="130" /> -->
-          <img [src]="imgSelect" class="navbar-brand-img mx-auto" style="border: 1px solid #ccc; border-radius: 8px; max-height: 10rem !important;" alt="...">
-        <!-- <img src="assets/img/store-64.png" alt="Tienda" width="60"> img-thumbnail style="max-height: 4rem !important;"-->
-        </a>
-        <h5 class="text-center mt-2 text-light">{{nombreTienda}}</h5>
-      </div>
+        <img
+          [src]="imgSelect"
+          class="navbar-brand-img mx-auto"
+          style="
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            max-height: 10rem !important;
+             box-shadow:
+    0 24px 30px color-mix(in srgb, var(--color-tienda) 25%, transparent),
+    0 8px 12px  color-mix(in srgb, var(--color-tienda) 15%, transparent),
+    0 2px 6px   color-mix(in srgb, var(--color-tienda) 10%, transparent);
+          "
+          alt="..."
+        />
+        <!--
+                    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
+        <img src="assets/img/store-64.png" alt="Tienda" width="60"> img-thumbnail style="max-height: 4rem !important;"-->
+      </a>
+      <h5 class="text-center mt-2 text-dark">{{ nombreTienda }}</h5>
+    </div>
 
-
-      <!-- Collapse -->
-      <div class="collapse navbar-collapse" id="sidebarCollapse">
-
-        <!-- Form -->
-        <form class="mt-4 mb-3 d-md-none">
-          <div class="input-group input-group-rounded input-group-merge">
-            <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <span class="fe fe-search"></span>
-              </div>
+    <!-- Collapse -->
+    <div class="collapse navbar-collapse" id="sidebarCollapse">
+      <!-- Form -->
+      <form class="mt-4 mb-3 d-md-none">
+        <div class="input-group input-group-rounded input-group-merge">
+          <input
+            type="search"
+            class="form-control form-control-rounded form-control-prepended"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <span class="fe fe-search"></span>
             </div>
           </div>
-        </form>
+        </div>
+      </form>
 
-        <!-- Divider -->
-        <hr class="navbar-divider my-3">
+      <!-- Divider -->
+      <hr class="navbar-divider my-3" />
 
-        <!-- Heading -->
- <!--        <h6 class="navbar-heading text-light">
+      <!-- Heading -->
+      <!--        <h6 class="navbar-heading text-light">
           Menú
         </h6> -->
 
-        <!-- Navigation -->
-        <ul class="navbar-nav mb-md-4">
-          <div class="menu-section">
-            <span class="menu-title navbar-heading text-light ml-4">MENÚ</span>
+      <!-- Navigation -->
+      <ul class="navbar-nav mb-md-4">
+        <div class="menu-section">
+          <span class="menu-title navbar-heading text-dark ml-4">MENÚ</span>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/inicio']" routerLinkActive="active"><i class="fe fe-home"></i>Inicio</a>
+            <a
+              class="nav-link"
+              [routerLink]="['/inicio']"
+              routerLinkActive="active"
+              ><i class="fe fe-home"></i>Inicio</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/panel/configuraciones']" routerLinkActive="active"><i class="fe fe-settings"></i>Configuraciones</a>
+            <a
+              class="nav-link"
+              [routerLink]="['/panel/configuraciones']"
+              routerLinkActive="active"
+              ><i class="fe fe-settings"></i>Configuraciones</a
+            >
           </li>
         </div>
-          <div class="menu-section">
-            <span class="menu-title navbar-heading text-light ml-4">GESTIÓN</span>
-            <li class="nav-item">
-              <a class="nav-link px-4" [routerLink]="['/panel/clientes']" routerLinkActive="active"><i class="fe fe-users"></i>Clientes</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link px-4" [routerLink]="['/panel/usuarios']" routerLinkActive="active"><i class="fe fe-user-check"></i>Usuarios</a>
-          </li>
-                      <li class="nav-item">
-              <a class="nav-link px-4" [routerLink]="['/panel/contactos']" routerLinkActive="active"><i class="fe fe-send"></i>Contactos</a>
-            </li>
+        <div class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="#sidebarDashboards"
+            data-toggle="collapse"
+            role="button"
+            aria-expanded="false"
+            aria-controls="sidebarDashboards"
+          >
+            <i class="fe fe-clipboard"></i> Gestión
+          </a>
+          <div class="collapse" id="sidebarDashboards" style="">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a
+                  class="nav-link px-4"
+                  [routerLink]="['/panel/clientes']"
+                  routerLinkActive="active"
+                  ><i class="fe fe-users"></i>Clientes</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-4"
+                  [routerLink]="['/panel/usuarios']"
+                  routerLinkActive="active"
+                  ><i class="fe fe-user-check"></i>Usuarios</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-4"
+                  [routerLink]="['/panel/contactos']"
+                  routerLinkActive="active"
+                  ><i class="fe fe-send"></i>Contactos</a
+                >
+              </li>
+            </ul>
           </div>
+        </div>
 
-          <div class="menu-section">
-            <span class="menu-title navbar-heading text-light ml-4">GESTIÓN</span>
-            <li class="nav-item">
-              <a class="nav-link px-4" [routerLink]="['/panel/cupones']" routerLinkActive="active"><i class="fe fe-tag"></i>Cupones</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link px-4" [routerLink]="['/panel/descuentos']" routerLinkActive="active"><i class="fe fe-trending-up"></i>Descuentos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link px-4" [routerLink]="['/panel/productos']" routerLinkActive="active"><i class="fe fe-package"></i>Productos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link px-4" [routerLink]="['/panel/ventas']" routerLinkActive="active"><i class="fe fe-shopping-cart"></i>Ventas</a>
-            </li>
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="#tienda"
+            data-toggle="collapse"
+            role="button"
+            aria-expanded="false"
+            aria-controls="tienda"
+          >
+            <i class="fe fe-shopping-bag"></i> Tienda
+          </a>
+          <div class="collapse" id="tienda" style="">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a
+                  class="nav-link px-4"
+                  [routerLink]="['/panel/cupones']"
+                  routerLinkActive="active"
+                  ><i class="fe fe-tag"></i>Cupones</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-4"
+                  [routerLink]="['/panel/descuentos']"
+                  routerLinkActive="active"
+                  ><i class="fe fe-trending-up"></i>Descuentos</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-4"
+                  [routerLink]="['/panel/productos']"
+                  routerLinkActive="active"
+                  ><i class="fe fe-package"></i>Productos</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-4"
+                  [routerLink]="['/panel/ventas']"
+                  routerLinkActive="active"
+                  ><i class="fe fe-shopping-cart"></i>Ventas</a
+                >
+              </li>
+            </ul>
           </div>
+        </li>
+      </ul>
 
-        </ul>
-
-        <!-- Push content down -->
-        <div class="mt-auto"></div>
-
-
-      </div> <!-- / .navbar-collapse -->
-
+      <!-- Push content down -->
+      <div class="mt-auto"></div>
     </div>
+    <!-- / .navbar-collapse -->
+  </div>
 </nav>
 <app-topnav></app-topnav>
