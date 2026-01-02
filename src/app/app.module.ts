@@ -32,6 +32,10 @@ import { UsuariosFormComponent } from './components/usuario/usuarios-form/usuari
 import { PerfilFormComponent } from './components/perfil/perfil-form/perfil-form.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { TopnavComponent } from './components/topnav/topnav.component';
+import { RolesListComponent } from './components/roles/roles-list/roles-list.component';
+import { RolesFormComponent } from './components/roles/roles-form/roles-form.component';
+import { PermisosListComponent } from './components/permisos/permisos-list/permisos-list.component';
+import { PermisosFormComponent } from './components/permisos/permisos-form/permisos-form.component';
 
 
 @NgModule({
@@ -59,7 +63,11 @@ import { TopnavComponent } from './components/topnav/topnav.component';
     UsuariosListComponent,
     UsuariosFormComponent,
     PerfilFormComponent,
-    TopnavComponent
+    TopnavComponent,
+    RolesListComponent,
+    RolesFormComponent,
+    PermisosListComponent,
+    PermisosFormComponent
   ],
   imports: [
     BrowserModule,

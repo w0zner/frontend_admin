@@ -42,6 +42,7 @@ export class UsuariosFormComponent {
         this.id = params.get('id') || ""
         this.usuarioService.getById(this.id).subscribe({
           next: (response:any) => {
+            console.log(response)
             this.clientesForm.patchValue({
               nombres: response.data.nombres,
               apellidos: response.data.apellidos,
@@ -49,7 +50,8 @@ export class UsuariosFormComponent {
               telefono: response.data?.telefono,
               fecha_nacimiento: response.data?.fecha_nacimiento,
               cedula: response.data.cedula,
-              genero: response.data?.genero
+              genero: response.data?.genero,
+              rol: response.data?.rol?.nombre
             })
           },
           error: (err) => {

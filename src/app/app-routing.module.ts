@@ -22,6 +22,10 @@ import { VentasFormComponent } from './components/ventas/ventas-form/ventas-form
 import { PerfilFormComponent } from './components/perfil/perfil-form/perfil-form.component';
 import { UsuariosListComponent } from './components/usuario/usuarios-list/usuarios-list.component';
 import { UsuariosFormComponent } from './components/usuario/usuarios-form/usuarios-form.component';
+import { RolesListComponent } from './components/roles/roles-list/roles-list.component';
+import { RolesFormComponent } from './components/roles/roles-form/roles-form.component';
+import { PermisosListComponent } from './components/permisos/permisos-list/permisos-list.component';
+import { PermisosFormComponent } from './components/permisos/permisos-form/permisos-form.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'inicio', pathMatch: 'full'},
@@ -51,7 +55,13 @@ const routes: Routes = [
       {path: 'ventas/:id', component: VentasFormComponent, canActivate: [adminGuard]},
       {path: 'usuarios', component: UsuariosListComponent, canActivate: [adminGuard]},
       {path: 'usuarios/registro', component: UsuariosFormComponent, canActivate: [adminGuard]},
-
+      {path: 'usuarios/registro/:id', component: UsuariosFormComponent, canActivate: [adminGuard]},
+      {path: 'roles', component: RolesListComponent, canActivate: [adminGuard]},
+      {path: 'roles/registro', component: RolesFormComponent, canActivate: [adminGuard]},
+      {path: 'roles/registro/:id', component: RolesFormComponent, canActivate: [adminGuard]},
+      {path: 'permisos', component: PermisosListComponent, canActivate: [adminGuard]},
+      {path: 'permisos/registro', component: PermisosFormComponent, canActivate: [adminGuard]},
+      {path: 'permisos/registro/:id', component: PermisosFormComponent, canActivate: [adminGuard]},
     ]
   },
   {path: 'login', component: LoginComponent}

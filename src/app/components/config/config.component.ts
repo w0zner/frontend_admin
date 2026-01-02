@@ -25,6 +25,7 @@ export class ConfigComponent implements OnInit {
   file: File | undefined = undefined
   url: string;
   categoriasControl : any
+  step:number=0;
   color: string = '#3b506c';
 
   constructor(private fb: FormBuilder, private notificacionService: NotificacionService, private configService: ConfiguracionesService) {
@@ -158,6 +159,23 @@ export class ConfigComponent implements OnInit {
         }
       })
     }
+  }
+
+  siguiente() {
+    console.log(this.step)
+    if(this.step < Number(2)) {
+      console.log('entro')
+      this.step += 1
+    }
+    console.log(this.step)
+  }
+
+  atras() {
+    console.log(this.step)
+    if(this.step != 0) {
+      this.step -= 1
+    }
+    console.log(this.step)
   }
 
 }

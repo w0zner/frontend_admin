@@ -1,0 +1,64 @@
+<app-sidebar> </app-sidebar>
+
+<div class="main-content">
+   <div class="header">
+      <div class="header-body">
+        <div class="row align-items-center">
+          <div class="col">
+            <div class="header-title">
+              <h4 style="margin-bottom: 0px;">Registro de roles</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card box-shadow border-0  card-hover">
+          <form [formGroup]="rolesForm" (submit)="registrar()">
+            <div class="card-body">
+                  <div>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label for="validationCustom01" class="form-label">Nombre del rol</label>
+                        <input class="form-control" type="text" formControlName="nombre" placeholder="Código de cupón" required>
+                      </div>
+                      
+                    </div>
+                     <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label for="validationCustom01" class="form-label">Permisos</label>
+                        <!-- <input class="form-control" type="number" formControlName="valor" placeholder="Valor" required> -->
+                        <select name="lenguajes" class="form-control" id="lang" multiple>
+                            <option *ngFor="let permiso of permisos" [value]="permiso.key" (dblclick)="agregarPermiso(permiso)">{{permiso.key}}</option>
+                        </select>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label for="validationCustom01" class="form-label">Permisos Seleccionados</label>
+                        <!-- <input class="form-control" type="number" formControlName="valor" placeholder="Valor" required> -->
+                        <select name="lenguajes" class="form-control" id="lang" multiple formControlName="permisos">
+                            <option *ngFor="let permiso of permisosSeleccionados" [value]="permiso.key" (dblclick)="sacarPermiso(permiso)">{{permiso.key}}</option>
+                        </select>
+                      </div>
+                    </div> 
+                   <!-- <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label for="validationCustom01" class="form-label">Limite</label>
+                        <input class="form-control" type="number" formControlName="limite" placeholder="Limite" required>
+                      </div>
+                      <div class="col-md-4 form-group" *ngIf="id">
+                        <label for="validationCustom01" class="form-label">Fecha creación</label>
+                        <input class="form-control" type="date" formControlName="createdAt" readonly>
+                      </div>
+                  </div> -->
+            </div>
+        </div>
+            <div class="card-footer border-0 text-end">
+                <button class="btn btn-primary btn-hover-shadow mr-3" [disabled]="!rolesForm.valid"><i class="fa-sharp fa-solid fa-square-check"></i> {{id==null?'Guardar':'Actualizar'}}</button>
+                <a [routerLink]="['/panel/roles']"  class="btn btn-secondary"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i> Cancelar</a>
+            </div>
+        </form>
+    </div>
+  </div>
+
+
+

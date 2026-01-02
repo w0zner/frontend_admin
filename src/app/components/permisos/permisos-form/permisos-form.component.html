@@ -1,0 +1,51 @@
+<app-sidebar> </app-sidebar>
+
+<div class="main-content">
+   <div class="header">
+      <div class="header-body">
+        <div class="row align-items-center">
+          <div class="col">
+            <div class="header-title">
+              <h4 style="margin-bottom: 0px;">Registro de cupones</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card box-shadow border-0  card-hover">
+          <form [formGroup]="permisosForm" (submit)="registrar()">
+            <div class="card-body">
+                  <div>
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label for="validationCustom01" class="form-label">Llave del permiso</label>
+                        <input class="form-control" type="text" formControlName="key" (keyup)="cargarNombre()" placeholder="Llave del permiso" required>
+                      </div>
+                      <div class="col-md-2 form-group">
+                        <label for="validationCustom01" class="form-label">Método</label>
+                        <select class="form-control custom-select " id="metodo" name="metodo" formControlName="metodo" (change)="cargarNombre()">
+                          <option value="" selected disabled>Seleccionar</option>
+                          <option value="GET">GET</option>
+                          <option value="POST">POST</option>
+                          <option value="PUT">PUT</option>
+                          <option value="DELETE">DELETE</option>
+                        </select>
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label for="validationCustom01" class="form-label">Descripción</label>
+                        <input class="form-control" type="text" formControlName="description" placeholder="Descripción" required>
+                      </div>
+                    </div>
+            </div>
+        </div>
+            <div class="card-footer border-0 text-end">
+                <button class="btn btn-primary btn-hover-shadow mr-3" [disabled]="!permisosForm.valid"><i class="fa-sharp fa-solid fa-square-check"></i> {{id==null?'Guardar':'Actualizar'}}</button>
+                <a [routerLink]="['/panel/permisos']"  class="btn btn-secondary"><i class="fa-sharp fa-solid fa-rectangle-xmark"></i> Cancelar</a>
+            </div>
+        </form>
+    </div>
+  </div>
+
+
+
